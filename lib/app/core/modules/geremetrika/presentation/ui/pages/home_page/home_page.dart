@@ -1,0 +1,47 @@
+import 'package:flutter/material.dart';
+import 'package:liberpass_baseweb/app/core/modules/geremetrika/presentation/ui/pages/close_order_page/close_order_page.dart';
+import 'package:liberpass_baseweb/app/core/modules/geremetrika/presentation/ui/pages/itens_page/itens_page.dart';
+import 'package:liberpass_baseweb/app/core/modules/geremetrika/presentation/ui/pages/order_head_page/order_head_page.dart';
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    return Scaffold(
+        appBar: AppBar(
+            leading: Image.asset('assets/images/logo.png'),
+            title: const Text('Geremetrika - A revolução do mundo vidreiro')),
+        body: CustomScrollView(
+          slivers: [
+            SliverFillRemaining(
+              child: Column(
+                children: [
+                  Wrap(
+                    spacing: 10,
+                    children: [
+                      SizedBox(
+                        width: size.width * 0.6,
+                        child: const OrderHeadPage(),
+                      ),
+                      SizedBox(
+                        width: size.width * 0.3,
+                        child: const CloseOrderPage(),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 30),
+                  const Expanded(child: ItensPage()),
+                ],
+              ),
+            )
+          ],
+        ));
+  }
+}
