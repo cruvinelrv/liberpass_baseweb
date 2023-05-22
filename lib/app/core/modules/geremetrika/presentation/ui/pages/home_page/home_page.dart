@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:liberpass_baseweb/app/core/modules/geremetrika/presentation/ui/pages/close_order_page/close_order_page.dart';
 import 'package:liberpass_baseweb/app/core/modules/geremetrika/presentation/ui/pages/itens_page/itens_page.dart';
 import 'package:liberpass_baseweb/app/core/modules/geremetrika/presentation/ui/pages/order_head_page/order_head_page.dart';
 
@@ -16,7 +15,7 @@ class _HomePageState extends State<HomePage> {
     var size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
-            leading: Image.asset('assets/images/logo.png'),
+            leading: Image.asset('assets/images/logo_premier.png'),
             title: const Text('Geremetrika - A revolução do mundo vidreiro')),
         body: CustomScrollView(
           slivers: [
@@ -32,7 +31,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       SizedBox(
                         width: size.width * 0.3,
-                        child: const CloseOrderPage(),
+                        child: Image.asset('assets/images/logo_premier.png'),
                       ),
                     ],
                   ),
