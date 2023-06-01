@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:liberpass_baseweb/app/core/modules/geremetrika/presentation/ui/pages/itens_page/itens_page.dart';
-import 'package:liberpass_baseweb/app/core/modules/geremetrika/presentation/ui/pages/order_head_page/order_head_page.dart';
+import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/itens_page/itens_page.dart';
+import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/order_head_page/order_head_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
