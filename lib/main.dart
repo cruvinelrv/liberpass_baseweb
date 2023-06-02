@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:liberpass_baseweb/app/core/modules/geremetrika/presentation/ui/pages/close_order_page/close_order_page.dart';
-import 'package:liberpass_baseweb/app/core/modules/geremetrika/presentation/ui/pages/pdf_order_page/pdf_order_page.dart';
+<<<<<<< HEAD
+import 'package:meta_seo/meta_seo.dart';
+import 'package:flutter/foundation.dart';
+=======
+>>>>>>> 8067b635bdba8b7a17fbfa2632bd0e48f962b2ca
 
-import 'app/core/routes/routes.dart';
+import 'app/routes/routes.dart';
 
 void main() {
+  if (kIsWeb) {
+    MetaSEO().config();
+  }
   runApp(const LiberPassWeb());
 }
 
@@ -13,8 +19,31 @@ class LiberPassWeb extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (kIsWeb) {
+      // Define MetaSEO object
+      MetaSEO meta = MetaSEO();
+      // Add meta seo data for web app as you want
+      meta.author(author: 'Vinicius Machado Cruvinel');
+      meta.description(
+          description:
+              'Aplicativo para buscar controle financeiro e da vida pessoal.');
+      meta.keywords(
+          keywords:
+              'liberpass aplicativo controle financeiro pessoal investimentos passaporte liberdade nomade digital');
+      meta.ogDescription(
+          ogDescription:
+              'Liberpass - o passaporte para sua liberdade financeira e pessoal');
+      meta.ogImage(ogImage: 'https://liberpass.com.br/assets/images/logo.png');
+      meta.ogTitle(ogTitle: 'Liberpass');
+      meta.twitterDescription(
+          twitterDescription:
+              'Liberpass - Passaporte para sua liberdade financeira e pessoal');
+      meta.twitterImage(
+          twitterImage: 'https://liberpass.com.br/assets/images/logo.png');
+      meta.twitterTitle(twitterTitle: 'Liberpass');
+    }
     return MaterialApp(
-      title: 'Liberpass Web',
+      title: 'Liberpass',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

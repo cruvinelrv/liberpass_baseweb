@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:liberpass_baseweb/app/core/modules/geremetrika/domain/entities/order_entity.dart';
+import 'package:liberpass_baseweb/app/modules/geremetrika/domain/entities/order_entity.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';

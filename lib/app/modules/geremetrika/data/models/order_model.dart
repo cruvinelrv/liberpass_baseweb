@@ -1,4 +1,4 @@
-import 'package:liberpass_baseweb/app/core/modules/geremetrika/domain/entities/order_entity.dart';
+import 'package:liberpass_baseweb/app/modules/geremetrika/domain/entities/order_entity.dart';
 
 class OrderModel extends OrderEntity {
   OrderModel({
