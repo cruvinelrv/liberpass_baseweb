@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'package:meta_seo/meta_seo.dart';
 import 'package:flutter/foundation.dart';
-=======
->>>>>>> 8067b635bdba8b7a17fbfa2632bd0e48f962b2ca
 
 import 'app/routes/routes.dart';
 

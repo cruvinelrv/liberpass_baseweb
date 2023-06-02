@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:liberpass_baseweb/app/modules/geremetrika/domain/entities/order_entity.dart';
-import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/close_order_page/close_order_page.dart';
-import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/pdf_order_page/pdf_order_page.dart';
-=======
 import 'package:liberpass_baseweb/app//modules/geremetrika/domain/entities/order_entity.dart';
 import 'package:liberpass_baseweb/app//modules/geremetrika/presentation/ui/pages/close_order_page/close_order_page.dart';
 import 'package:liberpass_baseweb/app//modules/geremetrika/presentation/ui/pages/pdf_order_page/pdf_order_page.dart';
->>>>>>> 8067b635bdba8b7a17fbfa2632bd0e48f962b2ca
 
 import '..//modules/error/presentation/ui/pages/error_page/error_page.dart';
 import '..//modules/geremetrika/data/models/order_model.dart';
