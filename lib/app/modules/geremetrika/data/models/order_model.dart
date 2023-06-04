@@ -9,10 +9,12 @@ class OrderModel extends OrderEntity {
     required super.typePayment,
     required super.createdAt,
     required super.updatedAt,
+    required super.listItemEntity,
   });
   factory OrderModel.fromJson(Map<String, dynamic> json) {
     return OrderModel(
       id: json['id'],
+      listItemEntity: json['listItemEntity'],
       name: json['name'],
       phone: json['phone'],
       address: json['comment'],
@@ -24,6 +26,7 @@ class OrderModel extends OrderEntity {
 
   Map<String, dynamic> toJson() => {
         'id': id,
+        'listItemEntity': listItemEntity,
         'name': name,
         'phone': phone,
         'address': address,

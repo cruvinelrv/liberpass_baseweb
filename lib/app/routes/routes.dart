@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:liberpass_baseweb/app//modules/geremetrika/domain/entities/order_entity.dart';
-import 'package:liberpass_baseweb/app//modules/geremetrika/presentation/ui/pages/close_order_page/close_order_page.dart';
-import 'package:liberpass_baseweb/app//modules/geremetrika/presentation/ui/pages/pdf_order_page/pdf_order_page.dart';
+import 'package:liberpass_baseweb/app/modules/geremetrika/domain/entities/order_entity.dart';
+import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/close_order_page/close_order_page.dart';
+import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/pdf_order_page/pdf_order_page.dart';
 
-import '..//modules/error/presentation/ui/pages/error_page/error_page.dart';
-import '..//modules/geremetrika/data/models/order_model.dart';
-import '..//modules/geremetrika/presentation/ui/pages/home_page/home_page.dart';
-import '..//modules/geremetrika/presentation/ui/pages/order_head_page/order_head_page.dart';
+import '../modules/error/presentation/ui/pages/error_page/error_page.dart';
+import '../modules/geremetrika/data/models/order_model.dart';
+import '../modules/geremetrika/presentation/ui/pages/home_page/home_page.dart';
+import '../modules/geremetrika/presentation/ui/pages/order_head_page/order_head_page.dart';
 
 class Routes {
   static Route? onGenerateRoute(RouteSettings settings) {

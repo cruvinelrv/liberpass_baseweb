@@ -17,7 +17,7 @@ class _CloseOrderPageState extends State<CloseOrderPage> {
   @override
   void initState() {
     super.initState();
-    print(widget.opa);
+    debugPrint(widget.opa.toString());
   }
 
   @override

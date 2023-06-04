@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({super.key});
@@ -10,16 +11,14 @@ class AppWidget extends StatefulWidget {
 class _AppWidgetState extends State<AppWidget> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Liberpass - Sistema de gestão do ramo vidreiro',
-      home: Scaffold(
-        appBar: AppBar(
-            title:
-                const Text('Liberpass - Sistema de gestão do ramo vidreiro')),
-        body: const Center(
-          child: Text('Carregando...'),
-        ),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
+      routerDelegate: Modular.routerDelegate,
+      routeInformationParser: Modular.routeInformationParser,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
