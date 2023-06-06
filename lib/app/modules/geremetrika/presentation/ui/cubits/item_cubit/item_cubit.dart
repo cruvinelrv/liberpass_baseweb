@@ -50,4 +50,9 @@ class ItemCubit extends Cubit<ItemStates> {
   void errorItem() {
     emit(const ItemErrorState());
   }
+
+  void calculateM2() {
+    totalPriceValue = price * quantity;
+    emit(const ItemSuccessState());
+  }
 }
