@@ -17,14 +17,15 @@ void main() {
         'Aplicativo para buscar controle financeiro e da vida pessoal.',
     'keywords':
         'liberpass aplicativo controle financeiro pessoal investimentos passaporte liberdade nomade digital',
-    'og:title': 'Liberpass',
+    'og:title': 'Liberpass - Aplicativo de gestao pessoal',
     'og:description':
         'Liberpass - o passaporte para sua liberdade financeira e pessoal',
-    'og:image': 'https://liberpass.com.br/assets/images/logo.png',
-    'twitter:title': 'Liberpass',
+    'og:image': 'https://liberpass.com.br/assets/assets/images/liber_pass.png',
+    'twitter:title': 'Liberpass - Aplicativo de gestao pessoal',
     'twitter:description':
         'Liberpass - Passaporte para sua liberdade financeira e pessoal',
-    'twitter:image': 'https://liberpass.com.br/assets/images/logo.png',
+    'twitter:image':
+        'https://liberpass.com.br/assets/assets/images/liber_pass.png',
   }));
   Modular.to.addListener(() {
     debugPrint('Rota: ${Modular.to.path}');

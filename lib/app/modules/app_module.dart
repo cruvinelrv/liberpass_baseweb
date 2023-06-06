@@ -2,6 +2,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/cubits/item_cubit/item_cubit.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/home_page/home_page.dart';
 
+import 'landing/presentation/ui/pages/landing_page.dart';
+
 class AppModule extends Module {
   @override
   final List<Bind> binds = [
@@ -11,7 +13,7 @@ class AppModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (context, args) => const HomePage()),
+    ChildRoute('/', child: (context, args) => const LandingPage()),
     ChildRoute('/home', child: (context, args) => const HomePage()),
   ];
 }
