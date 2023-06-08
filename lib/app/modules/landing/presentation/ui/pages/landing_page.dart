@@ -20,7 +20,7 @@ class _LandingPageState extends State<LandingPage> {
         children: <Widget>[
           ElevatedButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/home');
+              Navigator.pushNamed(context, '/login');
             },
             child:
                 const Text('Geremetrika - Módulo de Gestão do Ramo Vidreiro'),
@@ -30,7 +30,7 @@ class _LandingPageState extends State<LandingPage> {
           ),
           ElevatedButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/');
+              Navigator.pushNamed(context, '/menu');
             },
             child: const Text(
                 'LiberStream - Módulo para Streaming de Audio e Vídeo'),

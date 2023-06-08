@@ -56,4 +56,17 @@ extension DoubleExtensions on double {
         .replaceAllMapped(
             RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (match) => '${match[1]}.');
   }
+
+  String stringForDouble() {
+    return NumberFormat('###.0#', 'pt_BR').format(this).replaceAll(',', '.');
+  }
+
+  String currency({String? locale, int? decimalDigits, String? name}) {
+    return NumberFormat.currency(
+      locale: locale ?? 'pt_BR',
+      decimalDigits: decimalDigits ?? 2,
+      name: name ?? 'R\$',
+      symbol: name ?? 'R\$',
+    ).format(this);
+  }
 }

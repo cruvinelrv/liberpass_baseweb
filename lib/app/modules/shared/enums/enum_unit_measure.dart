@@ -11,7 +11,8 @@ enum EnumUnitMeasure {
   GL(idUnitMeasure: 8, nameUnitMeasure: 'GALAO'),
   CX(idUnitMeasure: 11, nameUnitMeasure: 'CAIXA'),
   PC(idUnitMeasure: 12, nameUnitMeasure: 'PECA'),
-  PCT(idUnitMeasure: 13, nameUnitMeasure: 'PACOTE');
+  PCT(idUnitMeasure: 13, nameUnitMeasure: 'PACOTE'),
+  SRV(idUnitMeasure: 14, nameUnitMeasure: 'SERVICO');
 
   final int idUnitMeasure;
   final String nameUnitMeasure;
