@@ -62,20 +62,37 @@ class _LoginPageState extends State<LoginPage> {
                 String corporation = _corporationController.text;
                 String username = _usernameController.text;
                 String password = _passwordController.text;
-
-                // Aqui você pode fazer a validação do login e adicionar a lógica desejada
-                if (username == 'admin' &&
+                switch (corporation) {
+                  case 'PREMIER':
+                    if (username == 'ADMIN' &&
                         password == '123456' &&
-                        corporation == 'PREMIER' ||
-                    corporation == 'premier') {
-                  // Login bem-sucedido
-                  Navigator.pushNamed(context, '/home');
-                } else {
-                  // Login inválido
+                        corporation == 'PREMIER') {
+                      // Login bem-sucedido
+                      Navigator.pushNamed(context, '/home');
+                    } else {
+                      // Login inválido
 
-                  print('Invalid username or password');
-                  Navigator.pushNamed(context, '/error');
+                      print('Invalid username or password');
+                      Navigator.pushNamed(context, '/error');
+                    }
+                    break;
+                  case 'INATOS':
+                    if (username == 'VINICIUS' &&
+                        password == '1803' &&
+                        corporation == 'INATOS') {
+                      // Login bem-sucedido
+                      Navigator.pushNamed(context, '/item');
+                    } else {
+                      // Login inválido
+                      print('Invalid username or password');
+                      Navigator.pushNamed(context, '/error');
+                    }
+                    break;
+                  default:
+                    print('Invalid username or password');
+                    Navigator.pushNamed(context, '/error');
                 }
+                // Aqui você pode fazer a validação do login e adicionar a lógica desejada
               },
               child: const Text('Entrar'),
             ),

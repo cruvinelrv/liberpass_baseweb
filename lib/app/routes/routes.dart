@@ -5,7 +5,7 @@ import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/
 
 import '../modules/auth_manager/login/presentation/ui/pages/login_page/login_page.dart';
 import '../modules/base_page/presentation/ui/pages/menu_page/menu_page.dart';
-import '../modules/error/presentation/ui/pages/error_page/error_page.dart';
+import '../modules/escape_manager/presentation/ui/pages/error_page/error_page.dart';
 import '../modules/geremetrika/data/models/order_model.dart';
 import '../modules/geremetrika/presentation/ui/pages/home_page/home_page.dart';
 import '../modules/geremetrika/presentation/ui/pages/order_head_page/order_head_page.dart';

@@ -5,8 +5,9 @@ import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/
 
 import 'auth_manager/login/presentation/ui/pages/login_page/login_page.dart';
 import 'base_page/presentation/ui/pages/menu_page/menu_page.dart';
-import 'error/presentation/ui/pages/error_page/error_page.dart';
-import 'landing/presentation/ui/pages/landing_page.dart';
+import 'escape_manager/presentation/ui/pages/pages_escape_manager.dart';
+import 'itens_management/presentation/ui/pages/pages_item_management.dart';
+import 'landing/presentation/ui/pages/pages_landing.dart';
 
 class AppModule extends Module {
   @override
@@ -20,9 +21,16 @@ class AppModule extends Module {
   @override
   final List<ModularRoute> routes = [
     ChildRoute('/', child: (context, args) => const LandingPage()),
+    ChildRoute('/liberpass-info',
+        child: (context, args) => const LiberpassInfoPage()),
     ChildRoute('/login', child: (context, args) => const LoginPage()),
     ChildRoute('/home', child: (context, args) => const HomePage()),
     ChildRoute('/menu', child: (context, args) => const MenuPage()),
+    ChildRoute('/add-item', child: (context, args) => const AddItemPage()),
+    ChildRoute('/add-prices', child: (context, args) => const AddPricesPage()),
+    ChildRoute('/item', child: (context, args) => const ItemPage()),
     ChildRoute('/error', child: (context, args) => const ErrorPage()),
+    ChildRoute('/under-construction',
+        child: (context, args) => const UnderConstructionPage()),
   ];
 }

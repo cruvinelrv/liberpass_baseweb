@@ -4,12 +4,14 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:meta_seo/meta_seo.dart';
 
+import 'app/config/application_config.dart';
 import 'app/modules/app_module.dart';
 import 'app/modules/app_widget.dart';
 import 'app/routes/routes.dart';
 
-void main() {
+void main() async {
   setUrlStrategy(PathUrlStrategy());
+  await ApplicationConfig().configureApp();
   RenderMetaData(
       metaData: const MetaData(metaData: <String, dynamic>{
     'viewport': 'width=device-width, initial-scale=1.0',

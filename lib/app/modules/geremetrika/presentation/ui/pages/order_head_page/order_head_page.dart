@@ -233,7 +233,7 @@ Future<void> createPDF(OrderEntity args) async {
                 ),
               for (var item in args.listItemEntity.listItems)
                 pw.Text(
-                  item.price.toString(),
+                  item.salePrice.toString(),
                   style: pw.TextStyle(font: font),
                 ),
               for (var item in args.listItemEntity.listItems)
@@ -371,7 +371,7 @@ Future<void> createPDFNewVersion(OrderEntity args) async {
                   style: pw.TextStyle(font: font),
                 ),
                 pw.Text(
-                  item.price.toString(),
+                  item.salePrice.toString(),
                   style: pw.TextStyle(font: font),
                 ),
                 pw.Text(
@@ -458,7 +458,7 @@ class _WidgetBuildTableItensState extends State<WidgetBuildTableItens> {
               Text(item.unitMeasure.toString()),
               Text(item.description.toString()),
               Text(item.quantity.toString()),
-              Text(item.price.toString()),
+              Text(item.salePrice.toString()),
               Text(item.totalPriceValue.toString()),
             ],
           ),

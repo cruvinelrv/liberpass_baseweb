@@ -1,4 +1,4 @@
-import 'package:liberpass_baseweb/app/modules/geremetrika/domain/entities/item_entity.dart';
+import 'package:liberpass_baseweb/app/modules/itens_management/domain/entities/item_entity.dart';
 
 class ItemModel extends ItemEntity {
   ItemModel({
@@ -6,19 +6,22 @@ class ItemModel extends ItemEntity {
     required String description,
     required double widthMeasure,
     required double heightMeasure,
-    required double price,
+    required double salePrice,
+    required double purchasePrice,
+    required double costPrice,
     required String unitMeasure,
     required double quantity,
     required double totalPriceValue,
+    required List<Map<String, dynamic>> listPrices,
   }) : super(
           idItem: idItem,
           description: description,
-          price: price,
           widthMeasure: widthMeasure,
           heightMeasure: heightMeasure,
           unitMeasure: unitMeasure,
           quantity: quantity,
           totalPriceValue: totalPriceValue,
+          listPrices: listPrices,
         );
 
   factory ItemModel.fromJson(Map<String, dynamic> json) {
@@ -27,10 +30,13 @@ class ItemModel extends ItemEntity {
       description: json['description'],
       widthMeasure: json['widthMeasure'],
       heightMeasure: json['heightMeasure'],
-      price: json['price'],
+      salePrice: json['salePrice'],
+      purchasePrice: json['purchasePrice'],
+      costPrice: json['costPrice'],
       unitMeasure: json['unitMeasure'],
       quantity: json['quantity'],
       totalPriceValue: json['totalPriceValue'],
+      listPrices: json['listPrices'],
     );
   }
 
@@ -40,10 +46,13 @@ class ItemModel extends ItemEntity {
       'description': description,
       'widthMeasure': widthMeasure,
       'heightMeasure': heightMeasure,
-      'price': price,
+      'salePrice': salePrice,
+      'purchasePrice': purchasePrice,
+      'costPrice': costPrice,
       'unitMeasure': unitMeasure,
       'quantity': quantity,
       'totalPriceValue': totalPriceValue,
+      'listPrices': listPrices,
     };
   }
 }

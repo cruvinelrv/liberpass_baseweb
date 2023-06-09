@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:liberpass_baseweb/app/modules/geremetrika/domain/entities/item_entity.dart';
+import 'package:liberpass_baseweb/app/modules/itens_management/domain/entities/item_entity.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/domain/entities/list_item_entity.dart';
 import '../../../../data/models/models.dart';
 import 'states/item_calculate_state.dart';

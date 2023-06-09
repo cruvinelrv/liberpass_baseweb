@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/add_item_page/add_item_page.dart';
-import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/itens_page/itens_page.dart';
+import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/add_item_order_page/add_item_order_page.dart';
+import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/itens_page/itens_order_page.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/order_head_page/order_head_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -38,13 +38,13 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const SizedBox(height: 30),
                 SizedBox(
-                  width: size.width * 0.2,
+                  width: size.width * 0.3,
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const AddItemPage(),
+                          builder: (context) => const AddItemOrderPage(),
                         ),
                       );
                     },
@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                const Expanded(child: ItensPage()),
+                const Expanded(child: ItensOrderPage()),
               ],
             ),
           )

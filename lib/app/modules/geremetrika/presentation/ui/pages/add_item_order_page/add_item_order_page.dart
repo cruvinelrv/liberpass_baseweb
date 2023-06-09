@@ -11,14 +11,14 @@ import 'package:liberpass_baseweb/app/modules/shared/enums/enum_unit_measure.dar
 
 import '../../cubits/item_cubit/states/item_calculate_state.dart';
 
-class AddItemPage extends StatefulWidget {
-  const AddItemPage({super.key});
+class AddItemOrderPage extends StatefulWidget {
+  const AddItemOrderPage({super.key});
 
   @override
-  State<AddItemPage> createState() => _AddItemPageState();
+  State<AddItemOrderPage> createState() => _AddItemOrderPageState();
 }
 
-class _AddItemPageState extends State<AddItemPage> {
+class _AddItemOrderPageState extends State<AddItemOrderPage> {
   late final ItemCubit _itemCubit;
   final GlobalKey<FormState> _formKeyAddItem = GlobalKey<FormState>();
   final TextEditingController _controllerItemDescription =
@@ -306,13 +306,16 @@ class _AddItemPageState extends State<AddItemPage> {
                                           _controllerItemDescription.text,
                                       heightMeasure: heightVetro ?? 0,
                                       widthMeasure: widthVetro ?? 0,
-                                      price: double.parse(
+                                      salePrice: double.parse(
                                           _controllerItemPrice.text),
                                       quantity: double.parse(
                                           _controllerItemQuantity.text),
                                       totalPriceValue: double.parse(
                                           _controllerItemTotalValue.text),
                                       unitMeasure: _controllerUnitMeasure.text,
+                                      costPrice: 0,
+                                      purchasePrice: 0,
+                                      listPrices: [],
                                     );
                                     _itemCubit.addItem(item: item);
                                     Navigator.pop(context);

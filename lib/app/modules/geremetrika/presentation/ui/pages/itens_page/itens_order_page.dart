@@ -6,14 +6,14 @@ import 'package:liberpass_baseweb/app/modules/geremetrika/domain/entities/list_i
 import '../../cubits/item_cubit/item_cubit.dart';
 import '../../cubits/item_cubit/states/states.dart';
 
-class ItensPage extends StatefulWidget {
-  const ItensPage({super.key});
+class ItensOrderPage extends StatefulWidget {
+  const ItensOrderPage({super.key});
 
   @override
-  State<ItensPage> createState() => _ItensPageState();
+  State<ItensOrderPage> createState() => _ItensOrderPageState();
 }
 
-class _ItensPageState extends State<ItensPage> {
+class _ItensOrderPageState extends State<ItensOrderPage> {
   late final ItemCubit _itemCubit;
   late ListItemEntity _itensList;
   @override
@@ -61,7 +61,7 @@ class _ItensPageState extends State<ItensPage> {
                           icon: const Icon(Icons.edit),
                         ),
                         Text(
-                            'R\$ ${_itensList.listItems[index].price.toString()}'),
+                            'R\$ ${_itensList.listItems[index].salePrice.toString()}'),
                       ],
                     ),
                   ),
@@ -75,20 +75,3 @@ class _ItensPageState extends State<ItensPage> {
         });
   }
 }
-
-
-/*
-ListView.builder(
-      itemCount: 10,
-      itemBuilder: (context, index) {
-        return Card(
-          child: ListTile(
-            title: Text('Item $index'),
-            subtitle: Text('Subtitulo $index'),
-            trailing: const Text('R\$ 10,00'),
-          ),
-        );
-      },
-    );
-
-    */

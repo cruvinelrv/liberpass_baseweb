@@ -1,4 +1,4 @@
-import 'item_entity.dart';
+import '../../../itens_management/domain/entities/item_entity.dart';
 
 class ListItemEntity {
   final List<ItemEntity> listItems;
