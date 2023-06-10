@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                     } else {
                       // Login inválido
 
-                      print('Invalid username or password');
+                      debugPrint('Invalid username or password');
                       Navigator.pushNamed(context, '/error');
                     }
                     break;
@@ -84,12 +84,12 @@ class _LoginPageState extends State<LoginPage> {
                       Navigator.pushNamed(context, '/item');
                     } else {
                       // Login inválido
-                      print('Invalid username or password');
+                      debugPrint('Invalid username or password');
                       Navigator.pushNamed(context, '/error');
                     }
                     break;
                   default:
-                    print('Invalid username or password');
+                    debugPrint('Invalid username or password');
                     Navigator.pushNamed(context, '/error');
                 }
                 // Aqui você pode fazer a validação do login e adicionar a lógica desejada

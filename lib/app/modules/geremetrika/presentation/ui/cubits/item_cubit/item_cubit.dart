@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:liberpass_baseweb/app/modules/itens_management/domain/entities/item_entity.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/domain/entities/list_item_entity.dart';
@@ -70,8 +71,8 @@ class ItemCubit extends Cubit<ItemStates> {
     converteMeasureMeterBilling =
         (valorArredondadoMultiplo50.toDouble()).toStringAsFixed(2);
     measureMeterBilling = double.parse(converteMeasureMeterBilling);
-    print('Valor em metros quadrados: $totalMetrosQuadrados');
-    print(
+    debugPrint('Valor em metros quadrados: $totalMetrosQuadrados');
+    debugPrint(
         'Valor em milímetros quadrados arredondado: $valorArredondadoMultiplo50');
     emit(const ItemCalculateState());
   }

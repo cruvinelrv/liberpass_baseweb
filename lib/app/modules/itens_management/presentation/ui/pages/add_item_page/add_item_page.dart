@@ -53,10 +53,10 @@ class _AddItemPageState extends State<AddItemPage> {
     // Adicione o novo item à coleção 'itens'
     _firestore.collection('itens').add(novoItem).then((value) {
       // Item adicionado com sucesso
-      print('Novo item adicionado com ID: ${value.id}');
+      debugPrint('Novo item adicionado com ID: ${value.id}');
     }).catchError((error) {
       // Ocorreu um erro ao adicionar o item
-      print('Erro ao adicionar o novo item: $error');
+      debugPrint('Erro ao adicionar o novo item: $error');
     });
   }
 
