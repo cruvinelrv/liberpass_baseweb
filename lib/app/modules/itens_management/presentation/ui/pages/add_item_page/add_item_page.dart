@@ -42,8 +42,7 @@ class _AddItemPageState extends State<AddItemPage> {
       'widthMeasure': _controllerWidthMeasure.text,
       'heightMeasure': _controllerHeightMeasure.text,
       'listPrices': [
-        Map()
-          ..addAll({
+        {}..addAll({
             'idPreco': _idPrecoController.text,
             'valorPreco': _valorPrecoController.text,
             'descricaoPreco': _descricaoPrecoController.text,
@@ -95,6 +94,66 @@ class _AddItemPageState extends State<AddItemPage> {
               SliverList(
                   delegate: SliverChildListDelegate([
                 const SizedBox(height: 4.0),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 120,
+                      child: TextFormField(
+                        controller: _idPrecoController,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'ID do Preço',
+                        ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Campo obrigatório';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                    const SizedBox(width: 8.0),
+                    Expanded(
+                      child: TextFormField(
+                        controller: _valorPrecoController,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Valor do Preço',
+                        ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Campo obrigatório';
+                          }
+                          if (double.tryParse(value) == null) {
+                            return 'Valor inválido';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                    const SizedBox(width: 8.0),
+                    Expanded(
+                      child: TextFormField(
+                        controller: _descricaoPrecoController,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Descrição do Preço',
+                        ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return 'Campo obrigatório';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.add),
+                      onPressed: _adicionarPreco,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 16.0),
                 TextFormField(
                   controller: _controllerIdItem,
                   decoration: const InputDecoration(
@@ -255,6 +314,7 @@ class _AddItemPageState extends State<AddItemPage> {
                       child: TextFormField(
                         controller: _idPrecoController,
                         decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
                           labelText: 'ID do Preço',
                         ),
                         validator: (value) {
@@ -270,6 +330,7 @@ class _AddItemPageState extends State<AddItemPage> {
                       child: TextFormField(
                         controller: _valorPrecoController,
                         decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
                           labelText: 'Valor do Preço',
                         ),
                         validator: (value) {
@@ -288,6 +349,7 @@ class _AddItemPageState extends State<AddItemPage> {
                       child: TextFormField(
                         controller: _descricaoPrecoController,
                         decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
                           labelText: 'Descrição do Preço',
                         ),
                         validator: (value) {

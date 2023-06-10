@@ -114,7 +114,7 @@ class _LandingPageState extends State<LandingPage> {
                   'LiberInvest - Para gerenciar os seus investimentos'),
             ),
             onTap: () {
-              Navigator.pushNamed(context, '/under-construction');
+              Navigator.pushNamed(context, '/upload-itens');
             },
           ),
         ],

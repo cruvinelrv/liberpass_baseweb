@@ -7,6 +7,7 @@ import 'auth_manager/login/presentation/ui/pages/login_page/login_page.dart';
 import 'base_page/presentation/ui/pages/menu_page/menu_page.dart';
 import 'escape_manager/presentation/ui/pages/pages_escape_manager.dart';
 import 'itens_management/presentation/ui/pages/pages_item_management.dart';
+import 'itens_management/presentation/ui/pages/upload_itens_page/upload_itens_page.dart';
 import 'landing/presentation/ui/pages/pages_landing.dart';
 
 class AppModule extends Module {
@@ -28,6 +29,8 @@ class AppModule extends Module {
     ChildRoute('/menu', child: (context, args) => const MenuPage()),
     ChildRoute('/add-item', child: (context, args) => const AddItemPage()),
     ChildRoute('/add-prices', child: (context, args) => const AddPricesPage()),
+    ChildRoute('/upload-itens',
+        child: (context, args) => const UploadItensPage()),
     ChildRoute('/item', child: (context, args) => const ItemPage()),
     ChildRoute('/error', child: (context, args) => const ErrorPage()),
     ChildRoute('/under-construction',
