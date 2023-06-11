@@ -1,58 +1,51 @@
-import 'package:liberpass_baseweb/app/modules/itens_management/domain/entities/item_entity.dart';
+class ItemModel {
+  final int? idItem;
+  final int? idCorp;
+  final int? idCompanyCorp;
+  final String? descriptionItem;
+  final String? unitMeasure;
+  final double? heightMeasure;
+  final double? widthMeasure;
+  final double? salePrice;
+  final double? quantity;
+  final double? totalPriceValue;
+  final double? costPrice;
+  final double? purchasePrice;
+  final String? nameSupplier;
+  final String? nameBrand;
+  final String? ncm;
+  final String? status;
+  final double? weight;
+  final String? originItem;
+  final String? taxClassification;
+  final String? category;
+  final String? createdAt;
+  final String? updatedAt;
+  final List<Map<String, dynamic>>? listPrices;
 
-class ItemModel extends ItemEntity {
   ItemModel({
-    required int idItem,
-    required String description,
-    required double widthMeasure,
-    required double heightMeasure,
-    required double salePrice,
-    required double purchasePrice,
-    required double costPrice,
-    required String unitMeasure,
-    required double quantity,
-    required double totalPriceValue,
-    required List<Map<String, dynamic>> listPrices,
-  }) : super(
-          idItem: idItem,
-          description: description,
-          widthMeasure: widthMeasure,
-          heightMeasure: heightMeasure,
-          unitMeasure: unitMeasure,
-          quantity: quantity,
-          totalPriceValue: totalPriceValue,
-          listPrices: listPrices,
-        );
-
-  factory ItemModel.fromJson(Map<String, dynamic> json) {
-    return ItemModel(
-      idItem: json['idItem'],
-      description: json['description'],
-      widthMeasure: json['widthMeasure'],
-      heightMeasure: json['heightMeasure'],
-      salePrice: json['salePrice'],
-      purchasePrice: json['purchasePrice'],
-      costPrice: json['costPrice'],
-      unitMeasure: json['unitMeasure'],
-      quantity: json['quantity'],
-      totalPriceValue: json['totalPriceValue'],
-      listPrices: json['listPrices'],
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'idItem': idItem,
-      'description': description,
-      'widthMeasure': widthMeasure,
-      'heightMeasure': heightMeasure,
-      'salePrice': salePrice,
-      'purchasePrice': purchasePrice,
-      'costPrice': costPrice,
-      'unitMeasure': unitMeasure,
-      'quantity': quantity,
-      'totalPriceValue': totalPriceValue,
-      'listPrices': listPrices,
-    };
-  }
+    this.idCorp,
+    this.idCompanyCorp,
+    this.listPrices,
+    this.idItem,
+    this.descriptionItem,
+    this.unitMeasure,
+    this.heightMeasure,
+    this.widthMeasure,
+    this.salePrice,
+    this.quantity,
+    this.totalPriceValue,
+    this.costPrice,
+    this.purchasePrice,
+    this.nameSupplier,
+    this.nameBrand,
+    this.ncm,
+    this.status,
+    this.weight,
+    this.originItem,
+    this.taxClassification,
+    this.category,
+    this.createdAt,
+    this.updatedAt,
+  });
 }

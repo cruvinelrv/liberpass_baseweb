@@ -302,7 +302,7 @@ class _AddItemOrderPageState extends State<AddItemOrderPage> {
                                         _controllerWidthMeasure.text);
                                     final item = ItemModel(
                                       idItem: Random().nextInt(1000),
-                                      description:
+                                      descriptionItem:
                                           _controllerItemDescription.text,
                                       heightMeasure: heightVetro ?? 0,
                                       widthMeasure: widthVetro ?? 0,
@@ -317,7 +317,7 @@ class _AddItemOrderPageState extends State<AddItemOrderPage> {
                                       purchasePrice: 0,
                                       listPrices: [],
                                     );
-                                    _itemCubit.addItem(item: item);
+                                    //_itemCubit.addItem(item: item);
                                     Navigator.pop(context);
                                   }
                                 },

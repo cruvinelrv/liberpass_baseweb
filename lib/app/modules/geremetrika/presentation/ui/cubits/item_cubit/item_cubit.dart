@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:liberpass_baseweb/app/modules/itens_management/domain/entities/item_entity.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/domain/entities/list_item_entity.dart';
-import '../../../../data/models/models.dart';
 import 'states/item_calculate_state.dart';
 import 'states/states.dart';
 
@@ -23,7 +22,7 @@ class ItemCubit extends Cubit<ItemStates> {
 
   ItemCubit() : super(const ItemInitialState());
 
-  void addItem({required ItemModel item}) {
+  void addItem({required ItemEntity item}) {
     emit(const ItemLoadingState());
     listItensEntity.listItems.add(item);
     actualListItens = listItensEntity;

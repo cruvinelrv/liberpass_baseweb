@@ -41,7 +41,7 @@ class _ItensOrderPageState extends State<ItensOrderPage> {
                 return Card(
                   child: ListTile(
                     title: Text(
-                        _itensList.listItems[index].description.toString()),
+                        _itensList.listItems[index].descriptionItem.toString()),
                     subtitle: Text(
                         _itensList.listItems[index].unitMeasure.toString()),
                     trailing: Wrap(
@@ -61,7 +61,7 @@ class _ItensOrderPageState extends State<ItensOrderPage> {
                           icon: const Icon(Icons.edit),
                         ),
                         Text(
-                            'R\$ ${_itensList.listItems[index].salePrice.toString()}'),
+                            'R\$ ${_itensList.listItems[index].listPrices![0]['salePrice']}'),
                       ],
                     ),
                   ),

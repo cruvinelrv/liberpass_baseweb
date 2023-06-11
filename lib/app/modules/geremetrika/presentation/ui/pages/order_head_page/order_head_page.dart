@@ -223,22 +223,22 @@ Future<void> createPDF(OrderEntity args) async {
                 ),
               for (var item in args.listItemEntity.listItems)
                 pw.Text(
-                  item.description.toString(),
+                  item.descriptionItem.toString(),
                   style: pw.TextStyle(font: font),
                 ),
               for (var item in args.listItemEntity.listItems)
                 pw.Text(
-                  item.quantity.toString(),
+                  item.listPrices.toString(),
                   style: pw.TextStyle(font: font),
                 ),
               for (var item in args.listItemEntity.listItems)
                 pw.Text(
-                  item.salePrice.toString(),
+                  item.listPrices.toString(),
                   style: pw.TextStyle(font: font),
                 ),
               for (var item in args.listItemEntity.listItems)
                 pw.Text(
-                  item.totalPriceValue.toString(),
+                  item.listPrices.toString(),
                   style: pw.TextStyle(font: font),
                 ),
             ]),
@@ -363,19 +363,19 @@ Future<void> createPDFNewVersion(OrderEntity args) async {
                   style: pw.TextStyle(font: font),
                 ),
                 pw.Text(
-                  item.description.toString(),
+                  item.descriptionItem.toString(),
                   style: pw.TextStyle(font: font),
                 ),
                 pw.Text(
-                  item.quantity.toString(),
+                  item.listPrices.toString(),
                   style: pw.TextStyle(font: font),
                 ),
                 pw.Text(
-                  item.salePrice.toString(),
+                  item.listPrices.toString(),
                   style: pw.TextStyle(font: font),
                 ),
                 pw.Text(
-                  item.totalPriceValue.toString(),
+                  item.listPrices.toString(),
                   style: pw.TextStyle(font: font),
                 ),
               ],
@@ -456,10 +456,10 @@ class _WidgetBuildTableItensState extends State<WidgetBuildTableItens> {
           TableRow(
             children: <Widget>[
               Text(item.unitMeasure.toString()),
-              Text(item.description.toString()),
-              Text(item.quantity.toString()),
-              Text(item.salePrice.toString()),
-              Text(item.totalPriceValue.toString()),
+              Text(item.descriptionItem.toString()),
+              Text(item.listPrices.toString()),
+              Text(item.listPrices.toString()),
+              Text(item.listPrices.toString()),
             ],
           ),
       ],
