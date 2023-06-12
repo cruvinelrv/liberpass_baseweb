@@ -169,10 +169,13 @@ class _UploadItensPageState extends State<UploadItensPage> {
       // Criar a lista de listPrices
       final listPrices = [];
       final internalCodePriceIndex = headers.indexOf('internalCode');
-      final salePriceIndex = headers.indexOf('salePrice');
-      final purchasePriceIndex = headers.indexOf('purchasePrice');
+      final double salePriceIndex =
+          double.parse(headers.indexOf('salePrice').toString());
+      final double purchasePriceIndex =
+          double.parse(headers.indexOf('purchasePrice').toString());
       //final costPriceIndex = headers.indexOf('precoCusto');
-      final stockIndex = headers.indexOf('quantity');
+      final double stockIndex =
+          double.parse(headers.indexOf('quantity').toString());
       final barCodeIndex = headers.indexOf('barCode');
       final ncm = headers.indexOf('ncm');
       final supplierIndex = headers.indexOf('nameSupplier');
@@ -185,21 +188,21 @@ class _UploadItensPageState extends State<UploadItensPage> {
           'idCompanyCorp': 1,
           'itemBatch': '',
           'gridType': '',
-          'salePrice': row[salePriceIndex],
+          'salePrice': salePriceIndex,
           'costPrice': 0,
-          'purchasePrice': row[purchasePriceIndex],
+          'purchasePrice': purchasePriceIndex,
           'marginCost': 0,
           'marginProfit': 0,
-          'descriptionPrice': 'Preço[$i]',
+          'descriptionPrice': 'Preco[$i]',
           'createdAt': DateTime.now(),
           'updatedAt': DateTime.now(),
           'dateFabrication': '',
           'dateExpiration': '',
           'stockReservation': 0,
-          'stockAvailable': row[stockIndex],
+          'stockAvailable': stockIndex,
           'stockDamaged': 0,
-          'stock': row[stockIndex],
-          'supplier': row[supplierIndex],
+          'stock': stockIndex,
+          'nameSupplier': row[supplierIndex],
           'stockMinimum': 0,
           'stockMaximum': 0,
           'isActivePrice': true,

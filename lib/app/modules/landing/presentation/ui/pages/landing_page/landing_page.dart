@@ -101,7 +101,7 @@ class _LandingPageState extends State<LandingPage> {
               child: const Text('LiberStart - Pra quem está começando'),
             ),
             onTap: () {
-              Navigator.pushNamed(context, '/under-construction');
+              Navigator.pushNamed(context, '/item');
             },
           ),
           GestureDetector(

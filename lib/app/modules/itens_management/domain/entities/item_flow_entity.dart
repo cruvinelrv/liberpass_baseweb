@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class ItemFlowEntity {
   final int? idItemFlow;
   final String? internalCode;
@@ -13,8 +15,8 @@ class ItemFlowEntity {
   final double? marginCost;
   final double? margingProfit;
   final String descriptionPrice;
-  final String createdAt;
-  final String? updatedAt;
+  final Timestamp? createdAt;
+  final Timestamp? updatedAt;
   final String? dateFabrication;
   final String? dateExpiration;
   final double? stockReservation;
@@ -102,8 +104,8 @@ class ItemFlowEntity {
       marginCost: map['marginCost'] as double?,
       margingProfit: map['margingProfit'] as double?,
       descriptionPrice: map['descriptionPrice'] as String,
-      createdAt: map['createdAt'] as String,
-      updatedAt: map['updatedAt'] as String?,
+      createdAt: map['createdAt'] as Timestamp?,
+      updatedAt: map['updatedAt'] as Timestamp?,
       dateFabrication: map['dateFabrication'] as String?,
       dateExpiration: map['dateExpiration'] as String?,
       isActivePrice: map['isActivePrice'] as bool,
@@ -144,8 +146,8 @@ class ItemFlowEntity {
       marginCost: json['marginCost'] as double?,
       margingProfit: json['margingProfit'] as double?,
       descriptionPrice: json['descriptionPrice'] as String,
-      createdAt: json['createdAt'] as String,
-      updatedAt: json['updatedAt'] as String?,
+      createdAt: json['createdAt'] as Timestamp?,
+      updatedAt: json['updatedAt'] as Timestamp?,
       dateFabrication: json['dateFabrication'] as String?,
       dateExpiration: json['dateExpiration'] as String?,
       isActivePrice: json['isActivePrice'] as bool,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:liberpass_baseweb/app/modules/itens_management/domain/entities/entities.dart';
 
 class ItemPage extends StatefulWidget {
   const ItemPage({super.key});
@@ -36,7 +37,7 @@ class _ItemPageState extends State<ItemPage> {
         ],
       ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: firestore.collection('itens').snapshots(),
+        stream: firestore.collection('itenspremier').snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return const Center(
@@ -47,26 +48,77 @@ class _ItemPageState extends State<ItemPage> {
           return ListView.builder(
             itemCount: documents.length,
             itemBuilder: (context, index) {
-              final idItem = documents[index]['idItem'];
+              final internalCode = documents[index]['internalCode'];
+              final idCorp = documents[index]['idCorp'];
+              final idCompanyCorp = documents[index]['idCompanyCorp'];
+              final descriptionItem = documents[index]['descriptionItem'];
               final unitMeasure = documents[index]['unitMeasure'];
-              final description = documents[index]['description'];
-              final salePrice = documents[index]['salePrice'];
-              final quantity = documents[index]['quantity'];
+              final nameBrand = documents[index]['nameBrand'];
+              final ncm = documents[index]['ncm'];
+              final status = documents[index]['status'];
+              final weight = documents[index]['weight'];
+              final originItem = documents[index]['originItem'];
+              final taxClassification = documents[index]['taxClassification'];
+              final category = documents[index]['category'];
+              final createdAt = documents[index]['createdAt'];
+              final updatedAt = documents[index]['updateAt'];
+              final List<dynamic> itemFlowData = documents[index]['listPrices'];
+              final List<ItemFlowEntity> itemFlow = itemFlowData
+                  .map((data) => ItemFlowEntity.fromMap(data))
+                  .toList();
 
-              //final List<ListPricesEntity> listPricesEntity = [];
               return Card(
                 color: Colors.blueGrey[100],
                 elevation: 2,
                 margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                child: ListTile(
-                  title: Text(
-                    'Código: $idItem - $description - $unitMeasure',
-                    style: const TextStyle(fontSize: 24),
-                  ),
-                  subtitle: Text(
-                    'Estoque: $quantity - Preço de Venda R\$${salePrice.toStringAsFixed(2)}',
-                    style: const TextStyle(fontSize: 20),
-                  ),
+                child: ListBody(
+                  children: [
+                    ListTile(
+                      title: Text(
+                        '$descriptionItem',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                      subtitle: Text(
+                        'Código: $internalCode',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        ),
+                      ),
+                      trailing: Text(
+                        'R\$ ${itemFlow[0].salePrice}',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.pushNamed(
+                          context,
+                          '/item-detail',
+                          arguments: ItemEntity(
+                            internalCode: internalCode,
+                            idCorp: idCorp,
+                            idCompanyCorp: idCompanyCorp,
+                            descriptionItem: descriptionItem,
+                            unitMeasure: unitMeasure,
+                            nameBrand: nameBrand,
+                            ncm: ncm,
+                            status: status,
+                            weight: weight,
+                            originItem: originItem,
+                            taxClassification: taxClassification,
+                            category: category,
+                            createdAt: createdAt,
+                            updatedAt: updatedAt,
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                 ),
               );
             },
