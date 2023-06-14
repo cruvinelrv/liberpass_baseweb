@@ -3,21 +3,18 @@ import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/itens_page/itens_order_page.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/order_head_page/order_head_page.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class GeremetrikaPage extends StatefulWidget {
+  const GeremetrikaPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<GeremetrikaPage> createState() => _GeremetrikaPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _GeremetrikaPageState extends State<GeremetrikaPage> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-          leading: Image.asset('assets/images/logo_premier.png'),
-          title: const Text('Geremetrika - Versão Alpha 0.1.0')),
       body: CustomScrollView(
         slivers: [
           SliverFillRemaining(
@@ -31,7 +28,7 @@ class _HomePageState extends State<HomePage> {
                       child: const OrderHeadPage(),
                     ),
                     SizedBox(
-                      width: size.width * 0.3,
+                      width: size.width * 0.1,
                       child: Image.asset('assets/images/logo_premier.png'),
                     ),
                   ],

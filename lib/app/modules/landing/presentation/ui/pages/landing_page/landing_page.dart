@@ -51,7 +51,7 @@ class _LandingPageState extends State<LandingPage> {
                   'LiberStream - Módulo para Streaming de Audio e Vídeo'),
             ),
             onTap: () {
-              Navigator.pushNamed(context, '/under-construction');
+              Navigator.pushNamed(context, '/base-page');
             },
           ),
           GestureDetector(

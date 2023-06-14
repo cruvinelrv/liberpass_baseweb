@@ -4,18 +4,17 @@ import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/pdf_order_page/pdf_order_page.dart';
 
 import '../modules/auth_manager/login/presentation/ui/pages/login_page/login_page.dart';
-import '../modules/base_page/presentation/ui/pages/menu_page/menu_page.dart';
 import '../modules/escape_manager/presentation/ui/pages/error_page/error_page.dart';
 import '../modules/geremetrika/data/models/order_model.dart';
-import '../modules/geremetrika/presentation/ui/pages/home_page/home_page.dart';
+import '../modules/geremetrika/presentation/ui/pages/geremetrika_page/geremetrika_page.dart';
 import '../modules/geremetrika/presentation/ui/pages/order_head_page/order_head_page.dart';
 
 class Routes {
   static Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case '/home':
+      case '/geremetrika':
         return MaterialPageRoute(
-          builder: (context) => const HomePage(),
+          builder: (context) => const GeremetrikaPage(),
         );
       case '/order_head_page':
         return MaterialPageRoute(
@@ -35,10 +34,6 @@ class Routes {
               opa: args,
             );
           },
-        );
-      case '/menu_page':
-        return MaterialPageRoute(
-          builder: (context) => const MenuPage(),
         );
       case '/login_page':
         return MaterialPageRoute(

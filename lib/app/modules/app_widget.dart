@@ -11,11 +11,10 @@ class AppWidget extends StatefulWidget {
 class _AppWidgetState extends State<AppWidget> {
   @override
   Widget build(BuildContext context) {
+    //Modular.setInitialRoute('/landing');
     return MaterialApp.router(
-      title: 'Liberpass - Sistema de gestão do ramo vidreiro',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      title: 'Liberpass',
+      theme: ThemeData(primarySwatch: Colors.blue),
       routerDelegate: Modular.routerDelegate,
       routeInformationParser: Modular.routeInformationParser,
       debugShowCheckedModeBanner: false,

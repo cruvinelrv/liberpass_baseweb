@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                         password == '123456' &&
                         corporation == 'PREMIER') {
                       // Login bem-sucedido
-                      Navigator.pushNamed(context, '/home');
+                      Navigator.pushNamed(context, '/base-page');
                     } else {
                       // Login inválido
 
