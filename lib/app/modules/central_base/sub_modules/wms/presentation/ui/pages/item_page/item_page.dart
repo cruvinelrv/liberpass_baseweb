@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:liberpass_baseweb/app/modules/itens_management/domain/entities/entities.dart';
+import 'package:liberpass_baseweb/app/modules/central_base/sub_modules/wms/domain/entities/entities.dart';
 
 class ItemPage extends StatefulWidget {
   const ItemPage({super.key});
@@ -63,9 +63,7 @@ class _ItemPageState extends State<ItemPage> {
               final createdAt = documents[index]['createdAt'];
               final updatedAt = documents[index]['updateAt'];
               final List<dynamic> itemFlowData = documents[index]['listPrices'];
-              final List<ItemFlowEntity> itemFlow = itemFlowData
-                  .map((data) => ItemFlowEntity.fromMap(data))
-                  .toList();
+              final List<ItemFlowEntity> itemFlow = itemFlowData.map((data) => ItemFlowEntity.fromMap(data)).toList();
 
               return Card(
                 color: Colors.blueGrey[100],

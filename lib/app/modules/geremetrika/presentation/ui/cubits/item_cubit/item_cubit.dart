@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:liberpass_baseweb/app/modules/itens_management/domain/entities/item_entity.dart';
+import 'package:liberpass_baseweb/app/modules/central_base/sub_modules/wms/domain/entities/item_entity.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/domain/entities/list_item_entity.dart';
 import 'states/item_calculate_state.dart';
 import 'states/states.dart';
@@ -61,18 +61,14 @@ class ItemCubit extends Cubit<ItemStates> {
     double totalM2 = ((widthMeasure * heightMeasure) / 1000000);
     totalMetrosQuadrados = totalM2; // Valor em metros quadrados
 
-    double valorArredondado =
-        (totalMetrosQuadrados * 1000000).ceilToDouble() / 1000000;
+    double valorArredondado = (totalMetrosQuadrados * 1000000).ceilToDouble() / 1000000;
 
     int valorArredondadoMilimetros = (valorArredondado * 1000).toInt();
-    int valorArredondadoMultiplo50 =
-        (valorArredondadoMilimetros / 50).ceil() * 50;
-    converteMeasureMeterBilling =
-        (valorArredondadoMultiplo50.toDouble()).toStringAsFixed(2);
+    int valorArredondadoMultiplo50 = (valorArredondadoMilimetros / 50).ceil() * 50;
+    converteMeasureMeterBilling = (valorArredondadoMultiplo50.toDouble()).toStringAsFixed(2);
     measureMeterBilling = double.parse(converteMeasureMeterBilling);
     debugPrint('Valor em metros quadrados: $totalMetrosQuadrados');
-    debugPrint(
-        'Valor em milímetros quadrados arredondado: $valorArredondadoMultiplo50');
+    debugPrint('Valor em milímetros quadrados arredondado: $valorArredondadoMultiplo50');
     emit(const ItemCalculateState());
   }
 

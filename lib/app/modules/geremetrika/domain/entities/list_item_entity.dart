@@ -1,4 +1,4 @@
-import '../../../itens_management/domain/entities/item_entity.dart';
+import '../../../central_base/sub_modules/wms/domain/entities/item_entity.dart';
 
 class ListItemEntity {
   final List<ItemEntity> listItems;

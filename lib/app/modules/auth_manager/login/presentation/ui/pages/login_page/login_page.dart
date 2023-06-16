@@ -64,11 +64,9 @@ class _LoginPageState extends State<LoginPage> {
                 String password = _passwordController.text;
                 switch (corporation) {
                   case 'PREMIER':
-                    if (username == 'ADMIN' &&
-                        password == '123456' &&
-                        corporation == 'PREMIER') {
+                    if (username == 'ADMIN' && password == '123456' && corporation == 'PREMIER') {
                       // Login bem-sucedido
-                      Navigator.pushNamed(context, '/base-page');
+                      Navigator.pushNamed(context, '/central-base');
                     } else {
                       // Login inválido
 
@@ -77,11 +75,9 @@ class _LoginPageState extends State<LoginPage> {
                     }
                     break;
                   case 'INATOS':
-                    if (username == 'VINICIUS' &&
-                        password == '1803' &&
-                        corporation == 'INATOS') {
+                    if (username == 'VINICIUS' && password == '1803' && corporation == 'INATOS') {
                       // Login bem-sucedido
-                      Navigator.pushNamed(context, '/item');
+                      Navigator.pushNamed(context, '/central-base');
                     } else {
                       // Login inválido
                       debugPrint('Invalid username or password');

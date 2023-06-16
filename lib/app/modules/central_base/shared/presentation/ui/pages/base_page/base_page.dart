@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-class CentralPage extends StatefulWidget {
-  const CentralPage({Key? key}) : super(key: key);
+class BasePage extends StatefulWidget {
+  const BasePage({Key? key}) : super(key: key);
 
   @override
-  State<CentralPage> createState() => _CentralPageState();
+  State<BasePage> createState() => _BasePageState();
 }
 
-class _CentralPageState extends State<CentralPage> {
+class _BasePageState extends State<BasePage> {
   late String pageName;
 
   @override
@@ -30,23 +30,23 @@ class _CentralPageState extends State<CentralPage> {
               child: Column(
                 children: [
                   ListTile(
-                    title: const Text('Produtos'),
+                    title: const Text('Estoque'),
                     onTap: () {
-                      Modular.to.navigate('/base-page/internal-page');
+                      Modular.to.navigate('/central-base/internal-page');
                       _updatePageName('Produtos');
                     },
                   ),
                   ListTile(
                     title: const Text('Pessoas'),
                     onTap: () {
-                      Modular.to.navigate('/base-page/item');
+                      Modular.to.navigate('/central-base/wms');
                       _updatePageName('Pessoas');
                     },
                   ),
                   ListTile(
                     title: const Text('Pedido'),
                     onTap: () {
-                      Modular.to.navigate('/base-page/geremetrika');
+                      Modular.to.navigate('/central-base/geremetrika');
                       _updatePageName('Pedido');
                     },
                   ),

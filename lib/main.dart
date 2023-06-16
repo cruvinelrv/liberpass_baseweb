@@ -15,19 +15,14 @@ void main() async {
   RenderMetaData(
       metaData: const MetaData(metaData: <String, dynamic>{
     'viewport': 'width=device-width, initial-scale=1.0',
-    'description':
-        'Aplicativo para buscar controle financeiro e da vida pessoal.',
-    'keywords':
-        'liberpass aplicativo controle financeiro pessoal investimentos passaporte liberdade nomade digital',
+    'description': 'Aplicativo para buscar controle financeiro e da vida pessoal.',
+    'keywords': 'liberpass aplicativo controle financeiro pessoal investimentos passaporte liberdade nomade digital',
     'og:title': 'Liberpass - Aplicativo de gestao pessoal',
-    'og:description':
-        'Liberpass - o passaporte para sua liberdade financeira e pessoal',
+    'og:description': 'Liberpass - o passaporte para sua liberdade financeira e pessoal',
     'og:image': 'https://liberpass.com.br/assets/assets/images/liber_pass.png',
     'twitter:title': 'Liberpass - Aplicativo de gestao pessoal',
-    'twitter:description':
-        'Liberpass - Passaporte para sua liberdade financeira e pessoal',
-    'twitter:image':
-        'https://liberpass.com.br/assets/assets/images/liber_pass.png',
+    'twitter:description': 'Liberpass - Passaporte para sua liberdade financeira e pessoal',
+    'twitter:image': 'https://liberpass.com.br/assets/assets/images/liber_pass.png',
   }));
   Modular.to.addListener(() {
     debugPrint('Rota: ${Modular.to.path}');
@@ -46,12 +41,9 @@ class LiberPassWeb extends StatelessWidget {
     MetaSEO meta = MetaSEO();
     // Add meta seo data for web app as you want
     meta.author(author: 'Vinicius Machado Cruvinel');
-    meta.description(
-        description:
-            'Aplicativo para buscar controle financeiro e da vida pessoal.');
+    meta.description(description: 'Aplicativo para buscar controle financeiro e da vida pessoal.');
     meta.keywords(
-        keywords:
-            'liberpass aplicativo controle financeiro pessoal investimentos passaporte liberdade nomade digital');
+        keywords: 'liberpass aplicativo controle financeiro pessoal investimentos passaporte liberdade nomade digital');
     meta.ogTitle(ogTitle: 'Liberpass');
     meta.charset(charset: 'utf-8');
     meta.propertyContent(
@@ -70,15 +62,10 @@ class LiberPassWeb extends StatelessWidget {
       property: 'twitter:description',
       content: 'Liberpass - Passaporte para sua liberdade financeira e pessoal',
     );
-    meta.ogDescription(
-        ogDescription:
-            'Liberpass - o passaporte para sua liberdade financeira e pessoal');
+    meta.ogDescription(ogDescription: 'Liberpass - o passaporte para sua liberdade financeira e pessoal');
     meta.ogImage(ogImage: 'https://liberpass.com.br/assets/images/logo.png');
-    meta.twitterDescription(
-        twitterDescription:
-            'Liberpass - Passaporte para sua liberdade financeira e pessoal');
-    meta.twitterImage(
-        twitterImage: 'https://liberpass.com.br/assets/images/logo.png');
+    meta.twitterDescription(twitterDescription: 'Liberpass - Passaporte para sua liberdade financeira e pessoal');
+    meta.twitterImage(twitterImage: 'https://liberpass.com.br/assets/images/logo.png');
     meta.twitterTitle(twitterTitle: 'Liberpass');
 
     return MaterialApp(
