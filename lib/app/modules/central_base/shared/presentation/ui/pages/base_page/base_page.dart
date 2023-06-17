@@ -32,14 +32,14 @@ class _BasePageState extends State<BasePage> {
                   ListTile(
                     title: const Text('Estoque'),
                     onTap: () {
-                      Modular.to.navigate('/central-base/internal-page');
-                      _updatePageName('Produtos');
+                      Modular.to.navigate('/central-base/wms');
+                      _updatePageName('Estoque');
                     },
                   ),
                   ListTile(
                     title: const Text('Pessoas'),
                     onTap: () {
-                      Modular.to.navigate('/central-base/wms');
+                      Modular.to.navigate('/central-base/crm');
                       _updatePageName('Pessoas');
                     },
                   ),

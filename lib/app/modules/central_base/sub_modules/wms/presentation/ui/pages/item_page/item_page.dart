@@ -37,7 +37,7 @@ class _ItemPageState extends State<ItemPage> {
         ],
       ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: firestore.collection('itenspremier').snapshots(),
+        stream: firestore.collection('itens_premier').snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return const Center(
@@ -61,7 +61,8 @@ class _ItemPageState extends State<ItemPage> {
               final taxClassification = documents[index]['taxClassification'];
               final category = documents[index]['category'];
               final createdAt = documents[index]['createdAt'];
-              final updatedAt = documents[index]['updateAt'];
+              final updatedAt = documents[index]['updatedAt'];
+              final barCode = documents[index]['barCode'];
               final List<dynamic> itemFlowData = documents[index]['listPrices'];
               final List<ItemFlowEntity> itemFlow = itemFlowData.map((data) => ItemFlowEntity.fromMap(data)).toList();
 
@@ -112,6 +113,7 @@ class _ItemPageState extends State<ItemPage> {
                             category: category,
                             createdAt: createdAt,
                             updatedAt: updatedAt,
+                            barCode: barCode,
                           ),
                         );
                       },

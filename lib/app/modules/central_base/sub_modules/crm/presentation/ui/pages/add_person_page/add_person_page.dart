@@ -1,18 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:liberpass_baseweb/app/modules/shared/enums/enum_unit_measure.dart';
 
-import '../../../../domain/entities/item_flow_entity.dart';
-
-class AddItemPage extends StatefulWidget {
-  const AddItemPage({super.key});
+class AddPersonPage extends StatefulWidget {
+  const AddPersonPage({super.key});
 
   @override
-  State<AddItemPage> createState() => _AddItemPageState();
+  State<AddPersonPage> createState() => _AddPersonPageState();
 }
 
-class _AddItemPageState extends State<AddItemPage> {
+class _AddPersonPageState extends State<AddPersonPage> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final GlobalKey<FormState> _formCadItemKey = GlobalKey<FormState>();
   final TextEditingController _controllerUnitMeasure = TextEditingController();
@@ -42,11 +39,11 @@ class _AddItemPageState extends State<AddItemPage> {
 
   List<Map<String, dynamic>> listPrices = [];
 
-  void _adicionarItem() {
+  void _addPerson() {
     // Crie um mapa com os dados do novo item
     Map<String, dynamic> novoItem = {
-      'idItem': _controllerIdItem.text,
-      'internalCode': _controllerInternalCode.text,
+      'idPessoa': _controllerIdItem.text,
+      '': _controllerInternalCode.text,
       'idCorp': 1,
       'idCompanyCorp': 1,
       'descriptionItem': _controllerDescriptionItem.text,
@@ -65,7 +62,7 @@ class _AddItemPageState extends State<AddItemPage> {
     };
 
     // Adicione o novo item à coleção 'itens'
-    _firestore.collection('itens_premier').add(novoItem).then((value) {
+    _firestore.collection('persons').add(novoItem).then((value) {
       // Item adicionado com sucesso
       debugPrint('Novo item adicionado com ID: ${value.id}');
     }).catchError((error) {
@@ -74,7 +71,7 @@ class _AddItemPageState extends State<AddItemPage> {
     });
   }
 
-  void _novoAdicionarPreco(ItemFlowEntity price) {
+  void _novoAddPerson(ItemFlowEntity price) {
     final newPriceMap = price.toJson();
 
     setState(() {
@@ -654,11 +651,11 @@ class _AddItemPageState extends State<AddItemPage> {
                     ElevatedButton(
                       onPressed: () {
                         if (_formCadItemKey.currentState!.validate()) {
-                          _adicionarItem();
-                          Modular.to.navigate('/central-base/wms');
+                          _addPerson();
+                          Modular.to.navigate('/central-base/crm');
                         }
                       },
-                      child: const Text('SALVAR NOVO ITEM'),
+                      child: const Text('SALVAR PESSOA'),
                     ),
                   ],
                 ),

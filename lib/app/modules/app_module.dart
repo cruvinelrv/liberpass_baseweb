@@ -9,6 +9,7 @@ import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/
 import 'auth_manager/auth_manager_module.dart';
 import 'auth_manager/login/presentation/ui/pages/login_page/login_page.dart';
 import 'central_base/shared/presentation/ui/pages/base_page/base_page.dart';
+import 'central_base/sub_modules/crm/presentation/ui/pages/person_page/person_page.dart';
 import 'escape_manager/presentation/ui/pages/pages_escape_manager.dart';
 import 'central_base/sub_modules/wms/presentation/ui/pages/pages_item_management.dart';
 import 'central_base/sub_modules/wms/presentation/ui/pages/upload_itens_page/upload_itens_page.dart';
@@ -35,6 +36,7 @@ class AppModule extends Module {
               )),
       ChildRoute('/geremetrika', child: (context, args) => const GeremetrikaPage()),
       ChildRoute('/wms', child: (context, args) => const ItemPage()),
+      ChildRoute('/crm', child: (context, args) => const PersonPage()),
     ]),
     ChildRoute('/liberpass-info', child: (context, args) => const LiberpassInfoPage()),
     ChildRoute('/login', child: (context, args) => const LoginPage()),
@@ -45,5 +47,6 @@ class AppModule extends Module {
     ChildRoute('/item', child: (context, args) => const ItemPage()),
     ChildRoute('/error', child: (context, args) => const ErrorPage()),
     ChildRoute('/under-construction', child: (context, args) => const UnderConstructionPage()),
+    ChildRoute('/crm', child: (context, args) => const PersonPage()),
   ];
 }
