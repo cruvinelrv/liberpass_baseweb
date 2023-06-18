@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:liberpass_baseweb/app/modules/central_base/central_base_module.dart';
 import 'package:liberpass_baseweb/app/modules/central_base/shared/presentation/ui/cubits/menu_cubit/menu_cubit.dart';
 import 'package:liberpass_baseweb/app/modules/central_base/shared/presentation/ui/pages/internal_page/internal_page.dart';
+import 'package:liberpass_baseweb/app/modules/central_base/sub_modules/crm/presentation/ui/pages/add_person_page/add_person_page.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/cubits/item_cubit/item_cubit.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/geremetrika_page/geremetrika_page.dart';
 
@@ -48,5 +49,6 @@ class AppModule extends Module {
     ChildRoute('/error', child: (context, args) => const ErrorPage()),
     ChildRoute('/under-construction', child: (context, args) => const UnderConstructionPage()),
     ChildRoute('/crm', child: (context, args) => const PersonPage()),
+    ChildRoute('/add-person', child: (context, args) => AddPersonPage()),
   ];
 }

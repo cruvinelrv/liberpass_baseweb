@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:liberpass_baseweb/app/modules/central_base/sub_modules/wms/domain/entities/item_entity.dart';
@@ -74,5 +75,12 @@ class ItemCubit extends Cubit<ItemStates> {
 
   void roundMeasure() {
     // double measure = value / 1000000;
+  }
+
+  Future<QuerySnapshot<Map<String, dynamic>>> fetchDocumentsFirebase(String value) async {
+    final FirebaseFirestore firestore = FirebaseFirestore.instance;
+    return await firestore.collection('itens_premier').where('descriptionItem', isEqualTo: value).get().then((result) {
+      return result;
+    });
   }
 }
