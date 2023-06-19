@@ -39,29 +39,25 @@ class _ItensOrderPageState extends State<ItensOrderPage> {
               itemCount: _itensList.listItems.length,
               itemBuilder: (context, index) {
                 return Card(
+                  color: Colors.white,
                   child: ListTile(
-                    title: Text(
-                        _itensList.listItems[index].descriptionItem.toString()),
-                    subtitle: Text(
-                        _itensList.listItems[index].unitMeasure.toString()),
+                    title: Text(_itensList.listItems[index].descriptionPrice.toString()),
+                    subtitle: Text(_itensList.listItems[index].unitMeasure.toString()),
                     trailing: Wrap(
                       children: [
                         IconButton(
                           onPressed: () {
-                            _itemCubit.removeItem(
-                                item: _itensList.listItems[index]);
+                            _itemCubit.removeItem(item: _itensList.listItems[index]);
                           },
                           icon: const Icon(Icons.delete),
                         ),
                         IconButton(
                           onPressed: () {
-                            _itemCubit.editItem(
-                                item: _itensList.listItems[index]);
+                            _itemCubit.editItem(item: _itensList.listItems[index]);
                           },
                           icon: const Icon(Icons.edit),
                         ),
-                        Text(
-                            'R\$ ${_itensList.listItems[index].listPrices![0]['salePrice']}'),
+                        Text('R\$ ${_itensList.listItems[index].salePrice.toString()}'),
                       ],
                     ),
                   ),
@@ -69,8 +65,9 @@ class _ItensOrderPageState extends State<ItensOrderPage> {
               },
             );
           }
-          return const Center(
-            child: Text('Nenhum item encontrado'),
+          return Card(
+            color: Colors.grey[200],
+            child: const Text('Pedido sem itens'),
           );
         });
   }

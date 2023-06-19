@@ -31,7 +31,7 @@ class _CloseOrderPageState extends State<CloseOrderPage> {
       body: Column(
         children: [
           const SizedBox(height: 10),
-          Text(widget.opa.name),
+          Text(widget.opa.nameRecipient),
           const SizedBox(height: 10),
           Text(widget.opa.address),
           const SizedBox(height: 10),
@@ -76,6 +76,5 @@ Future<void> createPDF(args) async {
     ),
   );
 
-  await Printing.layoutPdf(
-      onLayout: (PdfPageFormat format) async => pdf.save());
+  await Printing.layoutPdf(onLayout: (PdfPageFormat format) async => pdf.save());
 }

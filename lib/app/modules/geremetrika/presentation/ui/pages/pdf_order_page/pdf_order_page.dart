@@ -24,8 +24,8 @@ class _PdfOrderPageState extends State<PdfOrderPage> {
         const SizedBox(height: 10),
         ElevatedButton(
           onPressed: () => createPDF(
-            pdfArgs.id,
-            pdfArgs.name,
+            pdfArgs.idOrder,
+            pdfArgs.nameRecipient,
             pdfArgs.address,
             pdfArgs.phone,
             pdfArgs.createdAt,
@@ -39,8 +39,7 @@ class _PdfOrderPageState extends State<PdfOrderPage> {
   }
 }
 
-Future<void> createPDF(
-    id, name, address, phone, createdDate, updateDate, typePayment) async {
+Future<void> createPDF(id, name, address, phone, createdDate, updateDate, typePayment) async {
   final pdf = pw.Document();
   final font = await PdfGoogleFonts.nunitoExtraLight();
 
@@ -63,6 +62,5 @@ Future<void> createPDF(
     ),
   );
 
-  await Printing.layoutPdf(
-      onLayout: (PdfPageFormat format) async => pdf.save());
+  await Printing.layoutPdf(onLayout: (PdfPageFormat format) async => pdf.save());
 }

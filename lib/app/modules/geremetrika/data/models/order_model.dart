@@ -2,8 +2,8 @@ import 'package:liberpass_baseweb/app/modules/geremetrika/domain/entities/order_
 
 class OrderModel extends OrderEntity {
   OrderModel({
-    required super.id,
-    required super.name,
+    required super.idOrder,
+    required super.nameRecipient,
     required super.phone,
     required super.address,
     required super.typePayment,
@@ -13,9 +13,9 @@ class OrderModel extends OrderEntity {
   });
   factory OrderModel.fromJson(Map<String, dynamic> json) {
     return OrderModel(
-      id: json['id'],
+      idOrder: json['idOrder'],
       listItemEntity: json['listItemEntity'],
-      name: json['name'],
+      nameRecipient: json['namRecipient'],
       phone: json['phone'],
       address: json['comment'],
       typePayment: json['typePayment'],
@@ -25,9 +25,9 @@ class OrderModel extends OrderEntity {
   }
 
   Map<String, dynamic> toJson() => {
-        'id': id,
+        'idOrder': idOrder,
         'listItemEntity': listItemEntity,
-        'name': name,
+        'nameRecipient': nameRecipient,
         'phone': phone,
         'address': address,
         'typePayment': typePayment,

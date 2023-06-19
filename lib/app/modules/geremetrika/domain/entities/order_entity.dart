@@ -1,8 +1,8 @@
 import 'list_item_entity.dart';
 
 class OrderEntity {
-  final String id;
-  final String name;
+  final String idOrder;
+  final String nameRecipient;
   final String phone;
   final String address;
   final String typePayment;
@@ -11,9 +11,9 @@ class OrderEntity {
   final ListItemEntity listItemEntity;
 
   const OrderEntity({
-    required this.id,
+    required this.idOrder,
     required this.listItemEntity,
-    required this.name,
+    required this.nameRecipient,
     required this.phone,
     required this.address,
     required this.typePayment,

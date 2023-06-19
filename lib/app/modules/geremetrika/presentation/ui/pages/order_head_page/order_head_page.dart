@@ -1,5 +1,7 @@
 import 'dart:math';
-
+import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/domain/entities/list_item_entity.dart';
@@ -9,6 +11,7 @@ import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
 import '../../cubits/item_cubit/item_cubit.dart';
+import '../add_item_order_page/add_item_order_page.dart';
 
 class OrderHeadPage extends StatefulWidget {
   const OrderHeadPage({super.key});
@@ -24,14 +27,27 @@ class _OrderHeadPageState extends State<OrderHeadPage> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
   final TextEditingController _dateController = TextEditingController();
-  final TextEditingController _paymentConditionController =
-      TextEditingController();
+  final TextEditingController _paymentConditionController = TextEditingController();
+  late final FocusNode focus;
+  late final FocusNode focusClient;
+  late final FocusNode focusPhone;
+  late final FocusNode focusAddress;
+  late final FocusNode focusDate;
+  late final FocusNode focusPaymentCondition;
+  late final FocusNode focusAddItemButton;
 
   @override
   void initState() {
     super.initState();
     _itemCubit = Modular.get<ItemCubit>();
     _itensList = _itemCubit.actualListItens;
+    focus = FocusNode();
+    focusClient = FocusNode()..requestFocus();
+    focusPhone = FocusNode();
+    focusAddress = FocusNode();
+    focusDate = FocusNode();
+    focusPaymentCondition = FocusNode();
+    focusAddItemButton = FocusNode();
   }
 
   @override
@@ -41,6 +57,13 @@ class _OrderHeadPageState extends State<OrderHeadPage> {
     _addressController.dispose();
     _dateController.dispose();
     _paymentConditionController.dispose();
+    focus.dispose();
+    focusClient.dispose();
+    focusPhone.dispose();
+    focusAddress.dispose();
+    focusDate.dispose();
+    focusPaymentCondition.dispose();
+    focusAddItemButton.dispose();
     super.dispose();
   }
 
@@ -50,120 +73,130 @@ class _OrderHeadPageState extends State<OrderHeadPage> {
       children: [
         const SizedBox(height: 10),
         TextFormField(
+          focusNode: focusClient,
           controller: _clientController,
           decoration: const InputDecoration(
             labelText: 'Cliente',
             border: OutlineInputBorder(),
           ),
+          onEditingComplete: () {
+            focusAddress.requestFocus();
+          },
         ),
         const SizedBox(height: 10),
         TextFormField(
+          focusNode: focusAddress,
           controller: _addressController,
           decoration: const InputDecoration(
             labelText: 'Endereço',
             border: OutlineInputBorder(),
           ),
-        ),
-        const SizedBox(height: 10),
-        TextFormField(
-          controller: _phoneController,
-          decoration: const InputDecoration(
-            labelText: 'Fone',
-            border: OutlineInputBorder(),
-          ),
-        ),
-        const SizedBox(height: 10),
-        TextFormField(
-          controller: _dateController,
-          decoration: const InputDecoration(
-            labelText: 'Data',
-            border: OutlineInputBorder(),
-          ),
-        ),
-        const SizedBox(height: 10),
-        TextFormField(
-          controller: _paymentConditionController,
-          decoration: const InputDecoration(
-            labelText: 'Condição de pagamento',
-            border: OutlineInputBorder(),
-          ),
-        ),
-        const SizedBox(height: 10),
-        ElevatedButton(
-          onPressed: () {
-            debugPrint('Imprimir Pedido em PDF');
-            _itensList = _itemCubit.actualListItens;
-
-            final OrderEntity orderEntity = OrderEntity(
-              id: Random().nextInt(1000).toString(),
-              listItemEntity: _itensList,
-              name: _clientController.text,
-              address: _addressController.text,
-              phone: _phoneController.text,
-              createdAt: _dateController.text,
-              typePayment: _paymentConditionController.text,
-              updatedAt: _dateController.text,
-            );
-            /*
-            Navigator.pushNamed(
-              context,
-              '/pdf_order_page',
-              arguments: OrderEntity(
-                id: orderEntity.id,
-                name: orderEntity.name,
-                address: orderEntity.address,
-                phone: orderEntity.phone,
-                createdAt: orderEntity.createdAt,
-                typePayment: orderEntity.typePayment,
-                updatedAt: orderEntity.updatedAt,
-              ),
-            );
-            */
-            createPDFNewVersion(orderEntity);
+          onEditingComplete: () {
+            focusPhone.requestFocus();
           },
-          child: const Text('Imprimir Pedido em PDF'),
         ),
-        /*
         const SizedBox(height: 10),
-        ElevatedButton(
-          onPressed: () async {
-            final OrderModel orderEntity = OrderModel(
-              id: Random().nextInt(1000).toString(),
-              listItemEntity: _itensList,
-              name: _clientController.text,
-              address: _addressController.text,
-              phone: _phoneController.text,
-              createdAt: _dateController.text,
-              typePayment: _paymentConditionController.text,
-              updatedAt: _dateController.text,
-            );
-            debugPrint(orderEntity.name);
-            debugPrint(orderEntity.address);
-            debugPrint(orderEntity.phone);
-            debugPrint(orderEntity.createdAt);
-            debugPrint(orderEntity.typePayment);
-            debugPrint(orderEntity.updatedAt);
-            debugPrint(orderEntity.id);
-            debugPrint(orderEntity.typePayment);
-            await Navigator.of(context).pushNamed(
-              '/close_order_page',
-              arguments: OrderModel(
-                id: orderEntity.id,
-                listItemEntity: orderEntity.listItemEntity,
-                name: orderEntity.name,
-                address: orderEntity.address,
-                phone: orderEntity.phone,
-                createdAt: orderEntity.createdAt,
-                typePayment: orderEntity.typePayment,
-                updatedAt: orderEntity.updatedAt,
+        Row(
+          children: [
+            SizedBox(
+              width: 250,
+              child: TextFormField(
+                focusNode: focusPhone,
+                controller: _phoneController,
+                decoration: const InputDecoration(
+                  labelText: 'Fone',
+                  border: OutlineInputBorder(),
+                ),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                ],
+                onEditingComplete: () {
+                  focusDate.requestFocus();
+                },
               ),
-            );
-
-            //createPDF(orderEntity);
-          },
-          child: const Text('Preview'),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: TextFormField(
+                focusNode: focusDate,
+                controller: _dateController,
+                decoration: const InputDecoration(
+                  labelText: 'Data',
+                  border: OutlineInputBorder(),
+                ),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                ],
+                onEditingComplete: () {
+                  focusPaymentCondition.requestFocus();
+                },
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: TextFormField(
+                focusNode: focusPaymentCondition,
+                controller: _paymentConditionController,
+                decoration: const InputDecoration(
+                  labelText: 'Condição de pagamento',
+                  border: OutlineInputBorder(),
+                ),
+                onEditingComplete: () {
+                  focusAddItemButton.requestFocus();
+                },
+              ),
+            )
+          ],
         ),
-        */
+        const SizedBox(height: 10),
+        Row(
+          children: [
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+                elevation: 5,
+                fixedSize: const Size(200, 56),
+              ),
+              focusNode: focusAddItemButton,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AddItemOrderPage(),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.add),
+              label: const Text('Adicionar Item'),
+            ),
+            const SizedBox(width: 10),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.indigoAccent,
+                elevation: 5,
+                fixedSize: const Size(200, 56),
+              ),
+              onPressed: () {
+                debugPrint('Imprimir Pedido em PDF');
+                _itensList = _itemCubit.actualListItens;
+                final order = OrderEntity(
+                  idOrder: Random().nextInt(1000).toString(),
+                  listItemEntity: _itensList,
+                  nameRecipient: _clientController.text,
+                  phone: _phoneController.text,
+                  address: _addressController.text,
+                  typePayment: _paymentConditionController.text,
+                  createdAt: DateTime.now().toString(),
+                  updatedAt: DateTime.now().toString(),
+                );
+                createPDFNewVersion(order);
+              },
+              icon: const Icon(Icons.print),
+              label: const Text('Imprimir Pedido'),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
       ],
     );
   }
@@ -172,7 +205,6 @@ class _OrderHeadPageState extends State<OrderHeadPage> {
 Future<void> createPDF(OrderEntity args) async {
   final pdf = pw.Document();
   final font = await PdfGoogleFonts.nunitoExtraLight();
-
   pdf.addPage(
     pw.Page(
       build: (pw.Context context) => pw.Center(
@@ -192,7 +224,7 @@ Future<void> createPDF(OrderEntity args) async {
               ],
             ),
             pw.Text(
-              args.name,
+              args.nameRecipient,
               style: pw.TextStyle(font: font),
             ),
             pw.Text(
@@ -223,22 +255,22 @@ Future<void> createPDF(OrderEntity args) async {
                 ),
               for (var item in args.listItemEntity.listItems)
                 pw.Text(
-                  item.descriptionItem.toString(),
+                  item.descriptionPrice.toString(),
                   style: pw.TextStyle(font: font),
                 ),
               for (var item in args.listItemEntity.listItems)
                 pw.Text(
-                  item.listPrices.toString(),
+                  item.stock.toString(),
                   style: pw.TextStyle(font: font),
                 ),
               for (var item in args.listItemEntity.listItems)
                 pw.Text(
-                  item.listPrices.toString(),
+                  item.salePrice.toString(),
                   style: pw.TextStyle(font: font),
                 ),
               for (var item in args.listItemEntity.listItems)
                 pw.Text(
-                  item.listPrices.toString(),
+                  item.purchasePrice.toString(),
                   style: pw.TextStyle(font: font),
                 ),
             ]),
@@ -254,8 +286,7 @@ Future<void> createPDF(OrderEntity args) async {
     ),
   );
 
-  await Printing.layoutPdf(
-      onLayout: (PdfPageFormat format) async => pdf.save());
+  await Printing.layoutPdf(onLayout: (PdfPageFormat format) async => pdf.save());
 }
 
 Future<void> createPDFNewVersion(OrderEntity args) async {
@@ -288,7 +319,7 @@ Future<void> createPDFNewVersion(OrderEntity args) async {
             mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
             children: [
               pw.Text(
-                args.name,
+                args.nameRecipient,
                 style: pw.TextStyle(font: font),
               ),
               pw.Text(
@@ -363,19 +394,19 @@ Future<void> createPDFNewVersion(OrderEntity args) async {
                   style: pw.TextStyle(font: font),
                 ),
                 pw.Text(
-                  item.descriptionItem.toString(),
+                  item.descriptionPrice.toString(),
                   style: pw.TextStyle(font: font),
                 ),
                 pw.Text(
-                  item.listPrices.toString(),
+                  item.stock.toString(),
                   style: pw.TextStyle(font: font),
                 ),
                 pw.Text(
-                  item.listPrices.toString(),
+                  item.salePrice.toString(),
                   style: pw.TextStyle(font: font),
                 ),
                 pw.Text(
-                  item.listPrices.toString(),
+                  item.purchasePrice.toString(),
                   style: pw.TextStyle(font: font),
                 ),
               ],
@@ -399,7 +430,7 @@ Future<void> createPDFNewVersion(OrderEntity args) async {
                 style: pw.TextStyle(font: font),
               ),
               pw.Text(
-                args.name,
+                args.nameRecipient,
                 style: pw.TextStyle(font: font),
               ),
             ],
@@ -409,8 +440,7 @@ Future<void> createPDFNewVersion(OrderEntity args) async {
     ),
   );
 
-  await Printing.layoutPdf(
-      onLayout: (PdfPageFormat format) async => pdf.save());
+  await Printing.layoutPdf(onLayout: (PdfPageFormat format) async => pdf.save());
 }
 
 class WidgetBuildTableItens extends StatefulWidget {
@@ -456,10 +486,10 @@ class _WidgetBuildTableItensState extends State<WidgetBuildTableItens> {
           TableRow(
             children: <Widget>[
               Text(item.unitMeasure.toString()),
-              Text(item.descriptionItem.toString()),
-              Text(item.listPrices.toString()),
-              Text(item.listPrices.toString()),
-              Text(item.listPrices.toString()),
+              Text(item.descriptionPrice.toString()),
+              Text(item.stock.toString()),
+              Text(item.salePrice.toString()),
+              Text(item.purchasePrice.toString()),
             ],
           ),
       ],

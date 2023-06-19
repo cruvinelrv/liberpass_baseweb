@@ -95,6 +95,7 @@ class _ItemPageState extends State<ItemPage> {
                         ),
                       ),
                       onTap: () {
+                        /*
                         Navigator.pushNamed(
                           context,
                           '/item-detail',
@@ -116,6 +117,7 @@ class _ItemPageState extends State<ItemPage> {
                             barCode: barCode,
                           ),
                         );
+                        */
                       },
                     ),
                   ],

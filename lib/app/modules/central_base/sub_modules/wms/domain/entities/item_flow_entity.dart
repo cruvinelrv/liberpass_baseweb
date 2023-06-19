@@ -72,6 +72,7 @@ class ItemFlowEntity {
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
     result['idItemFlow'] = idItemFlow;
+    result['internalCode'] = internalCode;
     result['idCorp'] = idCorp;
     result['idCompanyCorp'] = idCompanyCorp;
     result['itemBatch'] = itemBatch;
@@ -86,6 +87,19 @@ class ItemFlowEntity {
     result['updatedAt'] = updatedAt;
     result['dateFabrication'] = dateFabrication;
     result['dateExpiration'] = dateExpiration;
+    result['stockReservation'] = stockReservation;
+    result['stockDamaged'] = stockDamaged;
+    result['stockAvailable'] = stockAvailable;
+    result['stock'] = stock;
+    result['stockMinimum'] = stockMinimum;
+    result['stockMaximum'] = stockMaximum;
+    result['widthMeasure'] = widthMeasure;
+    result['heightMeasure'] = heightMeasure;
+    result['unitMeasure'] = unitMeasure;
+    result['supplier'] = supplier;
+    result['barCode'] = barCode;
+    result['barCodeInternal'] = barCodeInternal;
+    result['ncmCode'] = ncmCode;
     result['isActivePrice'] = isActivePrice;
 
     return result;
@@ -94,6 +108,7 @@ class ItemFlowEntity {
   factory ItemFlowEntity.fromMap(Map<String, dynamic> map) {
     return ItemFlowEntity(
       idItemFlow: map['idItemFlow'] as int?,
+      internalCode: map['internalCode'] as String?,
       idCorp: map['idCorp'] as int,
       idCompanyCorp: map['idCompanyCorp'] as int,
       itemBatch: map['itemBatch'] as String?,
@@ -108,6 +123,19 @@ class ItemFlowEntity {
       updatedAt: map['updatedAt'] as Timestamp?,
       dateFabrication: map['dateFabrication'] as String?,
       dateExpiration: map['dateExpiration'] as String?,
+      stockReservation: map['stockReservation'] as double?,
+      stockDamaged: map['stockDamaged'] as double?,
+      stockAvailable: map['stockAvailable'] as double?,
+      stock: map['stock'] as double?,
+      stockMinimum: map['stockMinimum'] as double?,
+      stockMaximum: map['stockMaximum'] as double?,
+      widthMeasure: map['widthMeasure'] as double?,
+      heightMeasure: map['heightMeasure'] as double?,
+      unitMeasure: map['unitMeasure'] as String?,
+      supplier: map['supplier'] as String?,
+      barCode: map['barCode'] as String?,
+      barCodeInternal: map['barCodeInternal'] as String?,
+      ncmCode: map['ncmCode'] as String?,
       isActivePrice: map['isActivePrice'] as bool,
     );
   }
@@ -115,6 +143,7 @@ class ItemFlowEntity {
   Map<String, dynamic> toJson() {
     return {
       'idItemFlow': idItemFlow,
+      'internalCode': internalCode,
       'idCorp': idCorp,
       'idCompanyCorp': idCompanyCorp,
       'itemBatch': itemBatch,
@@ -129,6 +158,19 @@ class ItemFlowEntity {
       'updatedAt': updatedAt,
       'dateFabrication': dateFabrication,
       'dateExpiration': dateExpiration,
+      'stockReservation': stockReservation,
+      'stockDamaged': stockDamaged,
+      'stockAvailable': stockAvailable,
+      'stock': stock,
+      'stockMinimum': stockMinimum,
+      'stockMaximum': stockMaximum,
+      'widthMeasure': widthMeasure,
+      'heightMeasure': heightMeasure,
+      'unitMeasure': unitMeasure,
+      'supplier': supplier,
+      'barCode': barCode,
+      'barCodeInternal': barCodeInternal,
+      'ncmCode': ncmCode,
       'isActivePrice': isActivePrice,
     };
   }
@@ -136,6 +178,7 @@ class ItemFlowEntity {
   factory ItemFlowEntity.fromJson(Map<String, dynamic> json) {
     return ItemFlowEntity(
       idItemFlow: json['idItemFlow'] as int?,
+      internalCode: json['internalCode'] as String?,
       idCorp: json['idCorp'] as int,
       idCompanyCorp: json['idCompanyCorp'] as int,
       itemBatch: json['itemBatch'] as String?,
@@ -150,6 +193,19 @@ class ItemFlowEntity {
       updatedAt: json['updatedAt'] as Timestamp?,
       dateFabrication: json['dateFabrication'] as String?,
       dateExpiration: json['dateExpiration'] as String?,
+      stockReservation: json['stockReservation'] as double?,
+      stockDamaged: json['stockDamaged'] as double?,
+      stockAvailable: json['stockAvailable'] as double?,
+      stock: json['stock'] as double?,
+      stockMinimum: json['stockMinimum'] as double?,
+      stockMaximum: json['stockMaximum'] as double?,
+      widthMeasure: json['widthMeasure'] as double?,
+      heightMeasure: json['heightMeasure'] as double?,
+      unitMeasure: json['unitMeasure'] as String?,
+      supplier: json['supplier'] as String?,
+      barCode: json['barCode'] as String?,
+      barCodeInternal: json['barCodeInternal'] as String?,
+      ncmCode: json['ncmCode'] as String?,
       isActivePrice: json['isActivePrice'] as bool,
     );
   }
