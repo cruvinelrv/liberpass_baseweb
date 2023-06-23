@@ -5,6 +5,10 @@ extension StringExtensions on String {
     return "${this[0].toUpperCase()}${substring(1)}";
   }
 
+  String applyDateMaskBrazilian() {
+    return DateFormat('dd/MM/yyyy').format(DateTime.parse(this));
+  }
+
   String capitalizeFirstOfEach() {
     return split(" ").map((str) => str.capitalize()).join(" ");
   }
@@ -18,14 +22,10 @@ extension StringExtensions on String {
   }
 
   String capitalizeFirstOfEachWordAndRemoveSpaceAndSpecialCharacters() {
-    return split(" ")
-        .map((str) => str.capitalize())
-        .join("")
-        .replaceAll(RegExp(r'[^\w\s]+'), '');
+    return split(" ").map((str) => str.capitalize()).join("").replaceAll(RegExp(r'[^\w\s]+'), '');
   }
 
-  String
-      capitalizeFirstOfEachWordAndRemoveSpaceAndSpecialCharactersAndNumbers() {
+  String capitalizeFirstOfEachWordAndRemoveSpaceAndSpecialCharactersAndNumbers() {
     return split(" ")
         .map((str) => str.capitalize())
         .join("")
@@ -33,8 +33,7 @@ extension StringExtensions on String {
         .replaceAll(RegExp(r'[0-9]'), '');
   }
 
-  String
-      capitalizeFirstOfEachWordAndRemoveSpaceAndSpecialCharactersAndNumbersAndAccentuation() {
+  String capitalizeFirstOfEachWordAndRemoveSpaceAndSpecialCharactersAndNumbersAndAccentuation() {
     return split(" ")
         .map((str) => str.capitalize())
         .join("")
@@ -48,8 +47,7 @@ extension StringExtensions on String {
         .replaceAll(RegExp(r'[ç]'), 'c');
   }
 
-  String
-      capitalizeFirstOfEachWordAndRemoveSpaceAndSpecialCharactersAndNumbersAndAccentuationAndRemoveDiacritics() {
+  String capitalizeFirstOfEachWordAndRemoveSpaceAndSpecialCharactersAndNumbersAndAccentuationAndRemoveDiacritics() {
     return split(" ")
         .map((str) => str.capitalize())
         .join("")
@@ -96,34 +94,31 @@ extension StringExtensions on String {
   }
 
   String currencyWithDecimal() {
-    return "R\$ ${replaceAll(RegExp(r'[^\w\s]+'), '')}".replaceAllMapped(
-        RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (match) => '${match[1]}.');
+    return "R\$ ${replaceAll(RegExp(r'[^\w\s]+'), '')}"
+        .replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (match) => '${match[1]}.');
   }
 
   String currencyWithDecimalAndRemoveDecimalIfZero() {
     return "R\$ ${replaceAll(RegExp(r'[^\w\s]+'), '')}"
-        .replaceAllMapped(
-            RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (match) => '${match[1]}.')
+        .replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (match) => '${match[1]}.')
         .replaceAll(RegExp(r'\.00'), '');
   }
 
   String currencyWithDecimalAndRemoveDecimalIfZeroAndRemoveCurrencySymbol() {
     return "R\$ ${replaceAll(RegExp(r'[^\w\s]+'), '')}"
-        .replaceAllMapped(
-            RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (match) => '${match[1]}.')
+        .replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (match) => '${match[1]}.')
         .replaceAll(RegExp(r'\.00'), '')
         .replaceAll(RegExp(r'R\$'), '');
   }
 
   String currencyBrazilian() {
-    return "R\$ ${replaceAll(RegExp(r'[^\w\s]+'), '')}".replaceAllMapped(
-        RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (match) => '${match[1]}.');
+    return "R\$ ${replaceAll(RegExp(r'[^\w\s]+'), '')}"
+        .replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (match) => '${match[1]}.');
   }
 
   String currencyBrazilianWithDecimal() {
     return "R\$ ${replaceAll(RegExp(r'[^\w\s]+'), '')}"
-        .replaceAllMapped(
-            RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (match) => '${match[1]}.')
+        .replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (match) => '${match[1]}.')
         .replaceAll(RegExp(r'\.00'), '');
   }
 
@@ -140,8 +135,8 @@ extension StringExtensions on String {
   }
 
   String applyCpfMask() {
-    return replaceAllMapped(RegExp(r'(\d{3})(\d{3})(\d{3})(\d{2})'),
-        (match) => '${match[1]}.${match[2]}.${match[3]}-${match[4]}');
+    return replaceAllMapped(
+        RegExp(r'(\d{3})(\d{3})(\d{3})(\d{2})'), (match) => '${match[1]}.${match[2]}.${match[3]}-${match[4]}');
   }
 
   removeCpfMask() {
@@ -149,10 +144,8 @@ extension StringExtensions on String {
   }
 
   String applyCnpjMask() {
-    return replaceAllMapped(
-        RegExp(r'(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})'),
-        (match) =>
-            '${match[1]}.${match[2]}.${match[3]}/${match[4]}-${match[5]}');
+    return replaceAllMapped(RegExp(r'(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})'),
+        (match) => '${match[1]}.${match[2]}.${match[3]}/${match[4]}-${match[5]}');
   }
 
   removeCnpjMask() {
@@ -160,8 +153,7 @@ extension StringExtensions on String {
   }
 
   String applyCepMask() {
-    return replaceAllMapped(
-        RegExp(r'(\d{5})(\d{3})'), (match) => '${match[1]}-${match[2]}');
+    return replaceAllMapped(RegExp(r'(\d{5})(\d{3})'), (match) => '${match[1]}-${match[2]}');
   }
 
   removeCepMask() {
@@ -169,8 +161,7 @@ extension StringExtensions on String {
   }
 
   String applyPhoneMask() {
-    return replaceAllMapped(RegExp(r'(\d{2})(\d{4,5})(\d{4})'),
-        (match) => '(${match[1]}) ${match[2]}-${match[3]}');
+    return replaceAllMapped(RegExp(r'(\d{2})(\d{4,5})(\d{4})'), (match) => '(${match[1]}) ${match[2]}-${match[3]}');
   }
 
   removePhoneMask() {
@@ -178,8 +169,7 @@ extension StringExtensions on String {
   }
 
   String applyCellPhoneMask() {
-    return replaceAllMapped(RegExp(r'(\d{2})(\d{5})(\d{4})'),
-        (match) => '(${match[1]}) ${match[2]}-${match[3]}');
+    return replaceAllMapped(RegExp(r'(\d{2})(\d{5})(\d{4})'), (match) => '(${match[1]}) ${match[2]}-${match[3]}');
   }
 
   removeCellPhoneMask() {
@@ -187,8 +177,7 @@ extension StringExtensions on String {
   }
 
   String applyDateMask() {
-    return replaceAllMapped(RegExp(r'(\d{2})(\d{2})(\d{4})'),
-        (match) => '${match[1]}/${match[2]}/${match[3]}');
+    return replaceAllMapped(RegExp(r'(\d{2})(\d{2})(\d{4})'), (match) => '${match[1]}/${match[2]}/${match[3]}');
   }
 
   removeDateMask() {
@@ -196,10 +185,8 @@ extension StringExtensions on String {
   }
 
   String applyDateTimeMask() {
-    return replaceAllMapped(
-        RegExp(r'(\d{2})(\d{2})(\d{4})(\d{2})(\d{2})'),
-        (match) =>
-            '${match[1]}/${match[2]}/${match[3]} ${match[4]}:${match[5]}');
+    return replaceAllMapped(RegExp(r'(\d{2})(\d{2})(\d{4})(\d{2})(\d{2})'),
+        (match) => '${match[1]}/${match[2]}/${match[3]} ${match[4]}:${match[5]}');
   }
 
   removeDateTimeMask() {
@@ -207,8 +194,7 @@ extension StringExtensions on String {
   }
 
   String applyTimeMask() {
-    return replaceAllMapped(
-        RegExp(r'(\d{2})(\d{2})'), (match) => '${match[1]}:${match[2]}');
+    return replaceAllMapped(RegExp(r'(\d{2})(\d{2})'), (match) => '${match[1]}:${match[2]}');
   }
 
   removeTimeMask() {
@@ -216,8 +202,7 @@ extension StringExtensions on String {
   }
 
   String applyMoneyMask() {
-    return replaceAllMapped(
-        RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (match) => '${match[1]}.');
+    return replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (match) => '${match[1]}.');
   }
 
   removeMoneyMask() {
@@ -225,8 +210,7 @@ extension StringExtensions on String {
   }
 
   String applyMoneyMaskWithDecimal() {
-    return replaceAllMapped(
-        RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (match) => '${match[1]}.');
+    return replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (match) => '${match[1]}.');
   }
 
   removeMoneyMaskWithDecimal() {
@@ -256,12 +240,7 @@ extension StringExtensions on String {
 
     if (invalidCpfs.contains(cpf)) return false;
 
-    List<int> numbers = cpf
-        .split("")
-        .map((number) => int.parse(number))
-        .toList()
-        .getRange(0, 9)
-        .toList();
+    List<int> numbers = cpf.split("").map((number) => int.parse(number)).toList().getRange(0, 9).toList();
 
     int firstDigit = int.parse(cpf[9]);
     int secondDigit = int.parse(cpf[10]);
@@ -305,12 +284,7 @@ extension StringExtensions on String {
 
     if (invalidCnpjs.contains(cnpj)) return false;
 
-    List<int> numbers = cnpj
-        .split("")
-        .map((number) => int.parse(number))
-        .toList()
-        .getRange(0, 12)
-        .toList();
+    List<int> numbers = cnpj.split("").map((number) => int.parse(number)).toList().getRange(0, 12).toList();
 
     int firstDigit = int.parse(cnpj[12]);
     int secondDigit = int.parse(cnpj[13]);
@@ -432,5 +406,18 @@ extension StringExtensions on String {
 
   double currencyToDouble() {
     return double.parse(replaceAll(".", "").replaceAll(",", "."));
+  }
+
+  String currencyBrazil({String locale = 'pt_BR', symbol = 'R\$'}) {
+    NumberFormat format = NumberFormat.currency(
+      locale: locale,
+      symbol: symbol,
+    );
+    try {
+      double value = double.tryParse(replaceAll(',', '.')) ?? 0.0;
+      return format.format(value);
+    } catch (e) {
+      return format.format(0.00);
+    }
   }
 }

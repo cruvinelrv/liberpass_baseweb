@@ -38,6 +38,7 @@ class AppModule extends Module {
       ChildRoute('/geremetrika', child: (context, args) => const GeremetrikaPage()),
       ChildRoute('/wms', child: (context, args) => const ItemPage()),
       ChildRoute('/crm', child: (context, args) => const PersonPage()),
+      ChildRoute('/under-construction', child: (context, args) => const UnderConstructionPage()),
     ]),
     ChildRoute('/liberpass-info', child: (context, args) => const LiberpassInfoPage()),
     ChildRoute('/login', child: (context, args) => const LoginPage()),

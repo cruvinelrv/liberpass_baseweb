@@ -41,8 +41,32 @@ class _ItensOrderPageState extends State<ItensOrderPage> {
                 return Card(
                   color: Colors.white,
                   child: ListTile(
-                    title: Text(_itensList.listItems[index].descriptionPrice.toString()),
-                    subtitle: Text(_itensList.listItems[index].unitMeasure.toString()),
+                    title: Row(
+                      children: [
+                        Text(_itensList.listItems[index].descriptionPrice.toString()),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                            '${_itensList.listItems[index].widthMeasure} x ${_itensList.listItems[index].heightMeasure} '),
+                      ],
+                    ),
+                    subtitle: Row(
+                      children: [
+                        const Text('Quantidade: '),
+                        Text(_itensList.listItems[index].stock.toString()),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        const Text('Preço: '),
+                        Text(_itensList.listItems[index].salePrice.toString()),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        const Text('Total do Item: '),
+                        Text(_itensList.listItems[index].totalItem!.toStringAsFixed(2)),
+                      ],
+                    ),
                     trailing: Wrap(
                       children: [
                         IconButton(
@@ -57,7 +81,7 @@ class _ItensOrderPageState extends State<ItensOrderPage> {
                           },
                           icon: const Icon(Icons.edit),
                         ),
-                        Text('R\$ ${_itensList.listItems[index].salePrice.toString()}'),
+                        //Text('R\$ ${_itensList.listItems[index].salePrice.toString()}'),
                       ],
                     ),
                   ),

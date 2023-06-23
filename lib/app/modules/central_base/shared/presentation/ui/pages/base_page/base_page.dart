@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:liberpass_baseweb/app/modules/escape_manager/presentation/ui/pages/under_construction_page/under_construction_page.dart';
 
 class BasePage extends StatefulWidget {
   const BasePage({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class _BasePageState extends State<BasePage> {
   @override
   void initState() {
     super.initState();
-    pageName = 'Liberpass 0.1.0';
+    pageName = 'Liberpass 0.1.1';
   }
 
   @override
@@ -30,16 +31,17 @@ class _BasePageState extends State<BasePage> {
               child: Column(
                 children: [
                   ListTile(
+                    enabled: false,
                     title: const Text('Estoque'),
                     onTap: () {
-                      Modular.to.navigate('/central-base/wms');
-                      _updatePageName('Estoque');
+                      MaterialPageRoute(builder: (context) => const UnderConstructionPage());
                     },
                   ),
                   ListTile(
+                    enabled: false,
                     title: const Text('Pessoas'),
                     onTap: () {
-                      Modular.to.navigate('/central-base/crm');
+                      Modular.to.navigate('/under_construction');
                       _updatePageName('Pessoas');
                     },
                   ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -30,6 +31,14 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     TextField(
                       controller: _corporationController,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(RegExp('[a-zA-Z]')),
+                      ],
+                      onChanged: (value) {
+                        _corporationController.text = value.toUpperCase();
+                        _corporationController.selection =
+                            TextSelection.fromPosition(TextPosition(offset: _corporationController.text.length));
+                      },
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Nome da empresa',
@@ -38,6 +47,11 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(height: 16.0),
                     TextField(
                       controller: _usernameController,
+                      onChanged: (value) {
+                        _usernameController.text = value.toUpperCase();
+                        _usernameController.selection =
+                            TextSelection.fromPosition(TextPosition(offset: _usernameController.text.length));
+                      },
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Usuário',

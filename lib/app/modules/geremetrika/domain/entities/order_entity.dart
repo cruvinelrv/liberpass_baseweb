@@ -9,6 +9,7 @@ class OrderEntity {
   final String createdAt;
   final String updatedAt;
   final ListItemEntity listItemEntity;
+  final double totalOrder;
 
   const OrderEntity({
     required this.idOrder,
@@ -19,5 +20,6 @@ class OrderEntity {
     required this.typePayment,
     required this.createdAt,
     required this.updatedAt,
+    required this.totalOrder,
   });
 }

@@ -1,16 +1,18 @@
 import 'dart:math';
 import 'package:flutter/services.dart';
-import 'package:intl/intl.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/domain/entities/list_item_entity.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/domain/entities/order_entity.dart';
+import 'package:liberpass_baseweb/app/modules/shared/extensions/extensions.dart';
+import 'package:liberpass_baseweb/app/modules/shared/masks/input_masks.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
 import '../../cubits/item_cubit/item_cubit.dart';
+import '../../cubits/item_cubit/states/states.dart';
 import '../add_item_order_page/add_item_order_page.dart';
 
 class OrderHeadPage extends StatefulWidget {
@@ -35,6 +37,7 @@ class _OrderHeadPageState extends State<OrderHeadPage> {
   late final FocusNode focusDate;
   late final FocusNode focusPaymentCondition;
   late final FocusNode focusAddItemButton;
+  double totalOrder = 0;
 
   @override
   void initState() {
@@ -48,6 +51,7 @@ class _OrderHeadPageState extends State<OrderHeadPage> {
     focusDate = FocusNode();
     focusPaymentCondition = FocusNode();
     focusAddItemButton = FocusNode();
+    _dateController.text = DateTime.now().toString().substring(0, 10).applyDateMaskBrazilian();
   }
 
   @override
@@ -82,6 +86,11 @@ class _OrderHeadPageState extends State<OrderHeadPage> {
           onEditingComplete: () {
             focusAddress.requestFocus();
           },
+          onChanged: (value) {
+            _clientController.text = value.toUpperCase();
+            _clientController.selection =
+                TextSelection.fromPosition(TextPosition(offset: _clientController.text.length));
+          },
         ),
         const SizedBox(height: 10),
         TextFormField(
@@ -93,6 +102,11 @@ class _OrderHeadPageState extends State<OrderHeadPage> {
           ),
           onEditingComplete: () {
             focusPhone.requestFocus();
+          },
+          onChanged: (value) {
+            _addressController.text = value.toUpperCase();
+            _addressController.selection =
+                TextSelection.fromPosition(TextPosition(offset: _addressController.text.length));
           },
         ),
         const SizedBox(height: 10),
@@ -109,7 +123,22 @@ class _OrderHeadPageState extends State<OrderHeadPage> {
                 ),
                 inputFormatters: [
                   FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                  InputMasks.phoneMask(),
+                  /*
+                  TextInputFormatter.withFunction((oldValue, newValue) {
+                    if (newValue.text.length > 11) {
+                      return oldValue;
+                    }
+                    return newValue;
+                  }),
+                  */
                 ],
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Campo obrigatório';
+                  }
+                  return null;
+                },
                 onEditingComplete: () {
                   focusDate.requestFocus();
                 },
@@ -126,6 +155,7 @@ class _OrderHeadPageState extends State<OrderHeadPage> {
                 ),
                 inputFormatters: [
                   FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                  InputMasks.dateMask(),
                 ],
                 onEditingComplete: () {
                   focusPaymentCondition.requestFocus();
@@ -179,6 +209,7 @@ class _OrderHeadPageState extends State<OrderHeadPage> {
               onPressed: () {
                 debugPrint('Imprimir Pedido em PDF');
                 _itensList = _itemCubit.actualListItens;
+
                 final order = OrderEntity(
                   idOrder: Random().nextInt(1000).toString(),
                   listItemEntity: _itensList,
@@ -188,11 +219,40 @@ class _OrderHeadPageState extends State<OrderHeadPage> {
                   typePayment: _paymentConditionController.text,
                   createdAt: DateTime.now().toString(),
                   updatedAt: DateTime.now().toString(),
+                  totalOrder: _itemCubit.totalPriceOrder,
                 );
                 createPDFNewVersion(order);
               },
               icon: const Icon(Icons.print),
               label: const Text('Imprimir Pedido'),
+            ),
+            const SizedBox(width: 10),
+            BlocBuilder<ItemCubit, ItemStates>(
+              bloc: _itemCubit,
+              builder: (context, state) {
+                if (state is ItemSuccessState) {
+                  totalOrder = _itemCubit.totalPriceOrder;
+                }
+                return Text.rich(
+                  TextSpan(
+                    text: 'Total: ',
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: 'R\$ ${totalOrder.toStringAsFixed(2)}',
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
           ],
         ),
@@ -205,6 +265,7 @@ class _OrderHeadPageState extends State<OrderHeadPage> {
 Future<void> createPDF(OrderEntity args) async {
   final pdf = pw.Document();
   final font = await PdfGoogleFonts.nunitoExtraLight();
+
   pdf.addPage(
     pw.Page(
       build: (pw.Context context) => pw.Center(
@@ -270,7 +331,7 @@ Future<void> createPDF(OrderEntity args) async {
                 ),
               for (var item in args.listItemEntity.listItems)
                 pw.Text(
-                  item.purchasePrice.toString(),
+                  item.totalItem.toString(),
                   style: pw.TextStyle(font: font),
                 ),
             ]),
@@ -292,6 +353,8 @@ Future<void> createPDF(OrderEntity args) async {
 Future<void> createPDFNewVersion(OrderEntity args) async {
   final pdf = pw.Document();
   final font = await PdfGoogleFonts.nunitoExtraLight();
+  final _itemCubit = Modular.get<ItemCubit>();
+  final double subTotal = _itemCubit.totalPriceOrder;
 
   pdf.addPage(
     pw.MultiPage(
@@ -381,7 +444,7 @@ Future<void> createPDFNewVersion(OrderEntity args) async {
                 style: pw.TextStyle(font: font),
               ),
               pw.Text(
-                'Total',
+                'Total Item',
                 style: pw.TextStyle(font: font),
               ),
             ],
@@ -406,12 +469,20 @@ Future<void> createPDFNewVersion(OrderEntity args) async {
                   style: pw.TextStyle(font: font),
                 ),
                 pw.Text(
-                  item.purchasePrice.toString(),
+                  item.totalItem.toString(),
                   style: pw.TextStyle(font: font),
                 ),
               ],
             ),
         ]),
+        pw.Footer(
+          title: pw.Row(children: [
+            pw.Text(
+              'SUBTOTAL: ${subTotal.toStringAsFixed(2)}',
+              style: pw.TextStyle(font: font),
+            ),
+          ]),
+        ),
         pw.Footer(
           title: pw.Row(children: [
             pw.Text(
@@ -451,13 +522,13 @@ class WidgetBuildTableItens extends StatefulWidget {
 }
 
 class _WidgetBuildTableItensState extends State<WidgetBuildTableItens> {
-  late final ItemCubit _itemCubit;
+  late final ItemCubit itemCubit;
   late final ListItemEntity _itensList;
   @override
   void initState() {
     super.initState();
-    _itemCubit = Modular.get<ItemCubit>();
-    _itensList = _itemCubit.listItensEntity;
+    itemCubit = Modular.get<ItemCubit>();
+    _itensList = itemCubit.listItensEntity;
   }
 
   @override
@@ -489,7 +560,7 @@ class _WidgetBuildTableItensState extends State<WidgetBuildTableItens> {
               Text(item.descriptionPrice.toString()),
               Text(item.stock.toString()),
               Text(item.salePrice.toString()),
-              Text(item.purchasePrice.toString()),
+              Text(item.totalItem.toString()),
             ],
           ),
       ],

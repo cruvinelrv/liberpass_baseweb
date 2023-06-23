@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:liberpass_baseweb/app/modules/escape_manager/presentation/ui/pages/under_construction_page/under_construction_page.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/geremetrika_page/geremetrika_page.dart';
 import 'package:liberpass_baseweb/app/modules/central_base/sub_modules/wms/presentation/ui/pages/pages_item_management.dart';
 
@@ -23,6 +24,7 @@ class CentralBaseModule extends Module {
         ChildRoute('/wms/', child: (context, args) => const ItemPage()),
         ChildRoute('/geremetrika/', child: (context, args) => const GeremetrikaPage()),
         ChildRoute('/crm/', child: (context, args) => const PersonPage()),
+        ChildRoute('/under-construction/', child: (context, args) => const UnderConstructionPage()),
       ],
     )
   ];

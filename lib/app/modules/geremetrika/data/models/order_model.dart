@@ -10,6 +10,7 @@ class OrderModel extends OrderEntity {
     required super.createdAt,
     required super.updatedAt,
     required super.listItemEntity,
+    required super.totalOrder,
   });
   factory OrderModel.fromJson(Map<String, dynamic> json) {
     return OrderModel(
@@ -21,6 +22,7 @@ class OrderModel extends OrderEntity {
       typePayment: json['typePayment'],
       createdAt: json['created_at'],
       updatedAt: json['updated_at'],
+      totalOrder: json['totalOrder'],
     );
   }
 
@@ -33,5 +35,6 @@ class OrderModel extends OrderEntity {
         'typePayment': typePayment,
         'created_at': createdAt,
         'updated_at': updatedAt,
+        'totalOrder': totalOrder,
       };
 }

@@ -27,12 +27,16 @@ class ItemFlowEntity {
   final double? stockMaximum;
   final double? widthMeasure;
   final double? heightMeasure;
+  final double? calculateMeasure;
+  final double? billingMeasure;
   final String? unitMeasure;
   final String? supplier;
   final String? barCode;
   final String? barCodeInternal;
   final String? ncmCode;
   final bool isActivePrice;
+  final double? totalItem;
+  final double? quantityItem;
 
   const ItemFlowEntity({
     this.idItemFlow,
@@ -63,10 +67,14 @@ class ItemFlowEntity {
     required this.isActivePrice,
     this.widthMeasure,
     this.heightMeasure,
+    this.calculateMeasure,
+    this.billingMeasure,
     this.unitMeasure,
     this.barCode,
     this.barCodeInternal,
     this.ncmCode,
+    this.totalItem,
+    this.quantityItem,
   });
 
   Map<String, dynamic> toMap() {
@@ -95,12 +103,16 @@ class ItemFlowEntity {
     result['stockMaximum'] = stockMaximum;
     result['widthMeasure'] = widthMeasure;
     result['heightMeasure'] = heightMeasure;
+    result['calculateMeasure'] = calculateMeasure;
+    result['billingMeasure'] = billingMeasure;
     result['unitMeasure'] = unitMeasure;
     result['supplier'] = supplier;
     result['barCode'] = barCode;
     result['barCodeInternal'] = barCodeInternal;
     result['ncmCode'] = ncmCode;
     result['isActivePrice'] = isActivePrice;
+    result['totalItem'] = totalItem;
+    result['quantityItem'] = quantityItem;
 
     return result;
   }
@@ -131,12 +143,16 @@ class ItemFlowEntity {
       stockMaximum: map['stockMaximum'] as double?,
       widthMeasure: map['widthMeasure'] as double?,
       heightMeasure: map['heightMeasure'] as double?,
+      calculateMeasure: map['calculateMeasure'] as double?,
+      billingMeasure: map['billingMeasure'] as double?,
       unitMeasure: map['unitMeasure'] as String?,
       supplier: map['supplier'] as String?,
       barCode: map['barCode'] as String?,
       barCodeInternal: map['barCodeInternal'] as String?,
       ncmCode: map['ncmCode'] as String?,
       isActivePrice: map['isActivePrice'] as bool,
+      totalItem: map['totalItem'] as double?,
+      quantityItem: map['quantityItem'] as double?,
     );
   }
 
@@ -166,12 +182,16 @@ class ItemFlowEntity {
       'stockMaximum': stockMaximum,
       'widthMeasure': widthMeasure,
       'heightMeasure': heightMeasure,
+      'calculateMeasure': calculateMeasure,
+      'billingMeasure': billingMeasure,
       'unitMeasure': unitMeasure,
       'supplier': supplier,
       'barCode': barCode,
       'barCodeInternal': barCodeInternal,
       'ncmCode': ncmCode,
       'isActivePrice': isActivePrice,
+      'totalItem': totalItem,
+      'quantityItem': quantityItem,
     };
   }
 
@@ -201,12 +221,16 @@ class ItemFlowEntity {
       stockMaximum: json['stockMaximum'] as double?,
       widthMeasure: json['widthMeasure'] as double?,
       heightMeasure: json['heightMeasure'] as double?,
+      calculateMeasure: json['calculateMeasure'] as double?,
+      billingMeasure: json['billingMeasure'] as double?,
       unitMeasure: json['unitMeasure'] as String?,
       supplier: json['supplier'] as String?,
       barCode: json['barCode'] as String?,
       barCodeInternal: json['barCodeInternal'] as String?,
       ncmCode: json['ncmCode'] as String?,
       isActivePrice: json['isActivePrice'] as bool,
+      totalItem: json['totalItem'] as double?,
+      quantityItem: json['quantityItem'] as double?,
     );
   }
 }

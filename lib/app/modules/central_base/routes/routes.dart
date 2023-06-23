@@ -5,5 +5,5 @@ class CentralBaseRoutes {
   static get internalPage => '/central-base/internal-page';
   static get addItem => '/central-base/add-item';
   static get error => '/central-base/error';
-  static get underConstruction => '/central-base/under-construction';
+  static get underConstruction => '/under-construction';
 }
