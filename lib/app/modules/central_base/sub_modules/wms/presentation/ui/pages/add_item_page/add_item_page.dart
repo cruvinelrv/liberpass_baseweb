@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:liberpass_baseweb/app/modules/shared/enums/enum_unit_measure.dart';
 
+import '../../../../domain/entities/entities.dart';
 import '../../../../domain/entities/item_flow_entity.dart';
 
 class AddItemPage extends StatefulWidget {
@@ -29,8 +30,8 @@ class _AddItemPageState extends State<AddItemPage> {
   final TextEditingController _controllerCostPrice = TextEditingController();
   final TextEditingController _controllerPurchasePrice = TextEditingController();
   final TextEditingController _controllerIdItem = TextEditingController();
-  final TextEditingController _idPrecoController = TextEditingController();
-  final TextEditingController _descricaoPrecoController = TextEditingController();
+  final TextEditingController _controllerIdPrice = TextEditingController();
+  final TextEditingController _controllerDescriptionPrice = TextEditingController();
   final TextEditingController _controllerInternalCode = TextEditingController();
   final TextEditingController _controllerBrand = TextEditingController();
   final TextEditingController _controllerNcm = TextEditingController();
@@ -39,13 +40,126 @@ class _AddItemPageState extends State<AddItemPage> {
   final TextEditingController _controllerTaxClassification = TextEditingController();
   final TextEditingController _controllerCategory = TextEditingController();
   final TextEditingController _controllerBarCode = TextEditingController();
-
+  final TextEditingController _controllerStatus = TextEditingController();
   List<Map<String, dynamic>> listPrices = [];
+  late final FocusNode focus;
+  late final FocusNode focusInternalCode;
+  late final FocusNode focusDescriptionItem;
+  late final FocusNode focusBrand;
+  late final FocusNode focusOriginItem;
+  late final FocusNode focusTaxClassification;
+  late final FocusNode focusWeight;
+  late final FocusNode focusNcm;
+  late final FocusNode focusCategory;
+  late final FocusNode focusUnitMeasure;
+  late final FocusNode focusWidthMeasure;
+  late final FocusNode focusHeightMeasure;
+  late final FocusNode focusIdPrice;
+  late final FocusNode focusPurchasePrice;
+  late final FocusNode focusMarginCost;
+  late final FocusNode focusCostPrice;
+  late final FocusNode focusMarginProfit;
+  late final FocusNode focusSalePrice;
+  late final FocusNode focusDescriptionPrice;
+  late final FocusNode focusInternalCodePrice;
+  late final FocusNode focusBatch;
+  late final FocusNode focusGrid;
+  late final FocusNode focusStock;
+  late final FocusNode focusSupplier;
+  late final FocusNode focusStatus;
+  late final FocusNode focusAddButton;
+  late final FocusNode focusBarCode;
+
+  @override
+  void initState() {
+    super.initState();
+    focus = FocusNode();
+    focusInternalCode = FocusNode()..requestFocus();
+    focusDescriptionItem = FocusNode();
+    focusBrand = FocusNode();
+    focusOriginItem = FocusNode();
+    focusTaxClassification = FocusNode();
+    focusWeight = FocusNode();
+    focusNcm = FocusNode();
+    focusCategory = FocusNode();
+    focusUnitMeasure = FocusNode();
+    focusWidthMeasure = FocusNode();
+    focusHeightMeasure = FocusNode();
+    focusIdPrice = FocusNode();
+    focusPurchasePrice = FocusNode();
+    focusMarginCost = FocusNode();
+    focusCostPrice = FocusNode();
+    focusMarginProfit = FocusNode();
+    focusSalePrice = FocusNode();
+    focusDescriptionPrice = FocusNode();
+    focusInternalCodePrice = FocusNode();
+    focusBatch = FocusNode();
+    focusGrid = FocusNode();
+    focusStock = FocusNode();
+    focusSupplier = FocusNode();
+    focusStatus = FocusNode();
+    focusBarCode = FocusNode();
+    focusAddButton = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    focus.dispose();
+    focusInternalCode.dispose();
+    focusDescriptionItem.dispose();
+    focusBrand.dispose();
+    focusOriginItem.dispose();
+    focusTaxClassification.dispose();
+    focusWeight.dispose();
+    focusNcm.dispose();
+    focusCategory.dispose();
+    focusUnitMeasure.dispose();
+    focusWidthMeasure.dispose();
+    focusHeightMeasure.dispose();
+    focusIdPrice.dispose();
+    focusPurchasePrice.dispose();
+    focusMarginCost.dispose();
+    focusCostPrice.dispose();
+    focusMarginProfit.dispose();
+    focusSalePrice.dispose();
+    focusDescriptionPrice.dispose();
+    focusInternalCodePrice.dispose();
+    focusBatch.dispose();
+    focusGrid.dispose();
+    focusStock.dispose();
+    focusSupplier.dispose();
+    focusStatus.dispose();
+    focusBarCode.dispose();
+    focusAddButton.dispose();
+    super.dispose();
+  }
 
   void _adicionarItem() {
-    // Crie um mapa com os dados do novo item
+    //var ItemEntity item =
+    /*
+    ItemEntity(
+      idItem: _controllerIdItem.text,
+      internalCode: _controllerInternalCode.text,
+      idCorp: 1,
+      idCompanyCorp: 1,
+      descriptionItem: _controllerDescriptionItem.text,
+      unitMeasure: _controllerUnitMeasure.text,
+      nameBrand: _controllerBrand.text,
+      ncm: _controllerNcm.text,
+      status: 'Ativo',
+      weight: double.tryParse(_controllerWeight.text),
+      originItem: _controllerOrigin.text,
+      taxClassification: _controllerTaxClassification.text,
+      category: _controllerCategory.text,
+      createdAt: DateTime.now().toString(),
+      updatedAt: DateTime.now().toString(),
+      barCode: _controllerBarCode.text, //ok
+      listPrices: List.from(listPrices),
+    );
+    */
+    // Crie um mapa com os dados do novo item1
     Map<String, dynamic> novoItem = {
-      'idItem': _controllerIdItem.text,
+      'idItem': 1,
       'internalCode': _controllerInternalCode.text,
       'idCorp': 1,
       'idCompanyCorp': 1,
@@ -105,6 +219,7 @@ class _AddItemPageState extends State<AddItemPage> {
                         SizedBox(
                           width: 140,
                           child: TextFormField(
+                            focusNode: focusInternalCode,
                             controller: _controllerInternalCode,
                             decoration: const InputDecoration(
                               border: OutlineInputBorder(),
@@ -116,11 +231,15 @@ class _AddItemPageState extends State<AddItemPage> {
                               }
                               return null;
                             },
+                            onEditingComplete: () {
+                              focusDescriptionItem.requestFocus();
+                            },
                           ),
                         ),
                         const SizedBox(width: 8.0),
                         Expanded(
                           child: TextFormField(
+                            focusNode: focusDescriptionItem,
                             controller: _controllerDescriptionItem,
                             onChanged: (value) {
                               setState(() {
@@ -142,12 +261,39 @@ class _AddItemPageState extends State<AddItemPage> {
                               }
                               return null;
                             },
+                            onEditingComplete: () {
+                              focusStatus.requestFocus();
+                            },
+                          ),
+                        ),
+                        const SizedBox(width: 8.0),
+                        Expanded(
+                          child: TextFormField(
+                            focusNode: focusStatus,
+                            controller: _controllerStatus,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: 'Status',
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Por favor, informe a status do item';
+                              }
+                              if (value.length > 8) {
+                                return 'A descrição do item deve ter no máximo 8 caracteres';
+                              }
+                              return null;
+                            },
+                            onEditingComplete: () {
+                              focusBrand.requestFocus();
+                            },
                           ),
                         ),
                         const SizedBox(width: 8.0),
                         SizedBox(
                           width: 300,
                           child: TextFormField(
+                            focusNode: focusBrand,
                             controller: _controllerBrand,
                             decoration: const InputDecoration(
                               border: OutlineInputBorder(),
@@ -169,6 +315,9 @@ class _AddItemPageState extends State<AddItemPage> {
                               }
                               return null;
                             },
+                            onEditingComplete: () {
+                              focusOriginItem.requestFocus();
+                            },
                           ),
                         ),
                       ],
@@ -178,6 +327,7 @@ class _AddItemPageState extends State<AddItemPage> {
                       children: [
                         Expanded(
                           child: TextFormField(
+                            focusNode: focusOriginItem,
                             controller: _controllerOrigin,
                             decoration: const InputDecoration(
                               border: OutlineInputBorder(),
@@ -199,11 +349,15 @@ class _AddItemPageState extends State<AddItemPage> {
                               }
                               return null;
                             },
+                            onEditingComplete: () {
+                              focusTaxClassification.requestFocus();
+                            },
                           ),
                         ),
                         const SizedBox(width: 8.0),
                         Expanded(
                           child: TextFormField(
+                            focusNode: focusTaxClassification,
                             controller: _controllerTaxClassification,
                             decoration: const InputDecoration(
                               border: OutlineInputBorder(),
@@ -225,11 +379,15 @@ class _AddItemPageState extends State<AddItemPage> {
                               }
                               return null;
                             },
+                            onEditingComplete: () {
+                              focusWeight.requestFocus();
+                            },
                           ),
                         ),
                         const SizedBox(width: 8.0),
                         Expanded(
                           child: TextFormField(
+                            focusNode: focusWeight,
                             controller: _controllerWeight,
                             decoration: const InputDecoration(
                               border: OutlineInputBorder(),
@@ -241,11 +399,15 @@ class _AddItemPageState extends State<AddItemPage> {
                               }
                               return null;
                             },
+                            onEditingComplete: () {
+                              focusNcm.requestFocus();
+                            },
                           ),
                         ),
                         const SizedBox(width: 8.0),
                         Expanded(
                           child: TextFormField(
+                            focusNode: focusNcm,
                             controller: _controllerNcm,
                             decoration: const InputDecoration(
                               border: OutlineInputBorder(),
@@ -257,11 +419,15 @@ class _AddItemPageState extends State<AddItemPage> {
                               }
                               return null;
                             },
+                            onEditingComplete: () {
+                              focusCategory.requestFocus();
+                            },
                           ),
                         ),
                         const SizedBox(width: 8.0),
                         Expanded(
                           child: TextFormField(
+                            focusNode: focusCategory,
                             controller: _controllerCategory,
                             decoration: const InputDecoration(
                               border: OutlineInputBorder(),
@@ -283,78 +449,91 @@ class _AddItemPageState extends State<AddItemPage> {
                               }
                               return null;
                             },
+                            onEditingComplete: () {
+                              focusUnitMeasure.requestFocus();
+                            },
                           ),
                         ),
                       ],
                     ),
                     const SizedBox(height: 16.0),
-                    Visibility(
-                      visible: true,
-                      child: Column(
-                        children: [
-                          DropdownButtonFormField(
-                            isExpanded: true,
-                            isDense: true,
-                            itemHeight: 48.0,
-                            validator: (value) {
-                              if (value == null) {
-                                return 'Selecione uma Unidade de Medida';
-                              }
-                              return null;
-                            },
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'Unidade de Medida',
+                    Column(
+                      children: [
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: 300,
+                              child: DropdownButtonFormField(
+                                focusNode: focusUnitMeasure,
+                                isExpanded: true,
+                                isDense: true,
+                                itemHeight: 48.0,
+                                validator: (value) {
+                                  if (value == null) {
+                                    return 'Selecione uma Unidade de Medida';
+                                  }
+                                  return null;
+                                },
+                                decoration: const InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: 'Unidade de Medida',
+                                ),
+                                items: EnumUnitMeasure.values
+                                    .map((e) => DropdownMenuItem(
+                                          value: e.alias,
+                                          child: Text('${e.nameUnitMeasure} - ${e.alias}'),
+                                        ))
+                                    .toList(),
+                                onChanged: (value) {
+                                  _controllerUnitMeasure.text = value.toString();
+                                  focusWidthMeasure.requestFocus();
+                                },
+                              ),
                             ),
-                            items: EnumUnitMeasure.values
-                                .map((e) => DropdownMenuItem(
-                                      value: e.alias,
-                                      child: Text('${e.nameUnitMeasure} - ${e.alias}'),
-                                    ))
-                                .toList(),
-                            onChanged: (value) {
-                              _controllerUnitMeasure.text = value.toString();
-                            },
-                          ),
-                          const SizedBox(height: 16.0),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: TextFormField(
-                                  controller: _controllerWidthMeasure,
-                                  decoration: const InputDecoration(
-                                    border: OutlineInputBorder(),
-                                    labelText: 'Largura',
-                                  ),
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Por favor, informe a largura';
-                                    }
-                                    return null;
-                                  },
+                            const SizedBox(width: 8.0),
+                            Expanded(
+                              child: TextFormField(
+                                focusNode: focusWidthMeasure,
+                                controller: _controllerWidthMeasure,
+                                decoration: const InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: 'Largura',
                                 ),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Por favor, informe a largura';
+                                  }
+                                  return null;
+                                },
+                                onEditingComplete: () {
+                                  focusHeightMeasure.requestFocus();
+                                },
                               ),
-                              const SizedBox(width: 8.0),
-                              Expanded(
-                                child: TextFormField(
-                                  controller: _controllerHeightMeasure,
-                                  decoration: const InputDecoration(
-                                    border: OutlineInputBorder(),
-                                    labelText: 'Altura',
-                                  ),
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Por favor, informe a altura';
-                                    }
-                                    return null;
-                                  },
+                            ),
+                            const SizedBox(width: 8.0),
+                            Expanded(
+                              child: TextFormField(
+                                focusNode: focusHeightMeasure,
+                                controller: _controllerHeightMeasure,
+                                decoration: const InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: 'Altura',
                                 ),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Por favor, informe a altura';
+                                  }
+                                  return null;
+                                },
+                                onEditingComplete: () {
+                                  focusIdPrice.requestFocus();
+                                },
                               ),
-                            ],
-                          ),
-                          const SizedBox(height: 16.0),
-                        ],
-                      ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 16.0),
+                      ],
                     ),
                     Column(
                       children: [
@@ -362,7 +541,8 @@ class _AddItemPageState extends State<AddItemPage> {
                           children: [
                             Expanded(
                               child: TextFormField(
-                                controller: _idPrecoController,
+                                focusNode: focusIdPrice,
+                                controller: _controllerIdPrice,
                                 decoration: const InputDecoration(
                                   border: OutlineInputBorder(),
                                   labelText: 'Identificador do Preço',
@@ -373,11 +553,15 @@ class _AddItemPageState extends State<AddItemPage> {
                                   }
                                   return null;
                                 },
+                                onEditingComplete: () {
+                                  focusPurchasePrice.requestFocus();
+                                },
                               ),
                             ),
                             const SizedBox(width: 8.0),
                             Expanded(
                               child: TextFormField(
+                                focusNode: focusPurchasePrice,
                                 controller: _controllerPurchasePrice,
                                 decoration: const InputDecoration(
                                   border: OutlineInputBorder(),
@@ -392,11 +576,15 @@ class _AddItemPageState extends State<AddItemPage> {
                                   }
                                   return null;
                                 },
+                                onEditingComplete: () {
+                                  focusMarginCost.requestFocus();
+                                },
                               ),
                             ),
                             const SizedBox(width: 8.0),
                             Expanded(
                               child: TextFormField(
+                                focusNode: focusMarginCost,
                                 controller: _controllerMarginCost,
                                 decoration: const InputDecoration(
                                   border: OutlineInputBorder(),
@@ -411,11 +599,15 @@ class _AddItemPageState extends State<AddItemPage> {
                                   }
                                   return null;
                                 },
+                                onEditingComplete: () {
+                                  focusCostPrice.requestFocus();
+                                },
                               ),
                             ),
                             const SizedBox(width: 8.0),
                             Expanded(
                               child: TextFormField(
+                                focusNode: focusCostPrice,
                                 controller: _controllerCostPrice,
                                 decoration: const InputDecoration(
                                   border: OutlineInputBorder(),
@@ -430,11 +622,15 @@ class _AddItemPageState extends State<AddItemPage> {
                                   }
                                   return null;
                                 },
+                                onEditingComplete: () {
+                                  focusMarginProfit.requestFocus();
+                                },
                               ),
                             ),
                             const SizedBox(width: 8.0),
                             Expanded(
                               child: TextFormField(
+                                focusNode: focusMarginProfit,
                                 controller: _controllerMarginProfit,
                                 decoration: const InputDecoration(
                                   border: OutlineInputBorder(),
@@ -449,11 +645,15 @@ class _AddItemPageState extends State<AddItemPage> {
                                   }
                                   return null;
                                 },
+                                onEditingComplete: () {
+                                  focusSalePrice.requestFocus();
+                                },
                               ),
                             ),
                             const SizedBox(width: 8.0),
                             Expanded(
                               child: TextFormField(
+                                focusNode: focusSalePrice,
                                 controller: _controllerSalePrice,
                                 decoration: const InputDecoration(
                                   border: OutlineInputBorder(),
@@ -468,12 +668,16 @@ class _AddItemPageState extends State<AddItemPage> {
                                   }
                                   return null;
                                 },
+                                onEditingComplete: () {
+                                  focusDescriptionPrice.requestFocus();
+                                },
                               ),
                             ),
                             const SizedBox(width: 8.0),
                             Expanded(
                               child: TextFormField(
-                                controller: _descricaoPrecoController,
+                                focusNode: focusDescriptionPrice,
+                                controller: _controllerDescriptionPrice,
                                 decoration: const InputDecoration(
                                   border: OutlineInputBorder(),
                                   labelText: 'Descrição do Preço',
@@ -484,6 +688,9 @@ class _AddItemPageState extends State<AddItemPage> {
                                   }
                                   return null;
                                 },
+                                onEditingComplete: () {
+                                  focusInternalCodePrice.requestFocus();
+                                },
                               ),
                             ),
                           ],
@@ -493,7 +700,8 @@ class _AddItemPageState extends State<AddItemPage> {
                           children: [
                             Expanded(
                               child: TextFormField(
-                                controller: _idPrecoController,
+                                focusNode: focusInternalCodePrice,
+                                controller: _controllerInternalCode,
                                 decoration: const InputDecoration(
                                   border: OutlineInputBorder(),
                                   labelText: 'Codigo Interno',
@@ -507,10 +715,14 @@ class _AddItemPageState extends State<AddItemPage> {
                                   }
                                   return null;
                                 },
+                                onEditingComplete: () {
+                                  focusBatch.requestFocus();
+                                },
                               ),
                             ),
                             Expanded(
                               child: TextFormField(
+                                focusNode: focusBatch,
                                 controller: _controllerBatch,
                                 decoration: const InputDecoration(
                                   border: OutlineInputBorder(),
@@ -525,11 +737,15 @@ class _AddItemPageState extends State<AddItemPage> {
                                   }
                                   return null;
                                 },
+                                onEditingComplete: () {
+                                  focusGrid.requestFocus();
+                                },
                               ),
                             ),
                             const SizedBox(width: 8.0),
                             Expanded(
                               child: TextFormField(
+                                focusNode: focusGrid,
                                 controller: _controllerGrid,
                                 decoration: const InputDecoration(
                                   border: OutlineInputBorder(),
@@ -544,11 +760,15 @@ class _AddItemPageState extends State<AddItemPage> {
                                   }
                                   return null;
                                 },
+                                onEditingComplete: () {
+                                  focusStock.requestFocus();
+                                },
                               ),
                             ),
                             const SizedBox(width: 8.0),
                             Expanded(
                               child: TextFormField(
+                                focusNode: focusStock,
                                 controller: _controllerStock,
                                 decoration: const InputDecoration(
                                   border: OutlineInputBorder(),
@@ -563,11 +783,15 @@ class _AddItemPageState extends State<AddItemPage> {
                                   }
                                   return null;
                                 },
+                                onEditingComplete: () {
+                                  focusSupplier.requestFocus();
+                                },
                               ),
                             ),
                             const SizedBox(width: 8.0),
                             Expanded(
                               child: TextFormField(
+                                focusNode: focusSupplier,
                                 controller: _controllerSupplier,
                                 decoration: const InputDecoration(
                                   border: OutlineInputBorder(),
@@ -577,47 +801,55 @@ class _AddItemPageState extends State<AddItemPage> {
                                   if (value!.isEmpty) {
                                     return 'Campo obrigatório';
                                   }
-
                                   return null;
+                                },
+                                onEditingComplete: () {
+                                  focusAddButton.requestFocus();
                                 },
                               ),
                             ),
                           ],
                         ),
                         IconButton(
+                          focusNode: focusAddButton,
                           icon: const Icon(Icons.add),
                           onPressed: () {
                             final itemFlow = ItemFlowEntity(
-                              costPrice: double.parse(_controllerCostPrice.text),
-                              descriptionPrice: _descricaoPrecoController.text,
-                              idItemFlow: int.parse(_idPrecoController.text),
-                              isActivePrice: true,
-                              idCompanyCorp: 1,
-                              createdAt: Timestamp.now(),
-                              updatedAt: Timestamp.now(),
-                              idCorp: 1,
-                              purchasePrice: double.parse(_controllerCostPrice.text),
-                              salePrice: double.parse(_controllerSalePrice.text),
-                              unitMeasure: _controllerUnitMeasure.text,
-                              barCode: '',
-                              barCodeInternal: '',
-                              dateExpiration: '',
-                              dateFabrication: '',
-                              gridType: _controllerGrid.text,
-                              heightMeasure: double.parse(_controllerHeightMeasure.text),
-                              widthMeasure: double.parse(_controllerWidthMeasure.text),
-                              internalCode: '',
-                              itemBatch: _controllerBatch.text,
-                              marginCost: double.parse(_controllerMarginProfit.text),
-                              margingProfit: double.parse(_controllerMarginProfit.text),
-                              ncmCode: '',
-                              stock: double.parse(_controllerStock.text),
-                              stockAvailable: double.parse(_controllerStock.text),
+                              createdAt: Timestamp.now(), //ok
+                              updatedAt: Timestamp.now(), //ok
+                              isActivePrice: true, //ok
+                              idCompanyCorp: 1, //ok
+                              idCorp: 1, //ok
+                              idItemFlow: 1,
+                              purchasePrice: double.parse(_controllerCostPrice.text), //ok
+                              marginCost: double.parse(_controllerMarginProfit.text), //ok
+                              costPrice: double.parse(_controllerCostPrice.text), //ok
+                              marginProfit: double.parse(_controllerMarginProfit.text), //ok
+                              salePrice: double.parse(_controllerSalePrice.text), //ok
+                              descriptionPrice: _controllerDescriptionPrice.text, //ok
+                              unitMeasure: _controllerUnitMeasure.text, //ok
+                              barCode: '', //ok
+                              barCodeInternal: '', //ok
+                              dateExpiration: '', //ok
+                              dateFabrication: '', //ok
+                              gridType: _controllerGrid.text, //ok
+                              heightMeasure: double.parse(_controllerHeightMeasure.text), //ok
+                              widthMeasure: double.parse(_controllerWidthMeasure.text), //ok
+                              internalCode: '', //ok
+                              itemBatch: _controllerBatch.text, //ok
+                              ncmCode: '', //ok
+                              stock: double.parse(_controllerStock.text), //ok
+                              stockAvailable: double.parse(_controllerStock.text), //ok
                               stockDamaged: 0,
                               stockMaximum: 0,
                               stockMinimum: 0,
                               stockReservation: 0,
                               supplier: _controllerSupplier.text,
+                              //adicionar os campos abaixo no formulario
+                              quantityItem: 0,
+                              calculateMeasure: 0,
+                              billingMeasure: 0,
+                              totalItem: 0,
                             );
                             _novoAdicionarPreco(itemFlow);
                             if (_formCadItemKey.currentState!.validate()) {}

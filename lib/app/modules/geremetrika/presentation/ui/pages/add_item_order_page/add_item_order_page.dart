@@ -558,7 +558,7 @@ class _AddItemOrderPageState extends State<AddItemOrderPage> {
                                       internalCode: '',
                                       itemBatch: '',
                                       marginCost: 0,
-                                      margingProfit: 0,
+                                      marginProfit: 0,
                                       ncmCode: '',
                                       stock: double.parse(_controllerItemQuantity.text),
                                       stockAvailable: double.parse(_controllerItemQuantity.text),

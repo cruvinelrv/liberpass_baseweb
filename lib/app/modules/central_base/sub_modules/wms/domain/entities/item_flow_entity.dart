@@ -13,7 +13,7 @@ class ItemFlowEntity {
   final double costPrice;
   final double purchasePrice;
   final double? marginCost;
-  final double? margingProfit;
+  final double? marginProfit;
   final String descriptionPrice;
   final Timestamp? createdAt;
   final Timestamp? updatedAt;
@@ -51,7 +51,7 @@ class ItemFlowEntity {
     required this.costPrice,
     required this.purchasePrice,
     this.marginCost,
-    this.margingProfit,
+    this.marginProfit,
     required this.descriptionPrice,
     required this.createdAt,
     this.updatedAt,
@@ -89,7 +89,7 @@ class ItemFlowEntity {
     result['costPrice'] = costPrice;
     result['purchasePrice'] = purchasePrice;
     result['marginCost'] = marginCost;
-    result['margingProfit'] = margingProfit;
+    result['marginProfit'] = marginProfit;
     result['descriptionPrice'] = descriptionPrice;
     result['createdAt'] = createdAt;
     result['updatedAt'] = updatedAt;
@@ -129,7 +129,7 @@ class ItemFlowEntity {
       costPrice: map['costPrice'] as double,
       purchasePrice: map['purchasePrice'] as double,
       marginCost: map['marginCost'] as double?,
-      margingProfit: map['margingProfit'] as double?,
+      marginProfit: map['marginProfit'] as double?,
       descriptionPrice: map['descriptionPrice'] as String,
       createdAt: map['createdAt'] as Timestamp?,
       updatedAt: map['updatedAt'] as Timestamp?,
@@ -168,7 +168,7 @@ class ItemFlowEntity {
       'costPrice': costPrice,
       'purchasePrice': purchasePrice,
       'marginCost': marginCost,
-      'margingProfit': margingProfit,
+      'marginProfit': marginProfit,
       'descriptionPrice': descriptionPrice,
       'createdAt': createdAt,
       'updatedAt': updatedAt,
@@ -207,7 +207,7 @@ class ItemFlowEntity {
       costPrice: json['costPrice'] as double,
       purchasePrice: json['purchasePrice'] as double,
       marginCost: json['marginCost'] as double?,
-      margingProfit: json['margingProfit'] as double?,
+      marginProfit: json['marginProfit'] as double?,
       descriptionPrice: json['descriptionPrice'] as String,
       createdAt: json['createdAt'] as Timestamp?,
       updatedAt: json['updatedAt'] as Timestamp?,

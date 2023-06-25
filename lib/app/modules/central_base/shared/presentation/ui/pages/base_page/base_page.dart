@@ -31,17 +31,18 @@ class _BasePageState extends State<BasePage> {
               child: Column(
                 children: [
                   ListTile(
-                    enabled: false,
+                    enabled: true,
                     title: const Text('Estoque'),
                     onTap: () {
-                      MaterialPageRoute(builder: (context) => const UnderConstructionPage());
+                      Modular.to.navigate('/central-base/wms/');
+                      //MaterialPageRoute(builder: (context) => const UnderConstructionPage());
                     },
                   ),
                   ListTile(
-                    enabled: false,
+                    enabled: true,
                     title: const Text('Pessoas'),
                     onTap: () {
-                      Modular.to.navigate('/under_construction');
+                      Modular.to.navigate('/central-base/crm/');
                       _updatePageName('Pessoas');
                     },
                   ),
