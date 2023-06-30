@@ -1,0 +1,1 @@
+MES (Manufacturing Execution System) - Sistema de execução da manufatura, utilizado para controlar e monitorar as operações de produção em tempo real.

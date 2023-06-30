@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:liberpass_baseweb/app/modules/central_base/sub_modules/crm/domain/entities/person_address_entity.dart';
-import 'package:liberpass_baseweb/app/modules/central_base/sub_modules/wms/domain/entities/entities.dart';
+import 'package:liberpass_baseweb/app/modules/central_base/sub_modules/scm/domain/entities/entities.dart';
 
 import '../../../../domain/entities/person_entity.dart';
 

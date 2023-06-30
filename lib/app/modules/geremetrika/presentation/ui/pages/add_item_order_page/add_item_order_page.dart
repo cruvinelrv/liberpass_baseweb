@@ -10,7 +10,7 @@ import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/cubits
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/cubits/item_cubit/states/states.dart';
 import 'package:liberpass_baseweb/app/modules/shared/enums/enum_unit_measure.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import '../../../../../central_base/sub_modules/wms/domain/entities/entities.dart';
+import '../../../../../central_base/sub_modules/scm/domain/entities/entities.dart';
 
 class AddItemOrderPage extends StatefulWidget {
   const AddItemOrderPage({Key? key}) : super(key: key);

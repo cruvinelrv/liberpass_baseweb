@@ -7,7 +7,7 @@ import 'package:liberpass_baseweb/app/modules/geremetrika/domain/entities/list_i
 import 'package:liberpass_baseweb/app/modules/geremetrika/domain/entities/order_entity.dart';
 import 'package:liberpass_baseweb/app/modules/shared/extensions/double_extensions.dart';
 import 'package:liberpass_baseweb/app/modules/shared/extensions/extensions.dart';
-import '../../../../../central_base/sub_modules/wms/domain/entities/item_flow_entity.dart';
+import '../../../../../central_base/sub_modules/scm/domain/entities/item_flow_entity.dart';
 import 'states/states.dart';
 
 class ItemCubit extends Cubit<ItemStates> {

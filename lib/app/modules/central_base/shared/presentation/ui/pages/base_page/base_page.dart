@@ -49,7 +49,7 @@ class _BasePageState extends State<BasePage> {
                   ListTile(
                     title: const Text('Pedido'),
                     onTap: () {
-                      Modular.to.navigate('/central-base/geremetrika');
+                      Modular.to.navigate('/central-base/order/');
                       _updatePageName('Pedido');
                     },
                   ),

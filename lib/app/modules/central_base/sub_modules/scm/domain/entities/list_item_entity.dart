@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import '../../../central_base/sub_modules/scm/domain/entities/item_flow_entity.dart';
+import 'item_flow_entity.dart';
 
 class ListItemEntity {
   final List<ItemFlowEntity> listItems;

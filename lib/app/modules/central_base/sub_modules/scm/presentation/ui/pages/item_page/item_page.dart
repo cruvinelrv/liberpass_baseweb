@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:liberpass_baseweb/app/modules/central_base/sub_modules/wms/domain/entities/entities.dart';
+import 'package:liberpass_baseweb/app/modules/central_base/sub_modules/scm/domain/entities/entities.dart';
 
 class ItemPage extends StatefulWidget {
   const ItemPage({super.key});
