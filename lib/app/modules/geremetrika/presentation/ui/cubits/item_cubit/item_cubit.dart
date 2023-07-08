@@ -98,6 +98,7 @@ class ItemCubit extends Cubit<ItemStates> {
     totalMetrosQuadrados = ((widthMeasure * heightMeasure) / 1000000);
     debugPrint('Medida para faturamento em metros quadrados: $totalM2');
     debugPrint('Medida Real em metros quadrados: $totalMetrosQuadrados');
+    unitMeasure = 'M2';
     emit(const ItemCalculateState());
   }
 
@@ -107,7 +108,7 @@ class ItemCubit extends Cubit<ItemStates> {
     realLinearMeterPerimeter = ((widthMeasure + heightMeasure) * 2) / 1000;
     double widthRounded = ((widthMeasure / 50).ceil() * 50);
     double heightRounded = ((heightMeasure / 50).ceil() * 50);
-
+    unitMeasure = 'M';
     linearMeterPerimeterBilling = ((widthRounded + heightRounded) * 2) / 1000;
     emit(const ItemCalculateState());
   }

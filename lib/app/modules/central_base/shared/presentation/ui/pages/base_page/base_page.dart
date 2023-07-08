@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:liberpass_baseweb/app/modules/escape_manager/presentation/ui/pages/under_construction_page/under_construction_page.dart';
+
+import '../../../../../../auth_manager/login/presentation/cubits/auth_cubit/auth_cubit.dart';
+import '../../../../../../auth_manager/shared/session/session_manager.dart';
 
 class BasePage extends StatefulWidget {
   const BasePage({Key? key}) : super(key: key);
@@ -11,11 +14,20 @@ class BasePage extends StatefulWidget {
 
 class _BasePageState extends State<BasePage> {
   late String pageName;
+  late final AuthCubit _authCubit;
+  late final SessionManager _sessionManager;
 
   @override
   void initState() {
     super.initState();
     pageName = 'Liberpass 0.1.1';
+    _authCubit = Modular.get<AuthCubit>();
+    _sessionManager = Modular.get<SessionManager>();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
@@ -34,8 +46,7 @@ class _BasePageState extends State<BasePage> {
                     enabled: true,
                     title: const Text('Estoque'),
                     onTap: () {
-                      Modular.to.navigate('/central-base/wms/');
-                      //MaterialPageRoute(builder: (context) => const UnderConstructionPage());
+                      Modular.to.navigate('/central-base/scm/');
                     },
                   ),
                   ListTile(
@@ -46,10 +57,21 @@ class _BasePageState extends State<BasePage> {
                       _updatePageName('Pessoas');
                     },
                   ),
+                  Visibility(
+                    visible: true,
+                    child: ListTile(
+                      enabled: true,
+                      title: const Text('Pedido'),
+                      onTap: () {
+                        Modular.to.navigate('/central-base/order/');
+                        _updatePageName('Pedido');
+                      },
+                    ),
+                  ),
                   ListTile(
                     title: const Text('Pedido'),
                     onTap: () {
-                      Modular.to.navigate('/central-base/order/');
+                      Modular.to.navigate('/central-base/geremetrika/');
                       _updatePageName('Pedido');
                     },
                   ),
@@ -76,26 +98,44 @@ class _BasePageState extends State<BasePage> {
             child: ListView(
               children: [
                 ListTile(
-                  title: const Text('Page 1'),
+                  title: const Text('Produtos'),
                   onTap: () {
-                    Modular.to.navigate('/internal_page');
-                    _updatePageName('Page 1');
+                    Modular.to.navigate('/central-base/scm/');
+                    _updatePageName('Produtos');
                     Navigator.pop(context);
                   },
                 ),
                 ListTile(
-                  title: const Text('Page 2'),
+                  title: const Text('Geremetrika'),
                   onTap: () {
-                    Modular.to.navigate('/geremetrika');
-                    _updatePageName('Page 2');
+                    Modular.to.navigate('/central-base/geremetrika');
+                    _updatePageName('Geremetrika');
                     Navigator.pop(context);
                   },
                 ),
                 ListTile(
-                  title: const Text('Page 3'),
+                  title: const Text('Pessoas'),
                   onTap: () {
-                    Modular.to.navigate('/page3');
-                    _updatePageName('Page 3');
+                    Modular.to.navigate('/central-base/crm/');
+                    _updatePageName('Pessoas');
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  title: const Text('Pedido'),
+                  onTap: () {
+                    Modular.to.navigate('/central-base/order/');
+                    _updatePageName('Pedido');
+                    Navigator.pop(context);
+                  },
+                ),
+                const Divider(
+                  thickness: 2,
+                ),
+                ListTile(
+                  title: const Text('Sair'),
+                  onTap: () {
+                    Modular.to.navigate('/login');
                     Navigator.pop(context);
                   },
                 ),
@@ -105,7 +145,36 @@ class _BasePageState extends State<BasePage> {
         : null;
 
     return Scaffold(
-      appBar: AppBar(title: Text(pageName)),
+      appBar: AppBar(
+        title: Row(
+          children: [
+            Text(pageName),
+            const SizedBox(
+              width: 10,
+            ),
+            BlocBuilder<AuthCubit, bool>(
+              bloc: _authCubit,
+              builder: (context, state) {
+                if (state) {
+                  return StreamBuilder<int>(
+                    stream: _sessionManager.sessionStream,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        final sessionDuration = snapshot.data!;
+                        return Text('Tempo de sessão: $sessionDuration segundos');
+                      } else {
+                        return const Text('Nenhuma sessão ativa');
+                      }
+                    },
+                  );
+                } else {
+                  return const Text('Nenhuma sessão ativa');
+                }
+              },
+            ),
+          ],
+        ),
+      ),
       drawer: drawer,
       body: Row(
         children: [

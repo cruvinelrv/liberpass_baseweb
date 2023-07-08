@@ -74,6 +74,7 @@ class _AddItemOrderPageState extends State<AddItemOrderPage> {
     _controllerHeightMeasure.clear();
     _controllerBillingMeasure.clear();
     _controllerCalculateMeasure.clear();
+    _itemCubit.backToInitialState();
   }
 
   @override
@@ -122,7 +123,7 @@ class _AddItemOrderPageState extends State<AddItemOrderPage> {
             metroQuadradoFaturamento = _itemCubit.measureMeterBilling;
             metroLinearFaturamento = _itemCubit.linearMeterPerimeterBilling;
             totalPerimetroMetroLinear = _itemCubit.realLinearMeterPerimeter;
-            if (totalMetroQuadrado == 0) {
+            if (EnumUnitMeasure.M.alias == _itemCubit.unitMeasure) {
               _controllerCalculateMeasure.text = totalPerimetroMetroLinear.toStringAsFixed(2);
               _controllerBillingMeasure.text = metroLinearFaturamento.toStringAsFixed(2);
             } else {

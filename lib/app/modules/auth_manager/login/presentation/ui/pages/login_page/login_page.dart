@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:liberpass_baseweb/app/modules/auth_manager/login/presentation/cubits/auth_cubit/auth_cubit.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -12,6 +14,21 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _corporationController = TextEditingController();
+  late final AuthCubit _authCubit;
+
+  @override
+  void initState() {
+    super.initState();
+    _authCubit = Modular.get<AuthCubit>();
+  }
+
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    _passwordController.dispose();
+    _corporationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,6 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                   case 'PREMIER':
                     if (username == 'ADMIN' && password == '123456' && corporation == 'PREMIER') {
                       // Login bem-sucedido
+                      _authCubit.startSession();
                       Navigator.pushNamed(context, '/central-base');
                     } else {
                       // Login inválido
@@ -91,6 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                   case 'INATOS':
                     if (username == 'VINICIUS' && password == '1803' && corporation == 'INATOS') {
                       // Login bem-sucedido
+                      _authCubit.startSession();
                       Navigator.pushNamed(context, '/central-base');
                     } else {
                       // Login inválido

@@ -6,4 +6,5 @@ class CentralBaseRoutes {
   static get addItem => '/central-base/add-item';
   static get error => '/central-base/error';
   static get underConstruction => '/under-construction';
+  static get permissionDenied => '/central-base/denied';
 }
