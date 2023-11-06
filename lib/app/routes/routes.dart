@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/domain/entities/order_entity.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/close_order_page/close_order_page.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/pdf_order_page/pdf_order_page.dart';
+import 'package:liberpass_baseweb/app/modules/onboarding/presentation/ui/pages/onboarding_page.dart';
 
 import '../modules/auth_manager/login/presentation/ui/pages/login_page/login_page.dart';
 import '../modules/escape_manager/presentation/ui/pages/error_page/error_page.dart';
@@ -38,6 +39,10 @@ class Routes {
       case '/login_page':
         return MaterialPageRoute(
           builder: (context) => const LoginPage(),
+        );
+      case '/onboarding':
+        return MaterialPageRoute(
+          builder: (context) => const OnboardingPage(),
         );
       default:
         return MaterialPageRoute(

@@ -9,6 +9,7 @@ import 'package:liberpass_baseweb/app/modules/central_base/sub_modules/scm/prese
 import 'package:liberpass_baseweb/app/modules/escape_manager/presentation/ui/pages/permission_denied_page/permission_denied_page.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/cubits/item_cubit/item_cubit.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/geremetrika_page/geremetrika_page.dart';
+import 'package:liberpass_baseweb/app/modules/onboarding/onboarding_module.dart';
 
 import 'auth_manager/auth_manager_module.dart';
 import 'auth_manager/login/presentation/ui/pages/login_page/login_page.dart';
@@ -29,9 +30,12 @@ class AppModule extends Module {
     Bind.singleton((i) => AuthGuard()),
     Bind.singleton<AuthCubit>((i) => AuthCubit(i.get<SessionManager>())),
     Bind.singleton<SessionManager>((i) => SessionManager()),
-    Bind<ItemCubit>((i) => ItemCubit(), onDispose: (cubit) async => cubit.close()),
-    Bind<MenuCubit>((i) => MenuCubit(), onDispose: (cubit) async => cubit.close()),
-    Bind<ItemPageCubit>((i) => ItemPageCubit(), onDispose: (cubit) async => cubit.close()),
+    Bind<ItemCubit>((i) => ItemCubit(),
+        onDispose: (cubit) async => cubit.close()),
+    Bind<MenuCubit>((i) => MenuCubit(),
+        onDispose: (cubit) async => cubit.close()),
+    Bind<ItemPageCubit>((i) => ItemPageCubit(),
+        onDispose: (cubit) async => cubit.close()),
   ];
 
   @override
@@ -39,19 +43,25 @@ class AppModule extends Module {
     ModuleRoute(Modular.initialRoute, module: LandingModule()),
     ModuleRoute('auth-manager', module: AuthManagerModule()),
     ModuleRoute('/central-base', module: CentralBaseModule()),
-    ChildRoute('/base-page', child: (context, args) => const BasePage(), children: [
-      ChildRoute('/internal-page',
-          child: (context, args) => const InternalPage(
-                title: 'title',
-                color: Colors.red,
-              )),
-      ChildRoute('/geremetrika', child: (context, args) => const GeremetrikaPage()),
-      ChildRoute('/order', child: (context, args) => const OrderPage()),
-      ChildRoute('/scm', child: (context, args) => const ItemPage()),
-      ChildRoute('/crm', child: (context, args) => const PersonPage()),
-      ChildRoute('/under-construction', child: (context, args) => const UnderConstructionPage()),
-    ]),
-    ChildRoute('/liberpass-info', child: (context, args) => const LiberpassInfoPage()),
+    ModuleRoute('/onboarding', module: OnboardingModule()),
+    ChildRoute('/base-page',
+        child: (context, args) => const BasePage(),
+        children: [
+          ChildRoute('/internal-page',
+              child: (context, args) => const InternalPage(
+                    title: 'title',
+                    color: Colors.red,
+                  )),
+          ChildRoute('/geremetrika',
+              child: (context, args) => const GeremetrikaPage()),
+          ChildRoute('/order', child: (context, args) => const OrderPage()),
+          ChildRoute('/scm', child: (context, args) => const ItemPage()),
+          ChildRoute('/crm', child: (context, args) => const PersonPage()),
+          ChildRoute('/under-construction',
+              child: (context, args) => const UnderConstructionPage()),
+        ]),
+    ChildRoute('/liberpass-info',
+        child: (context, args) => const LiberpassInfoPage()),
     ChildRoute('/login', child: (context, args) => const LoginPage()),
     ChildRoute(
       '/geremetrika',
@@ -61,12 +71,15 @@ class AppModule extends Module {
     ChildRoute('/add-item', child: (context, args) => const AddItemPage()),
     ChildRoute('/order-page', child: (context, args) => const OrderPage()),
     ChildRoute('/add-prices', child: (context, args) => const AddPricesPage()),
-    ChildRoute('/upload-itens', child: (context, args) => const UploadItensPage()),
+    ChildRoute('/upload-itens',
+        child: (context, args) => const UploadItensPage()),
     ChildRoute('/item', child: (context, args) => const ItemPage()),
     ChildRoute('/error', child: (context, args) => const ErrorPage()),
-    ChildRoute('/under-construction', child: (context, args) => const UnderConstructionPage()),
+    ChildRoute('/under-construction',
+        child: (context, args) => const UnderConstructionPage()),
     ChildRoute('/crm', child: (context, args) => const PersonPage()),
     ChildRoute('/add-person', child: (context, args) => const AddPersonPage()),
-    ChildRoute('/permission-denied', child: (context, args) => const PermissionDeniedPage()),
+    ChildRoute('/permission-denied',
+        child: (context, args) => const PermissionDeniedPage()),
   ];
 }
