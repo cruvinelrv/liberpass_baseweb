@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class StepCitiesPage extends StatefulWidget {
   const StepCitiesPage({super.key});
@@ -119,8 +120,7 @@ class _StepCitiesPageState extends State<StepCitiesPage> {
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               fixedSize: const Size(100, 50),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10))),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
                           onPressed: () {
                             // Implementar ação para voltar
                           },
@@ -130,12 +130,11 @@ class _StepCitiesPageState extends State<StepCitiesPage> {
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             fixedSize: const Size(100, 50),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                           ),
                           onPressed: (errorText.isEmpty)
                               ? () {
-                                  // Implementar ação para avançar
+                                  Modular.to.navigate('/onboarding/basic_profile');
                                 }
                               : null,
                           child: const Text('next_button_label').tr(),
@@ -162,8 +161,7 @@ class _StepCitiesPageState extends State<StepCitiesPage> {
             value: context.locale,
             onChanged: (newLocale) {
               _changeLanguage(newLocale!);
-              Navigator.of(context)
-                  .pop(); // Feche o diálogo após a seleção de idioma.
+              Navigator.of(context).pop(); // Feche o diálogo após a seleção de idioma.
             },
             items: const [
               DropdownMenuItem(
