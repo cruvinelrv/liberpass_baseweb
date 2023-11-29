@@ -7,7 +7,6 @@ import 'firebase_options.dart';
 class ApplicationConfig {
   Future<void> configureApp() async {
     WidgetsFlutterBinding.ensureInitialized();
-    //initializeDateFormatting('pt_BR', '');
     await _firebaseCoreConfig();
   }
 }

@@ -163,7 +163,7 @@ extension StringExtensions on String {
   String applyPhoneMask() {
     return replaceAllMapped(RegExp(r'(\d{2})(\d{4,5})(\d{4})'), (match) => '(${match[1]}) ${match[2]}-${match[3]}');
   }
-
+  
   removePhoneMask() {
     return replaceAll(RegExp(r'[^\w\s]+'), '');
   }
