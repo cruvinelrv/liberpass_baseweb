@@ -70,7 +70,7 @@ class WidgetBuildCardRow extends StatelessWidget {
                               padding: const EdgeInsets.all(8.0),
                               child: ElevatedButton(
                                 onPressed: () {
-                                  Modular.to.navigate('/onboarding');
+                                  Modular.to.navigate('/financial');
                                 },
                                 child: const Text('Contratar'),
                               ),

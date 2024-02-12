@@ -36,7 +36,7 @@ class _OnboardingBasicProfileState extends State<OnboardingBasicProfile> {
             children: [
               TextFormField(
                 controller: _nameController,
-                decoration: InputDecoration(labelText: 'Nome'),
+                decoration: const InputDecoration(labelText: 'Nome'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Campo obrigatório';
@@ -46,7 +46,7 @@ class _OnboardingBasicProfileState extends State<OnboardingBasicProfile> {
               ),
               TextFormField(
                 controller: _lastNameController,
-                decoration: InputDecoration(labelText: 'Sobrenome'),
+                decoration: const InputDecoration(labelText: 'Sobrenome'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Campo obrigatório';
@@ -56,7 +56,7 @@ class _OnboardingBasicProfileState extends State<OnboardingBasicProfile> {
               ),
               TextFormField(
                 controller: _cpfController,
-                decoration: InputDecoration(labelText: 'CPF'),
+                decoration: const InputDecoration(labelText: 'CPF'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Campo obrigatório';
@@ -67,7 +67,7 @@ class _OnboardingBasicProfileState extends State<OnboardingBasicProfile> {
               ),
               TextFormField(
                 controller: _emailController,
-                decoration: InputDecoration(labelText: 'Email'),
+                decoration: const InputDecoration(labelText: 'Email'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Campo obrigatório';
@@ -141,7 +141,7 @@ class _OnboardingBasicProfileState extends State<OnboardingBasicProfile> {
               ),
               TextFormField(
                 controller: _passwordController,
-                decoration: InputDecoration(labelText: 'Senha'),
+                decoration: const InputDecoration(labelText: 'Senha'),
                 obscureText: false,
                 focusNode: _phoneFocus,
                 
@@ -155,7 +155,7 @@ class _OnboardingBasicProfileState extends State<OnboardingBasicProfile> {
                   return null;
                 },
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
@@ -164,7 +164,7 @@ class _OnboardingBasicProfileState extends State<OnboardingBasicProfile> {
                     // Você pode acessar os valores usando _nameController.text, _lastNameController.text, etc.
                   }
                 },
-                child: Text('Continuar'),
+                child: const Text('Continuar'),
               ),
             ],
           ),

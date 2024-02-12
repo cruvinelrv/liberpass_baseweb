@@ -5,6 +5,7 @@ import 'package:liberpass_baseweb/app/modules/central_base/central_base_module.d
 import 'package:liberpass_baseweb/app/modules/central_base/shared/presentation/ui/cubits/menu_cubit/menu_cubit.dart';
 import 'package:liberpass_baseweb/app/modules/central_base/shared/presentation/ui/pages/internal_page/internal_page.dart';
 import 'package:liberpass_baseweb/app/modules/central_base/sub_modules/crm/presentation/ui/pages/add_person_page/add_person_page.dart';
+import 'package:liberpass_baseweb/app/modules/central_base/sub_modules/fms/financial_management_module.dart';
 import 'package:liberpass_baseweb/app/modules/central_base/sub_modules/scm/presentation/cubits/item_page_cubit/item_page_cubit.dart';
 import 'package:liberpass_baseweb/app/modules/escape_manager/presentation/ui/pages/permission_denied_page/permission_denied_page.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/cubits/item_cubit/item_cubit.dart';
@@ -44,6 +45,7 @@ class AppModule extends Module {
     ModuleRoute('auth-manager', module: AuthManagerModule()),
     ModuleRoute('/central-base', module: CentralBaseModule()),
     ModuleRoute('/onboarding', module: OnboardingModule()),
+    ModuleRoute('/financial', module: FinancialManagementModule()),
     ChildRoute('/base-page',
         child: (context, args) => const BasePage(),
         children: [
