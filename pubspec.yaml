@@ -54,6 +54,8 @@ dependencies:
   flutter_masked_text2: ^0.9.1
   flutter_web_plugins: 
     sdk: flutter
+  celest_backend:
+    path: celest/
 
 dev_dependencies:
   flutter_test:
