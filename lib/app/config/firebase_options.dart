@@ -18,5 +18,6 @@ class DefaultFirebaseOptions {
     messagingSenderId: "329544125931",
     appId: "1:329544125931:web:a714248ebe6eacdea7ddae",
     measurementId: "G-G4307HBM53",
+    databaseURL: '',
   );
 }
