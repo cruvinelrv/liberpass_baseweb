@@ -3,15 +3,15 @@ import 'package:liberpass_baseweb/app/modules/auth_manager/login/presentation/ui
 
 class AuthManagerModule extends Module {
   @override
-  final List<Bind> binds = [];
+  void binds(i) {}
 
   @override
-  final List<ModularRoute> routes = [
+  void routes(r) { 
     ChildRoute(
       '/',
-      child: (context, args) => const LoginPage(),
+      child: (context) => const LoginPage(),
       transition: TransitionType.fadeIn,
       duration: const Duration(milliseconds: 300),
-    )
-  ];
+    );
+  }
 }

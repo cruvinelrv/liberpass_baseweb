@@ -10,13 +10,15 @@ class AppWidget extends StatefulWidget {
 }
 
 class _AppWidgetState extends State<AppWidget> {
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Liberpass',
       theme: ThemeData(primarySwatch: Colors.blue),
-      routerDelegate: Modular.routerDelegate,
-      routeInformationParser: Modular.routeInformationParser,
+      // routerDelegate: Modular.routerDelegate,
+      // routeInformationParser: Modular.routeInformationParser,
+      routerConfig: Modular.routerConfig,
       debugShowCheckedModeBanner: false,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,

@@ -3,8 +3,11 @@ import 'package:liberpass_baseweb/app/modules/landing/presentation/ui/pages/libe
 
 class LandingModule extends Module {
   @override
-  final List<Bind> binds = [];
+  void binds(Injector i) {}
 
   @override
-  final List<ModularRoute> routes = [ChildRoute('/', child: (context, args) => LiberPlanPage())];
+  void routes(r) {
+    r.child('/', child: (context) =>  LiberPlanPage());
+  }
+    
 }

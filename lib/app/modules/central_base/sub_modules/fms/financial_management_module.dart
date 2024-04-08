@@ -5,12 +5,11 @@ import 'financial_calc/presentation/ui/pages/financial_simulation_page.dart';
 class FinancialManagementModule extends Module {
 
    @override
-   final List<Bind> binds = [];
+    void binds(i) {}
 
    @override
-   final List<ModularRoute>  routes = [
-      ChildRoute( Modular.initialRoute, child: (context,args) => const FinancialSimulationPage()),
-      //ChildRoute('/', child: (context, args) => const ParcelasPagasPage())
-   ];
+   void routes(r){
+      r.child('/', child: (context) => const FinancialSimulationPage());
+   }
 
 }

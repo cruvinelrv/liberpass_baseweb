@@ -5,14 +5,14 @@ import 'package:liberpass_baseweb/app/modules/onboarding/presentation/ui/pages/s
 
 class OnboardingModule extends Module {
   @override
-  final List<Bind> binds = [];
+  void binds(i) {}
 
   @override
-  final List<ModularRoute> routes = [
-    ChildRoute('/', child: (context, args) => const MultiStepForm()),
+  void routes(r) {
+    ChildRoute('/', child: (context) => const MultiStepForm());
     ChildRoute('/basic_profile',
-        child: (context, args) => const OnboardingBasicProfile()),
+        child: (context) => const OnboardingBasicProfile());
     ChildRoute('/cities_page',
-        child: (context, args) => const StepCitiesPage()),
-  ];
+        child: (context) => const StepCitiesPage());
+  }
 }

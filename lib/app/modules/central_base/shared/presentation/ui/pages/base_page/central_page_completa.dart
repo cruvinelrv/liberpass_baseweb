@@ -23,22 +23,22 @@ class AppWidget extends StatelessWidget {
 
 class AppModule extends Module {
   @override
-  List<Bind> get binds => [];
+  void binds(i) {}
 
   @override
-  List<ModularRoute> get routes => [
-        ChildRoute('/', child: (context, args) => const AppPage(), children: [
+  void routes(r) => {
+        ChildRoute('/', child: (context) => const AppPage(), children: [
           ChildRoute('/page1',
-              child: (context, args) =>
+              child: (context) =>
                   const InternalPage(title: 'page 1', color: Colors.red)),
           ChildRoute('/page2',
-              child: (context, args) =>
+              child: (context) =>
                   const InternalPage(title: 'page 2', color: Colors.amber)),
           ChildRoute('/page3',
-              child: (context, args) =>
+              child: (context,) =>
                   const InternalPage(title: 'page 3', color: Colors.green)),
         ]),
-      ];
+  };
 }
 
 class AppPage extends StatelessWidget {
