@@ -84,7 +84,8 @@ class _BasePageState extends State<BasePage> {
                   ListTile(
                     title: const Text('Sair'),
                     onTap: () {
-                      Modular.to.navigate('/login');
+                      Modular.to.popUntil((p0) => true);
+                      Modular.to.navigate('/auth-manager/');
                     },
                   ),
                 ],
@@ -135,7 +136,7 @@ class _BasePageState extends State<BasePage> {
                 ListTile(
                   title: const Text('Sair'),
                   onTap: () {
-                    Modular.to.navigate('/login');
+                    Modular.to.navigate('/');
                     Navigator.pop(context);
                   },
                 ),

@@ -31,9 +31,9 @@ class AppModule extends Module {
     i.addSingleton<AuthGuard>(AuthGuard.new);
     i.addSingleton<AuthCubit>(AuthCubit.new);
     i.addSingleton<SessionManager>(SessionManager.new);
-    i.add<ItemCubit>((i) => ItemCubit());
-    i.add<MenuCubit>((i) => MenuCubit());
-    i.add<ItemPageCubit>((i) => ItemPageCubit());
+    i.add<ItemCubit>(ItemCubit.new);
+    i.add<MenuCubit>(MenuCubit.new);
+    i.add<ItemPageCubit>(ItemPageCubit.new);
   }
     // i<MenuCubit>((i) => MenuCubit(),
     //     onDispose: (cubit) async => cubit.close());

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class UnderConstructionPage extends StatefulWidget {
   const UnderConstructionPage({super.key});
@@ -14,7 +15,7 @@ class _UnderConstructionPageState extends State<UnderConstructionPage> {
       appBar: AppBar(
         title: const Text('Em Construção'),
       ),
-      body: const Center(
+      body:  Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -35,6 +36,10 @@ class _UnderConstructionPageState extends State<UnderConstructionPage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(onPressed: ()=> Modular.to.navigate('/'), child: Text('Voltar')),
           ],
         ),
       ),

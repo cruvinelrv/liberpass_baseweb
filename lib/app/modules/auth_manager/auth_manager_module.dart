@@ -7,7 +7,7 @@ class AuthManagerModule extends Module {
 
   @override
   void routes(r) { 
-    ChildRoute(
+    r.child(
       '/',
       child: (context) => const LoginPage(),
       transition: TransitionType.fadeIn,

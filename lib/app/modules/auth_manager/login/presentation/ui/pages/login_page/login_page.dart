@@ -61,6 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                         labelText: 'Nome da empresa',
                       ),
                     ),
+                    
                     const SizedBox(height: 16.0),
                     TextField(
                       controller: _usernameController,

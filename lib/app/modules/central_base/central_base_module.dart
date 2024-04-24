@@ -37,12 +37,14 @@ class CentralBaseModule extends Module {
         ChildRoute('/crm/', child: (context) => const PersonPage()),
         ChildRoute('/under-construction/', child: (context) => const UnderConstructionPage()),
         ChildRoute('/order/', child: (context) => const OrderPage()),
+        WildcardRoute(child: (context) => const UnderConstructionPage()),
       ],
     );
     r.child(
       '/denied/',
       child: (context) => const PermissionDeniedPage(),
     );
+    r.wildcard(child: (context) => const UnderConstructionPage());
   }
 
   //final guardedRouteGenerator = AccessDeniedGuard().canActivate;
