@@ -276,7 +276,7 @@ class _AddPersonPageState extends State<AddPersonPage> with SingleTickerProvider
                         const SizedBox(height: 8),
                         Text(
                           'Informações de Endereço',
-                          style: Theme.of(context).textTheme.headline6,
+                          style: Theme.of(context).textTheme.headlineLarge,
                         ),
                         const SizedBox(height: 8),
                         Row(

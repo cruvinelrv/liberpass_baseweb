@@ -6,7 +6,7 @@ class AuthManagerModule extends Module {
   void binds(i) {}
 
   @override
-  void routes(r) { 
+  void routes(r) {
     r.child(
       '/',
       child: (context) => const LoginPage(),

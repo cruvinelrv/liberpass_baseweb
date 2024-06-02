@@ -9,10 +9,8 @@ class OnboardingModule extends Module {
 
   @override
   void routes(r) {
-    ChildRoute('/', child: (context) => const MultiStepForm());
-    ChildRoute('/basic_profile',
-        child: (context) => const OnboardingBasicProfile());
-    ChildRoute('/cities_page',
-        child: (context) => const StepCitiesPage());
+    r.child('/', child: (context) => const MultiStepForm());
+    r.child('/basic_profile', child: (context) => const OnboardingBasicProfile());
+    r.child('/cities_page', child: (context) => const StepCitiesPage());
   }
 }

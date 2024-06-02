@@ -24,21 +24,31 @@ class WidgetBuildCardRow extends StatelessWidget {
         alignment: Alignment.center,
         child: Column(
           children: [
-            RichText(
-              text: const TextSpan(
-                  text: 'Liber',
-                  style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-                  children: [
-                    TextSpan(
-                        text: 'Pass',
-                        style: TextStyle(
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue))
-                  ]),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                children: [
+                  const Spacer(),
+                  RichText(
+                    text: const TextSpan(
+                        text: 'Liber',
+                        style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white),
+                        children: [
+                          TextSpan(
+                            text: 'Pass',
+                            style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.blue),
+                          )
+                        ]),
+                  ),
+                  const Spacer(),
+                  ElevatedButton(
+                    onPressed: () => Modular.to.navigate('/auth-manager'),
+                    child: const Text('Já tenho conta',
+                        style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.green[800]),
+                  ),
+                ],
+              ),
             ),
             IntrinsicWidth(
               child: Row(
@@ -55,8 +65,7 @@ class WidgetBuildCardRow extends StatelessWidget {
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
                                 plan.name,
-                                style: const TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
+                                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                             ),
                             Padding(
@@ -70,7 +79,7 @@ class WidgetBuildCardRow extends StatelessWidget {
                               padding: const EdgeInsets.all(8.0),
                               child: ElevatedButton(
                                 onPressed: () {
-                                  Modular.to.navigate('/financial');
+                                  Modular.to.navigate('/onboarding');
                                 },
                                 child: const Text('Contratar'),
                               ),

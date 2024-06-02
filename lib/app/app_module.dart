@@ -10,8 +10,8 @@ import 'package:liberpass_baseweb/app/modules/central_base/sub_modules/scm/prese
 import 'package:liberpass_baseweb/app/modules/escape_manager/presentation/ui/pages/permission_denied_page/permission_denied_page.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/cubits/item_cubit/item_cubit.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/geremetrika_page/geremetrika_page.dart';
+import 'package:liberpass_baseweb/app/modules/landing/landing_module.dart';
 import 'package:liberpass_baseweb/app/modules/onboarding/onboarding_module.dart';
-
 import 'modules/auth_manager/auth_manager_module.dart';
 import 'modules/auth_manager/login/presentation/ui/pages/login_page/login_page.dart';
 import 'modules/auth_manager/shared/guards/auth_guard.dart';
@@ -22,7 +22,6 @@ import 'modules/central_base/sub_modules/scm/presentation/ui/pages/order_page/or
 import 'modules/escape_manager/presentation/ui/pages/pages_escape_manager.dart';
 import 'modules/central_base/sub_modules/scm/presentation/ui/pages/pages_item_management.dart';
 import 'modules/central_base/sub_modules/scm/presentation/ui/pages/upload_itens_page/upload_itens_page.dart';
-import 'modules/landing/landing_module.dart';
 import 'modules/landing/presentation/ui/pages/pages_landing.dart';
 
 class AppModule extends Module {
@@ -35,15 +34,10 @@ class AppModule extends Module {
     i.add<MenuCubit>(MenuCubit.new);
     i.add<ItemPageCubit>(ItemPageCubit.new);
   }
-    // i<MenuCubit>((i) => MenuCubit(),
-    //     onDispose: (cubit) async => cubit.close());
-    // i<ItemPageCubit>((i) => ItemPageCubit(),
-    //     onDispose: (cubit) async => cubit.close());
-  
 
   @override
   void routes(r) { 
-    r.module(Modular.initialRoute, module: CentralBaseModule());
+    r.module(Modular.initialRoute, module: LandingModule());
     r.module('/auth-manager', module: AuthManagerModule());
     r.module('/central-base', module: CentralBaseModule());
     r.module('/onboarding', module: OnboardingModule());

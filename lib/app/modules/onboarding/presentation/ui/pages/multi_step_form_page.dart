@@ -1,8 +1,8 @@
-
 // multi_step_form.dart
 import 'package:flutter/material.dart';
 import 'package:liberpass_baseweb/app/modules/onboarding/presentation/ui/pages/step_3_page.dart';
 
+import 'step1_page.dart';
 import 'step2_page.dart';
 
 class MultiStepForm extends StatefulWidget {
@@ -44,22 +44,22 @@ class _MultiStepFormState extends State<MultiStepForm> {
   }
 }
 
-// step1_page.dart, step2_page.dart, step3_page.dart (estrutura semelhante)
-class Step1Page extends StatelessWidget {
-  final VoidCallback onNext;
+// // step1_page.dart, step2_page.dart, step3_page.dart (estrutura semelhante)
+// class Step1Page extends StatelessWidget {
+//   final VoidCallback onNext;
 
-  Step1Page({required this.onNext});
+//   Step1Page({required this.onNext});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Passo 1')),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: onNext,
-          child: Text('Próximo'),
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: Text('Passo 1')),
+//       body: Center(
+//         child: ElevatedButton(
+//           onPressed: onNext,
+//           child: Text('Próximo'),
+//         ),
+//       ),
+//     );
+//   }
+// }
