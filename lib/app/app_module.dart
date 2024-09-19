@@ -26,7 +26,7 @@ import 'modules/landing/presentation/ui/pages/pages_landing.dart';
 
 class AppModule extends Module {
   @override
-  void binds(i) { 
+  void binds(i) {
     i.addSingleton<AuthGuard>(AuthGuard.new);
     i.addSingleton<AuthCubit>(AuthCubit.new);
     i.addSingleton<SessionManager>(SessionManager.new);
@@ -36,34 +36,25 @@ class AppModule extends Module {
   }
 
   @override
-  void routes(r) { 
-    r.module(Modular.initialRoute, module: LandingModule());
+  void routes(r) {
+    r.module(Modular.initialRoute, module: CentralBaseModule());
     r.module('/auth-manager', module: AuthManagerModule());
     r.module('/central-base', module: CentralBaseModule());
     r.module('/onboarding', module: OnboardingModule());
     r.module('/financial', module: FinancialManagementModule());
-    
-    // ModuleRoute(Modular.initialRoute, module: LandingModule()),
-    // ModuleRoute('auth-manager', module: AuthManagerModule()),
-    // ModuleRoute('/central-base', module: CentralBaseModule()),
-    // ModuleRoute('/onboarding', module: OnboardingModule()),
-    // ModuleRoute('/financial', module: FinancialManagementModule()),
-    r.child('/base-page',
-        child: (context) => const BasePage(),
-        children: [
-          ChildRoute('/internal-page',
-              child: (context) => const InternalPage(
-                    title: 'title',
-                    color: Colors.red,
-                  )),
-          ChildRoute('/geremetrika',
-              child: (context) => const GeremetrikaPage()),
-          ChildRoute('/order', child: (context) => const OrderPage()),
-          ChildRoute('/scm', child: (context) => const ItemPage()),
-          ChildRoute('/crm', child: (context) => const PersonPage()),
-          ChildRoute('/under-construction',
-              child: (context) => const UnderConstructionPage()),
-        ]);
+
+    r.child('/base-page', child: (context) => const BasePage(), children: [
+      ChildRoute('/internal-page',
+          child: (context) => const InternalPage(
+                title: 'title',
+                color: Colors.red,
+              )),
+      ChildRoute('/geremetrika', child: (context) => const GeremetrikaPage()),
+      ChildRoute('/order', child: (context) => const OrderPage()),
+      ChildRoute('/scm', child: (context) => const ItemPage()),
+      ChildRoute('/crm', child: (context) => const PersonPage()),
+      ChildRoute('/under-construction', child: (context) => const UnderConstructionPage()),
+    ]);
     // ChildRoute('/base-page',
     //     child: (context, args) => const BasePage(),
     //     children: [
@@ -80,8 +71,7 @@ class AppModule extends Module {
     //       ChildRoute('/under-construction',
     //           child: (context, args) => const UnderConstructionPage()),
     //     ]),
-    ChildRoute('/liberpass-info',
-        child: (context) => const LiberpassInfoPage());
+    ChildRoute('/liberpass-info', child: (context) => const LiberpassInfoPage());
     ChildRoute('/login', child: (context) => const LoginPage());
     ChildRoute(
       '/geremetrika',
@@ -91,17 +81,14 @@ class AppModule extends Module {
     ChildRoute('/add-item', child: (context) => const AddItemPage());
     ChildRoute('/order-page', child: (context) => const OrderPage());
     ChildRoute('/add-prices', child: (context) => const AddPricesPage());
-    ChildRoute('/upload-itens',
-       child: (context) => const UploadItensPage());
+    r.child('/upload-itens', child: (context) => const UploadItensPage());
+    ChildRoute('/upload-itens', child: (context) => const UploadItensPage());
     ChildRoute('/item', child: (context) => const ItemPage());
     ChildRoute('/error', child: (context) => const ErrorPage());
-    ChildRoute('/under-construction',
-        child: (context) => const UnderConstructionPage());
+    ChildRoute('/under-construction', child: (context) => const UnderConstructionPage());
     ChildRoute('/crm', child: (context) => const PersonPage());
     ChildRoute('/add-person', child: (context) => const AddPersonPage());
-    r.child('/permission-denied',
-        child: (context) => const PermissionDeniedPage());
-  
+    r.child('/permission-denied', child: (context) => const PermissionDeniedPage());
   }
 
   @override

@@ -33,7 +33,7 @@ class _UploadItensPageState extends State<UploadItensPage> {
 
   void _loadCSVData(String fileContent) {
     final lines = LineSplitter.split(fileContent).toList();
-    final csvData = lines.map((line) => line.split(',')).toList();
+    final csvData = lines.map((line) => line.split(';')).toList();
 
     if (csvData.isNotEmpty) {
       final headers = csvData.first;
@@ -77,10 +77,8 @@ class _UploadItensPageState extends State<UploadItensPage> {
         data[fieldName] = fieldValue;
       }
 
-      final documentId =
-          'document_$i'; // Defina um ID único para cada documento
-      final documentReference =
-          FirebaseFirestore.instance.collection(collectionName).doc(documentId);
+      final documentId = 'document_$i'; // Defina um ID único para cada documento
+      final documentReference = FirebaseFirestore.instance.collection(collectionName).doc(documentId);
       await documentReference.set(data);
     }
   }
@@ -138,8 +136,7 @@ class _UploadItensPageState extends State<UploadItensPage> {
       data['ncmCode'] = ncmCode;
 
       final documentId = '$i'; // Defina um ID único para cada documento
-      final documentReference =
-          FirebaseFirestore.instance.collection(collectionName).doc(documentId);
+      final documentReference = FirebaseFirestore.instance.collection(collectionName).doc(documentId);
       await documentReference.set(data);
     }
   }
@@ -169,13 +166,10 @@ class _UploadItensPageState extends State<UploadItensPage> {
       // Criar a lista de listPrices
       final listPrices = [];
       final internalCodePriceIndex = headers.indexOf('internalCode');
-      final double salePriceIndex =
-          double.parse(headers.indexOf('salePrice').toString());
-      final double purchasePriceIndex =
-          double.parse(headers.indexOf('purchasePrice').toString());
+      final double salePriceIndex = double.parse(headers.indexOf('salePrice').toString());
+      final double purchasePriceIndex = double.parse(headers.indexOf('purchasePrice').toString());
       //final costPriceIndex = headers.indexOf('precoCusto');
-      final double stockIndex =
-          double.parse(headers.indexOf('quantity').toString());
+      final double stockIndex = double.parse(headers.indexOf('quantity').toString());
       final barCodeIndex = headers.indexOf('barCode');
       final ncm = headers.indexOf('ncm');
       final supplierIndex = headers.indexOf('nameSupplier');
@@ -217,8 +211,7 @@ class _UploadItensPageState extends State<UploadItensPage> {
       data['listPrices'] = listPrices;
 
       final documentId = '$i'; // Defina um ID único para cada documento
-      final documentReference =
-          FirebaseFirestore.instance.collection(collectionName).doc(documentId);
+      final documentReference = FirebaseFirestore.instance.collection(collectionName).doc(documentId);
       await documentReference.set(data);
     }
   }
@@ -232,10 +225,7 @@ class _UploadItensPageState extends State<UploadItensPage> {
     }
 
     if (collectionRef.parent != null) {
-      await collectionRef.parent!
-          .collection(collectionRef.id)
-          .get()
-          .then((snapshot) {
+      await collectionRef.parent!.collection(collectionRef.id).get().then((snapshot) {
         for (DocumentSnapshot ds in snapshot.docs) {
           ds.reference.delete();
         }
@@ -252,8 +242,7 @@ class _UploadItensPageState extends State<UploadItensPage> {
     final List<List<String>> rows = currentPageData.sublist(1);
 
     return DataTable(
-      columns:
-          headers.map((header) => DataColumn(label: Text(header))).toList(),
+      columns: headers.map((header) => DataColumn(label: Text(header))).toList(),
       rows: rows.map((row) {
         return DataRow(cells: row.map((cell) => DataCell(Text(cell))).toList());
       }).toList(),
@@ -283,13 +272,11 @@ class _UploadItensPageState extends State<UploadItensPage> {
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
-          columns:
-              headers.map((header) => DataColumn(label: Text(header))).toList(),
+          columns: headers.map((header) => DataColumn(label: Text(header))).toList(),
           rows: rows
               .take(visibleRowCount) // Limita o número de linhas visíveis
               .map((row) {
-            return DataRow(
-                cells: row.map((cell) => DataCell(Text(cell))).toList());
+            return DataRow(cells: row.map((cell) => DataCell(Text(cell))).toList());
           }).toList(),
         ),
       ),
@@ -305,15 +292,12 @@ class _UploadItensPageState extends State<UploadItensPage> {
       children: [
         IconButton(
           icon: const Icon(Icons.chevron_left),
-          onPressed:
-              currentPage > 0 ? () => _changePage(currentPage - 1) : null,
+          onPressed: currentPage > 0 ? () => _changePage(currentPage - 1) : null,
         ),
         Text('Página $actualPage de $totalPages'),
         IconButton(
           icon: const Icon(Icons.chevron_right),
-          onPressed: currentPage < totalPages - 1
-              ? () => _changePage(currentPage + 1)
-              : null,
+          onPressed: currentPage < totalPages - 1 ? () => _changePage(currentPage + 1) : null,
         ),
       ],
     );

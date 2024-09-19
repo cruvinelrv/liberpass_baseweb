@@ -82,6 +82,14 @@ class _BasePageState extends State<BasePage> {
                     thickness: 2,
                   ),
                   ListTile(
+                    title: const Text('Upload Itens'),
+                    onTap: () {
+                      Modular.to.navigate('/upload-itens/');
+                      _updatePageName('Upload Itens');
+                      Navigator.pop(context);
+                    },
+                  ),
+                  ListTile(
                     title: const Text('Sair'),
                     onTap: () {
                       Modular.to.popUntil((p0) => true);
@@ -132,6 +140,14 @@ class _BasePageState extends State<BasePage> {
                 ),
                 const Divider(
                   thickness: 2,
+                ),
+                ListTile(
+                  title: const Text('Upload Itens'),
+                  onTap: () {
+                    Modular.to.navigate('/upload-itens/');
+                    _updatePageName('Upload Itens');
+                    Navigator.pop(context);
+                  },
                 ),
                 ListTile(
                   title: const Text('Sair'),

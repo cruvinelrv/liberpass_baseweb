@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:liberpass_baseweb/app/modules/auth_manager/shared/guards/auth_guard.dart';
+import 'package:liberpass_baseweb/app/modules/central_base/sub_modules/scm/presentation/ui/pages/upload_itens_page/upload_itens_page.dart';
 import 'package:liberpass_baseweb/app/modules/escape_manager/presentation/ui/pages/pages_escape_manager.dart';
 import 'package:liberpass_baseweb/app/modules/escape_manager/presentation/ui/pages/under_construction_page/under_construction_page.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/geremetrika_page/geremetrika_page.dart';
@@ -24,7 +25,7 @@ class CentralBaseModule extends Module {
   }
 
   @override
-  void routes(r)  {
+  void routes(r) {
     r.child(
       '/',
       child: (context) => const BasePage(),
@@ -37,6 +38,7 @@ class CentralBaseModule extends Module {
         ChildRoute('/crm/', child: (context) => const PersonPage()),
         ChildRoute('/under-construction/', child: (context) => const UnderConstructionPage()),
         ChildRoute('/order/', child: (context) => const OrderPage()),
+        ChildRoute('/upload-itens/', child: (context) => const UploadItensPage()),
         WildcardRoute(child: (context) => const UnderConstructionPage()),
       ],
     );
