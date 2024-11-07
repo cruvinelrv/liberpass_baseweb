@@ -30,16 +30,12 @@ void main() async {
   //   'twitter:image':
   //       'https://liberpass.com.br/assets/assets/images/liber_pass.png',
   // }));
- 
+
   //MetaSEO().config();
   //WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   runApp(EasyLocalization(
-      supportedLocales: const [
-        Locale('en', 'US'),
-        Locale('es', 'ES'),
-        Locale('pt', 'BR')
-      ],
+      supportedLocales: const [Locale('en', 'US'), Locale('es', 'ES'), Locale('pt', 'BR')],
       path: 'translations', // Caminho para os arquivos de tradução
       fallbackLocale: const Locale('pt', 'BR'),
       child: // Idioma padrão
