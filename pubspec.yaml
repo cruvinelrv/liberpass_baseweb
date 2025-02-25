@@ -134,8 +134,8 @@ dependencies:
   # new_face_liveness: 3.1.4
   # showcaseview: ^3.0.0
 
-  celest_backend:
-    path: celest/
+  # celest_backend:
+  #   path: celest/
 
 dev_dependencies:
   flutter_test:
