@@ -1,0 +1,1 @@
+SCM (Supply Chain Management) - Gerenciamento da cadeia de suprimentos, englobando atividades de compras, estoque, logística e distribuição.

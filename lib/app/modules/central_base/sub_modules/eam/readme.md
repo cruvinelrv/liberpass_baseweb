@@ -1,0 +1,1 @@
+EAM (Enterprise Asset Management) - Gerenciamento de ativos empresariais, envolvendo a manutenção, monitoramento e otimização de ativos físicos da organização.
