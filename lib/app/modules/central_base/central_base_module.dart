@@ -5,7 +5,6 @@ import 'package:liberpass_baseweb/app/modules/escape_manager/presentation/ui/pag
 import 'package:liberpass_baseweb/app/modules/escape_manager/presentation/ui/pages/under_construction_page/under_construction_page.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/geremetrika_page/geremetrika_page.dart';
 import 'package:liberpass_baseweb/app/modules/central_base/sub_modules/scm/presentation/ui/pages/pages_item_management.dart';
-import 'package:printing/printing.dart';
 
 import '../auth_manager/login/presentation/cubits/auth_cubit/auth_cubit.dart';
 import '../auth_manager/shared/session/session_manager.dart';

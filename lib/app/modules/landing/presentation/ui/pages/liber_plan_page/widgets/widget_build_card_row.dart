@@ -3,110 +3,187 @@ import 'package:flutter_modular/flutter_modular.dart';
 import '../liber_plan_page.dart';
 
 class WidgetBuildCardRow extends StatelessWidget {
-  final List<Plan> plans;
-
+  final List<PlanEntity> plans;
   const WidgetBuildCardRow({Key? key, required this.plans}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-
     return Container(
-      padding: const EdgeInsets.all(10),
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color(0xFFE0F2F7),
+            Color(0xFFC8E6C9),
+          ],
+        ),
+      ),
+      padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 24.0),
       width: width,
-      height: height,
-      color: Colors.blueGrey,
       alignment: Alignment.topCenter,
-      child: FractionallySizedBox(
-        widthFactor: 1,
-        heightFactor: 1,
-        alignment: Alignment.center,
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
-                children: [
-                  const Spacer(),
-                  RichText(
-                    text: const TextSpan(
-                        text: 'Liber',
-                        style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white),
-                        children: [
-                          TextSpan(
-                            text: 'Pass',
-                            style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.blue),
-                          )
-                        ]),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 40.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                RichText(
+                  text: TextSpan(
+                    text: 'Liber',
+                    style: TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green[800],
+                    ),
+                    children: const [
+                      TextSpan(
+                        text: 'Pass',
+                        style: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blueGrey,
+                        ),
+                      ),
+                    ],
                   ),
-                  const Spacer(),
-                  ElevatedButton(
-                    onPressed: () => Modular.to.navigate('/auth-manager'),
-                    child: const Text('Já tenho conta',
-                        style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
-                    style: ElevatedButton.styleFrom(backgroundColor: Colors.green[800]),
+                ),
+                ElevatedButton(
+                  onPressed: () => Modular.to.navigate('/auth-manager'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green[700],
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
                   ),
-                ],
+                  child: const Text(
+                    'Já tenho conta',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(bottom: 24.0, left: 16.0, right: 16.0, top: 16.0),
+            child: RichText(
+              text: TextSpan(
+                text: 'Escolha o plano ideal para sua jornada',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
               ),
             ),
-            IntrinsicWidth(
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: IntrinsicHeight(
               child: Row(
-                children: [
-                  for (final plan in plans)
-                    Card(
-                      child: SizedBox(
-                        width: (width / 5) - 15,
-                        height: 580,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: plans.map((plan) {
+                  double cardWidth = (width / plans.length) - (24.0 * (plans.length - 1) / plans.length);
+                  if (cardWidth < 250) cardWidth = 250;
+                  return Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 12.0),
+                    width: cardWidth,
+                    constraints: const BoxConstraints(maxWidth: 350),
+                    child: Card(
+                      elevation: 8.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16.0),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(24.0),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                plan.name,
-                                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                            Text(
+                              plan.name,
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.green[900],
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                'R\$ ${plan.price.toStringAsFixed(2)} / mês',
-                                style: const TextStyle(fontSize: 16),
+                            const SizedBox(height: 8.0),
+                            Text(
+                              plan.price == 0.00 ? 'Grátis' : 'R\$ ${plan.price.toStringAsFixed(2)} / mês',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.blueGrey[700],
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
+                            const SizedBox(height: 24.0),
+                            Center(
                               child: ElevatedButton(
                                 onPressed: () {
                                   Modular.to.navigate('/onboarding');
                                 },
-                                child: const Text('Contratar'),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.teal,
+                                  foregroundColor: Colors.white,
+                                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                                ),
+                                child: const Text('Começar Agora'),
                               ),
                             ),
-                            const Divider(),
-                            Expanded(
-                              child: ListView.builder(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount: plan.features.length,
-                                itemBuilder: (context, index) {
-                                  return ListTile(
-                                    leading: const Icon(Icons.check),
-                                    title: Text(plan.features[index]),
-                                  );
-                                },
-                              ),
+                            const SizedBox(height: 24.0),
+                            const Divider(height: 1, color: Colors.black12),
+                            const SizedBox(height: 24.0),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: plan.features.map((feature) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(bottom: 12.0),
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Icon(
+                                        Icons.check_circle_outline,
+                                        color: Colors.green[700],
+                                        size: 20,
+                                      ),
+                                      const SizedBox(width: 12.0),
+                                      Expanded(
+                                        child: Text(
+                                          feature,
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.black87,
+                                            height: 1.4,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }).toList(),
                             ),
                           ],
                         ),
                       ),
                     ),
-                ],
+                  );
+                }).toList(),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

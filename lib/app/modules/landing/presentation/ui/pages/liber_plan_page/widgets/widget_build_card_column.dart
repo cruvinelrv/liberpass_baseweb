@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../liber_plan_page.dart';
 
 class WidgetBuildCardColumn extends StatelessWidget {
-  final List<Plan> plans;
+  final List<PlanEntity> plans;
 
   const WidgetBuildCardColumn({Key? key, required this.plans}) : super(key: key);
 

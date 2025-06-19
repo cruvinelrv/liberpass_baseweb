@@ -1,5 +1,3 @@
-import '../../../../../shared/enums/enums.dart';
-
 class PersonAddressEntity {
   final int? idAddress;
   final String typeAddress;
@@ -79,8 +77,6 @@ class PersonAddressEntity {
   }
 
   factory PersonAddressEntity.fromMap(Map<String, dynamic> map) {
-    EnumTypeAddressEnum typeAddress;
-
     return PersonAddressEntity(
       idAddress: map['idAddress'] as int?,
       typeAddress: map['typeAddress'] as String,

@@ -9,6 +9,7 @@ import 'package:easy_localization/easy_localization.dart';
 
 void main() async {
   setUrlStrategy(PathUrlStrategy());
+
   await ApplicationConfig().configureApp();
   await EasyLocalization.ensureInitialized();
   runApp(
@@ -16,7 +17,10 @@ void main() async {
       supportedLocales: const [Locale('en', 'US'), Locale('es', 'ES'), Locale('pt', 'BR')],
       path: 'translations',
       fallbackLocale: const Locale('pt', 'BR'),
-      child: ModularApp(module: AppModule(), child: const AppWidget()),
+      child: ModularApp(
+        module: AppModule(),
+        child: const AppWidget(),
+      ),
     ),
   );
 }
