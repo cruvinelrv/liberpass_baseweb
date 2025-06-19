@@ -1,0 +1,1 @@
+BI (Business Intelligence) - Inteligência de negócios, fornecendo recursos de análise e relatórios para auxiliar na tomada de decisões estratégicas.

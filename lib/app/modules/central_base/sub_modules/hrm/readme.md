@@ -1,0 +1,1 @@
+HRM (Human Resource Management) - Gerenciamento de recursos humanos, incluindo funções como folha de pagamento, recrutamento, treinamento e gestão de desempenho.

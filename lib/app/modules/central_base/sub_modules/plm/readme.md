@@ -1,0 +1,1 @@
+PLM (Product Lifecycle Management) - Gerenciamento do ciclo de vida do produto, abrangendo desde o design e desenvolvimento até a produção, manutenção e retirada do produto do mercado.
