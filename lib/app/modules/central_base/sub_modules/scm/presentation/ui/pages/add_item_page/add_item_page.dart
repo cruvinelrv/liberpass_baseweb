@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/cubits/item_cubit/states/item_initial_state.dart';
-import 'package:liberpass_baseweb/app/modules/shared/enums/enum_status_item.dart';
-import 'package:liberpass_baseweb/app/modules/shared/enums/enum_unit_measure.dart';
+import 'package:liberpass_baseweb/app/modules/shared/enums/enum_status_item_enum.dart';
+import 'package:liberpass_baseweb/app/modules/shared/enums/enum_unit_measure_enum.dart';
 
 import '../../../../domain/entities/entities.dart';
 import '../../../../domain/entities/item_flow_entity.dart';
@@ -298,7 +298,7 @@ class _AddItemPageState extends State<AddItemPage> {
                                 border: OutlineInputBorder(),
                                 labelText: 'Status',
                               ),
-                              items: EnumStatusItem.values
+                              items: EnumStatusItemEnum.values
                                   .map((e) => DropdownMenuItem(
                                         value: e.nameStatusItem,
                                         child: Text(e.nameStatusItem),
@@ -500,7 +500,7 @@ class _AddItemPageState extends State<AddItemPage> {
                                     border: OutlineInputBorder(),
                                     labelText: 'Unidade de Medida',
                                   ),
-                                  items: EnumUnitMeasure.values
+                                  items: EnumUnitMeasureEnum.values
                                       .map((e) => DropdownMenuItem(
                                             value: e.alias,
                                             child: Text('${e.nameUnitMeasure} - ${e.alias}'),

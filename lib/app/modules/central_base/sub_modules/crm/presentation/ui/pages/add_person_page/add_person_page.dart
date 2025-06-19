@@ -39,8 +39,8 @@ class _AddPersonPageState extends State<AddPersonPage> with SingleTickerProvider
   final TextEditingController _controllerBornDate = TextEditingController();
   final TextEditingController _controllerBornCity = TextEditingController();
   final TextEditingController _controllerBornCountry = TextEditingController();
-  late final EnumTypeAddress typeAddressValue;
-  EnumTypePerson typePersonValue = EnumTypePerson.PF;
+  late final EnumTypeAddressEnum typeAddressValue;
+  EnumTypePersonEnum typePersonValue = EnumTypePersonEnum.PF;
   List<Map<String, dynamic>> listDocuments = [];
   List<Map<String, dynamic>> listAddresses = [];
   List<Map<String, dynamic>> listContacts = [];
@@ -133,15 +133,15 @@ class _AddPersonPageState extends State<AddPersonPage> with SingleTickerProvider
                                   border: OutlineInputBorder(),
                                   labelText: 'Tipo de pessoa: Física ou Jurídica',
                                 ),
-                                items: EnumTypePerson.values
+                                items: EnumTypePersonEnum.values
                                     .map((e) => DropdownMenuItem(
                                           value: e.nameTypePerson,
                                           child: Text('${e.nameTypePerson} '),
                                         ))
                                     .toList(),
                                 onChanged: (value) {
-                                  typePersonValue =
-                                      EnumTypePerson.values.firstWhere((element) => element.nameTypePerson == value);
+                                  typePersonValue = EnumTypePersonEnum.values
+                                      .firstWhere((element) => element.nameTypePerson == value);
                                   _controllerPersonType.text = typePersonValue.nameTypePerson;
                                 },
                               ),
@@ -425,7 +425,7 @@ class _AddPersonPageState extends State<AddPersonPage> with SingleTickerProvider
                             border: OutlineInputBorder(),
                             labelText: 'Tipo de Endereço',
                           ),
-                          items: EnumTypeAddress.values
+                          items: EnumTypeAddressEnum.values
                               .map((e) => DropdownMenuItem(
                                     value: e.nameTypeAddress,
                                     child: Text('${e.nameTypeAddress} '),
@@ -433,7 +433,7 @@ class _AddPersonPageState extends State<AddPersonPage> with SingleTickerProvider
                               .toList(),
                           onChanged: (value) {
                             typeAddressValue =
-                                EnumTypeAddress.values.firstWhere((element) => element.nameTypeAddress == value);
+                                EnumTypeAddressEnum.values.firstWhere((element) => element.nameTypeAddress == value);
                             _controllerTypeAddress.text = typeAddressValue.nameTypeAddress;
                           },
                         ),

@@ -8,7 +8,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/cubits/item_cubit/item_cubit.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/cubits/item_cubit/states/states.dart';
-import 'package:liberpass_baseweb/app/modules/shared/enums/enum_unit_measure.dart';
+import 'package:liberpass_baseweb/app/modules/shared/enums/enum_unit_measure_enum.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import '../../../../../central_base/sub_modules/scm/domain/entities/entities.dart';
 
@@ -123,7 +123,7 @@ class _AddItemOrderPageState extends State<AddItemOrderPage> {
             metroQuadradoFaturamento = _itemCubit.measureMeterBilling;
             metroLinearFaturamento = _itemCubit.linearMeterPerimeterBilling;
             totalPerimetroMetroLinear = _itemCubit.realLinearMeterPerimeter;
-            if (EnumUnitMeasure.M.alias == _itemCubit.unitMeasure) {
+            if (EnumUnitMeasureEnum.M.alias == _itemCubit.unitMeasure) {
               _controllerCalculateMeasure.text = totalPerimetroMetroLinear.toStringAsFixed(2);
               _controllerBillingMeasure.text = metroLinearFaturamento.toStringAsFixed(2);
             } else {
@@ -157,19 +157,19 @@ class _AddItemOrderPageState extends State<AddItemOrderPage> {
                                 ),
                                 items: [
                                   DropdownMenuItem<String>(
-                                    value: EnumUnitMeasure.M2.nameUnitMeasure,
+                                    value: EnumUnitMeasureEnum.M2.nameUnitMeasure,
                                     child: const Text('Metro Quadrado'),
                                   ),
                                   DropdownMenuItem<String>(
-                                    value: EnumUnitMeasure.M.nameUnitMeasure,
+                                    value: EnumUnitMeasureEnum.M.nameUnitMeasure,
                                     child: const Text('Metro Linear'),
                                   ),
                                   DropdownMenuItem<String>(
-                                    value: EnumUnitMeasure.UN.nameUnitMeasure,
+                                    value: EnumUnitMeasureEnum.UN.nameUnitMeasure,
                                     child: const Text('Unidade'),
                                   ),
                                   DropdownMenuItem<String>(
-                                    value: EnumUnitMeasure.SRV.nameUnitMeasure,
+                                    value: EnumUnitMeasureEnum.SRV.nameUnitMeasure,
                                     child: const Text('Serviço'),
                                   ),
                                 ],
@@ -177,8 +177,8 @@ class _AddItemOrderPageState extends State<AddItemOrderPage> {
                                   if (value != null) {
                                     _controllerUnitMeasure.text = value;
                                   }
-                                  if (EnumUnitMeasure.M2.nameUnitMeasure == value ||
-                                      EnumUnitMeasure.M.nameUnitMeasure == value) {
+                                  if (EnumUnitMeasureEnum.M2.nameUnitMeasure == value ||
+                                      EnumUnitMeasureEnum.M.nameUnitMeasure == value) {
                                     focusWidthMeasure.requestFocus();
                                   } else {
                                     focusItemDescription.requestFocus();
@@ -195,8 +195,8 @@ class _AddItemOrderPageState extends State<AddItemOrderPage> {
                                 focusNode: focusWidthMeasure,
                                 inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))],
                                 validator: (value) {
-                                  if (_controllerUnitMeasure.text == EnumUnitMeasure.M2.nameUnitMeasure ||
-                                      _controllerUnitMeasure.text == EnumUnitMeasure.M.nameUnitMeasure) {
+                                  if (_controllerUnitMeasure.text == EnumUnitMeasureEnum.M2.nameUnitMeasure ||
+                                      _controllerUnitMeasure.text == EnumUnitMeasureEnum.M.nameUnitMeasure) {
                                     if (value == null || value.isEmpty) {
                                       return 'Campo obrigatório';
                                     }
@@ -226,8 +226,8 @@ class _AddItemOrderPageState extends State<AddItemOrderPage> {
                                   FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
                                 ],
                                 validator: (value) {
-                                  if (_controllerUnitMeasure.text == EnumUnitMeasure.M2.nameUnitMeasure ||
-                                      _controllerUnitMeasure.text == EnumUnitMeasure.M.nameUnitMeasure) {
+                                  if (_controllerUnitMeasure.text == EnumUnitMeasureEnum.M2.nameUnitMeasure ||
+                                      _controllerUnitMeasure.text == EnumUnitMeasureEnum.M.nameUnitMeasure) {
                                     if (value == null || value.isEmpty) {
                                       return 'Campo obrigatório';
                                     }
@@ -248,9 +248,9 @@ class _AddItemOrderPageState extends State<AddItemOrderPage> {
                                   if (_controllerHeightMeasure.text.isNotEmpty) {
                                     _itemCubit.heightMeasure = double.parse(_controllerHeightMeasure.text);
                                   }
-                                  if (EnumUnitMeasure.M2.nameUnitMeasure == _controllerUnitMeasure.text) {
+                                  if (EnumUnitMeasureEnum.M2.nameUnitMeasure == _controllerUnitMeasure.text) {
                                     _itemCubit.calculateM2();
-                                  } else if (EnumUnitMeasure.M.nameUnitMeasure == _controllerUnitMeasure.text) {
+                                  } else if (EnumUnitMeasureEnum.M.nameUnitMeasure == _controllerUnitMeasure.text) {
                                     _itemCubit.calculatePerimeter();
                                   }
                                   focusItemDescription.requestFocus();
@@ -320,7 +320,7 @@ class _AddItemOrderPageState extends State<AddItemOrderPage> {
                                         width: 20,
                                       ),
                                       Text(
-                                        EnumUnitMeasure.M2.nameUnitMeasure == _controllerUnitMeasure.text
+                                        EnumUnitMeasureEnum.M2.nameUnitMeasure == _controllerUnitMeasure.text
                                             ? 'MEDIDA REAL: $totalMetroQuadrado M2'
                                             : 'MEDIDA REAL: $totalPerimetroMetroLinear Metros',
                                         style: const TextStyle(
@@ -332,7 +332,7 @@ class _AddItemOrderPageState extends State<AddItemOrderPage> {
                                         width: 20,
                                       ),
                                       Text(
-                                        EnumUnitMeasure.M2.nameUnitMeasure == _controllerUnitMeasure.text
+                                        EnumUnitMeasureEnum.M2.nameUnitMeasure == _controllerUnitMeasure.text
                                             ? 'MEDIDA PARA FATURAMENTO: $metroQuadradoFaturamento m2'
                                             : 'MEDIDA PARA FATURAMENTO: $metroLinearFaturamento m',
                                         style: const TextStyle(
@@ -382,7 +382,7 @@ class _AddItemOrderPageState extends State<AddItemOrderPage> {
                             if (_controllerHeightMeasure.text.isNotEmpty) {
                               _itemCubit.heightMeasure = double.parse(_controllerHeightMeasure.text);
                             }
-                            if (EnumUnitMeasure.M2.nameUnitMeasure == _controllerUnitMeasure.text) {
+                            if (EnumUnitMeasureEnum.M2.nameUnitMeasure == _controllerUnitMeasure.text) {
                               _itemCubit.calculateM2();
                             } else {
                               _itemCubit.calculatePerimeter();
@@ -448,8 +448,8 @@ class _AddItemOrderPageState extends State<AddItemOrderPage> {
                                     //_itemCubit.calculateTotalPriceAmericanDouble(
                                     //    price: valuePrice, quantity: valueQuantity);
                                   }
-                                  if (EnumUnitMeasure.M2.nameUnitMeasure == _controllerUnitMeasure.text ||
-                                      EnumUnitMeasure.M.nameUnitMeasure == _controllerUnitMeasure.text) {
+                                  if (EnumUnitMeasureEnum.M2.nameUnitMeasure == _controllerUnitMeasure.text ||
+                                      EnumUnitMeasureEnum.M.nameUnitMeasure == _controllerUnitMeasure.text) {
                                     _itemCubit.calculatePriceAndMetersAmericanDouble(
                                         quantity: valueQuantity, price: valuePrice, measureBilling: measureBilling);
                                     _controllerItemTotalValue.text = _itemCubit.totalPriceAmericanDouble.toString();
@@ -502,8 +502,8 @@ class _AddItemOrderPageState extends State<AddItemOrderPage> {
                                     _itemCubit.calculateTotalPriceAmericanDouble(
                                         price: valuePrice, quantity: valueQuantity);
                                   }
-                                  if (EnumUnitMeasure.M2.nameUnitMeasure == _controllerUnitMeasure.text ||
-                                      EnumUnitMeasure.M.nameUnitMeasure == _controllerUnitMeasure.text) {
+                                  if (EnumUnitMeasureEnum.M2.nameUnitMeasure == _controllerUnitMeasure.text ||
+                                      EnumUnitMeasureEnum.M.nameUnitMeasure == _controllerUnitMeasure.text) {
                                     _controllerItemTotalValue.text = _itemCubit.totalPriceAmericanDouble.toString();
                                   } else {
                                     _controllerItemTotalValue.text = _itemCubit.totalPriceAmericanDouble.toString();

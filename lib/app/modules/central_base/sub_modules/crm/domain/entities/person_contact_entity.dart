@@ -2,7 +2,7 @@ import '../../../../../shared/enums/enums.dart';
 
 class PersonContactEntity {
   final int? idContact;
-  final EnumTypeContact typeContact;
+  final EnumTypeContactEnum typeContact;
   final String? descriptionContact;
   final String? informationContact;
 

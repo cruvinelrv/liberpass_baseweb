@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
-enum EnumUnitMeasure {
+enum EnumUnitMeasureEnum {
   UN(idUnitMeasure: 1, nameUnitMeasure: 'UNIDADE', alias: 'UN'),
   KG(idUnitMeasure: 2, nameUnitMeasure: 'KILOGRAMA', alias: 'KG'),
   L(idUnitMeasure: 3, nameUnitMeasure: 'LITRO', alias: 'L'),
@@ -17,7 +17,7 @@ enum EnumUnitMeasure {
   final int idUnitMeasure;
   final String nameUnitMeasure;
   final String alias;
-  const EnumUnitMeasure({
+  const EnumUnitMeasureEnum({
     required this.idUnitMeasure,
     required this.nameUnitMeasure,
     required this.alias,

@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
-enum EnumCarrier {
+enum EnumCarrierEnum {
   CARTEIRA(idCarrier: 1, nameCarrier: 'CARTEIRA'),
   BANCO(idCarrier: 2, nameCarrier: 'BANCO'),
   JURIDICO(idCarrier: 3, nameCarrier: 'JURIDICO'),
@@ -15,7 +15,7 @@ enum EnumCarrier {
 
   final int idCarrier;
   final String nameCarrier;
-  const EnumCarrier({
+  const EnumCarrierEnum({
     required this.idCarrier,
     required this.nameCarrier,
   });

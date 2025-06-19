@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
-enum EnumTypePayment {
+enum EnumTypePaymentEnum {
   VISTA(idTypePayment: 1, nameTypePayment: 'A VISTA'),
   PRAZO(idTypePayment: 2, nameTypePayment: 'A PRAZO'),
   CARTAO(idTypePayment: 3, nameTypePayment: 'CARTAO'),
@@ -12,7 +12,7 @@ enum EnumTypePayment {
 
   final int idTypePayment;
   final String nameTypePayment;
-  const EnumTypePayment({
+  const EnumTypePaymentEnum({
     required this.idTypePayment,
     required this.nameTypePayment,
   });

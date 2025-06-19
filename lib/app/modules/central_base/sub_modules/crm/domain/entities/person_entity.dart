@@ -2,7 +2,7 @@ import '../../../../../shared/enums/enums.dart';
 
 class PersonEntity {
   final int? internalCode;
-  final EnumTypePerson personType;
+  final EnumTypePersonEnum personType;
   final String documentReference;
   final String nameOrSocialReason;
   final String nickNameOrFantasyName;

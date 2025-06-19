@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
-enum EnumTypeAddress {
+enum EnumTypeAddressEnum {
   HOME(idTypeAddress: 1, nameTypeAddress: 'RESIDENCIAL'),
   WORK(idTypeAddress: 2, nameTypeAddress: 'COMERCIAL'),
   CHARGE(idTypeAddress: 3, nameTypeAddress: 'COBRANCA'),
@@ -8,7 +8,7 @@ enum EnumTypeAddress {
 
   final int idTypeAddress;
   final String nameTypeAddress;
-  const EnumTypeAddress({
+  const EnumTypeAddressEnum({
     required this.idTypeAddress,
     required this.nameTypeAddress,
   });

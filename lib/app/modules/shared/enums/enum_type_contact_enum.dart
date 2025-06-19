@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
-enum EnumTypeContact {
+enum EnumTypeContactEnum {
   PHONE(idTypeContact: 1, nameTypeContact: 'TELEFONE'),
   CELULAR(idTypeContact: 2, nameTypeContact: 'CELULAR'),
   EMAIL(idTypeContact: 3, nameTypeContact: 'EMAIL'),
@@ -35,7 +35,7 @@ enum EnumTypeContact {
 
   final int idTypeContact;
   final String nameTypeContact;
-  const EnumTypeContact({
+  const EnumTypeContactEnum({
     required this.idTypeContact,
     required this.nameTypeContact,
   });

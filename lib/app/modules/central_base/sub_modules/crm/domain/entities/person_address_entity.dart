@@ -79,7 +79,7 @@ class PersonAddressEntity {
   }
 
   factory PersonAddressEntity.fromMap(Map<String, dynamic> map) {
-    EnumTypeAddress typeAddress;
+    EnumTypeAddressEnum typeAddress;
 
     return PersonAddressEntity(
       idAddress: map['idAddress'] as int?,

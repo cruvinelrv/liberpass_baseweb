@@ -55,22 +55,6 @@ class AppModule extends Module {
       ChildRoute('/crm', child: (context) => const PersonPage()),
       ChildRoute('/under-construction', child: (context) => const UnderConstructionPage()),
     ]);
-    // ChildRoute('/base-page',
-    //     child: (context, args) => const BasePage(),
-    //     children: [
-    //       ChildRoute('/internal-page',
-    //           child: (context) => const InternalPage(
-    //                 title: 'title',
-    //                 color: Colors.red,
-    //               )),
-    //       ChildRoute('/geremetrika',
-    //           child: (context, args) => const GeremetrikaPage()),
-    //       ChildRoute('/order', child: (context, args) => const OrderPage()),
-    //       ChildRoute('/scm', child: (context, args) => const ItemPage()),
-    //       ChildRoute('/crm', child: (context, args) => const PersonPage()),
-    //       ChildRoute('/under-construction',
-    //           child: (context, args) => const UnderConstructionPage()),
-    //     ]),
     ChildRoute('/liberpass-info', child: (context) => const LiberpassInfoPage());
     ChildRoute('/login', child: (context) => const LoginPage());
     ChildRoute(
