@@ -37,7 +37,7 @@ class AppModule extends Module {
 
   @override
   void routes(r) {
-    r.module(Modular.initialRoute, module: CentralBaseModule());
+    r.module(Modular.initialRoute, module: LandingModule());
     r.module('/auth-manager', module: AuthManagerModule());
     r.module('/central-base', module: CentralBaseModule());
     r.module('/onboarding', module: OnboardingModule());
