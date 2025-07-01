@@ -442,7 +442,7 @@ packages:
     description:
       path: "."
       ref: develop
-      resolved-ref: "27659e382dfa261ae7ff9abd187ede3d0dda1e8d"
+      resolved-ref: "31a1f928e70c8941fa7bb79af8130e66a8a645c1"
       url: "https://github.com/cruvinelrv/lpass_shared.git"
     source: git
     version: "0.0.1"

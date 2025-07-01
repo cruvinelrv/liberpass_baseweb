@@ -1,4 +1,4 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lpass_web_dependencies/web_dependencies.dart';
 
 import '../../../../shared/session/session_manager.dart';
 

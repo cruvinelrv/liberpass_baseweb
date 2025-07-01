@@ -1,8 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:liberpass_baseweb/app/modules/shared/enums/enums.dart';
-
+import 'package:liberpass_shared/liberpass_shared.dart';
+import 'package:lpass_web_dependencies/web_dependencies.dart';
 import '../../../../domain/entities/person_address_entity.dart';
 
 class AddPersonPage extends StatefulWidget {

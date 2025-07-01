@@ -6,9 +6,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
+import 'package:liberpass_shared/liberpass_shared.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/cubits/item_cubit/item_cubit.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/cubits/item_cubit/states/states.dart';
-import 'package:liberpass_baseweb/app/modules/shared/enums/enum_unit_measure_enum.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import '../../../../../central_base/sub_modules/scm/domain/entities/entities.dart';
 

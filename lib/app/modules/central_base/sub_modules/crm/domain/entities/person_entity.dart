@@ -1,4 +1,4 @@
-import '../../../../../shared/enums/enums.dart';
+import 'package:liberpass_shared/liberpass_shared.dart';
 
 class PersonEntity {
   final int? internalCode;

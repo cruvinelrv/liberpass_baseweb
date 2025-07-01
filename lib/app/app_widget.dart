@@ -1,6 +1,5 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:lpass_web_dependencies/web_dependencies.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({super.key});
@@ -18,14 +17,11 @@ class _AppWidgetState extends State<AppWidget> {
         primarySwatch: Colors.green,
         useMaterial3: true,
         textSelectionTheme: const TextSelectionThemeData(
-          selectionColor: Colors.transparent, // Define a cor do highlight/sublinhado como transparente
-          // Opcional: Você também pode querer definir a cor do cursor e dos handles de seleção
-          // cursorColor: Colors.green, // Exemplo: usar a cor primária do tema
-          // selectionHandleColor: Colors.green, // Exemplo: usar a cor primária do tema
+          selectionColor: Colors.transparent,
         ),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.green,
-          foregroundColor: Colors.white, // Cor do texto e ícones
+          foregroundColor: Colors.white,
         ),
         scaffoldBackgroundColor: Colors.white,
         colorScheme: ColorScheme.fromSwatch().copyWith(

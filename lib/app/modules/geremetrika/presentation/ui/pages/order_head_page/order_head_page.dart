@@ -1,15 +1,11 @@
 import 'dart:math';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:liberpass_shared/liberpass_shared.dart';
+import 'package:lpass_web_dependencies/web_dependencies.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/domain/entities/list_item_entity.dart';
 import 'package:liberpass_baseweb/app/modules/geremetrika/domain/entities/order_entity.dart';
-import 'package:liberpass_baseweb/app/modules/shared/extensions/extensions.dart';
-import 'package:liberpass_baseweb/app/modules/shared/masks/input_masks.dart';
-import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
-import 'package:printing/printing.dart';
 
 import '../../cubits/item_cubit/item_cubit.dart';
 import '../../cubits/item_cubit/states/states.dart';

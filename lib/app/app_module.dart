@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:lpass_web_dependencies/web_dependencies.dart';
 import 'package:liberpass_baseweb/app/modules/auth_manager/login/presentation/cubits/auth_cubit/auth_cubit.dart';
 import 'package:liberpass_baseweb/app/modules/central_base/central_base_module.dart';
 import 'package:liberpass_baseweb/app/modules/central_base/shared/presentation/ui/cubits/menu_cubit/menu_cubit.dart';

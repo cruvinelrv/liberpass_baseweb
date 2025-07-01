@@ -1,10 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/cubits/item_cubit/states/item_initial_state.dart';
-import 'package:liberpass_baseweb/app/modules/shared/enums/enum_status_item_enum.dart';
-import 'package:liberpass_baseweb/app/modules/shared/enums/enum_unit_measure_enum.dart';
+import 'package:liberpass_shared/liberpass_shared.dart';
+import 'package:lpass_web_dependencies/web_dependencies.dart';
 
 import '../../../../domain/entities/entities.dart';
 import '../../../../domain/entities/item_flow_entity.dart';

@@ -1,4 +1,4 @@
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:lpass_web_dependencies/web_dependencies.dart';
 import 'package:liberpass_baseweb/app/modules/auth_manager/login/presentation/ui/pages/login_page/login_page.dart';
 
 class AuthManagerModule extends Module {
