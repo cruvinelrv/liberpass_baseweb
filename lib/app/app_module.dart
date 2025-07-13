@@ -19,6 +19,7 @@ import 'modules/auth_manager/shared/session/session_manager.dart';
 import 'modules/central_base/shared/presentation/ui/pages/base_page/base_page.dart';
 import 'modules/central_base/sub_modules/crm/presentation/ui/pages/person_page/person_page.dart';
 import 'modules/central_base/sub_modules/scm/presentation/ui/pages/order_page/order_page_original.dart';
+import 'modules/escape_manager/escape_module.dart';
 import 'modules/escape_manager/presentation/ui/pages/pages_escape_manager.dart';
 import 'modules/central_base/sub_modules/scm/presentation/ui/pages/pages_item_management.dart';
 import 'modules/central_base/sub_modules/scm/presentation/ui/pages/upload_itens_page/upload_itens_page.dart';
@@ -42,6 +43,7 @@ class AppModule extends Module {
     r.module('/central-base', module: CentralBaseModule());
     r.module('/onboarding', module: OnboardingModule());
     r.module('/financial', module: FinancialManagementModule());
+    r.module('/escape-manager', module: EscapeModule());
 
     r.child('/base-page', child: (context) => const BasePage(), children: [
       ChildRoute('/internal-page',

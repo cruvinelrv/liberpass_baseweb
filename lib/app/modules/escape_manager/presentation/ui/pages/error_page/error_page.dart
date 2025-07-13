@@ -6,8 +6,7 @@ class ErrorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: const Text('Liberpass - Sistema de gestão do ramo vidreiro')),
+      appBar: AppBar(title: const Text('Liberpass')),
       body: const Center(
         child: Text('Um erro aconteceu'),
       ),
