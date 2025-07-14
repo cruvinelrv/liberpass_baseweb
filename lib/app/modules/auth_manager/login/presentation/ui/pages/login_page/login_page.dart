@@ -178,6 +178,14 @@ class _LoginPageState extends State<LoginPage> {
                           },
                           child: Text(AuthManagerStrings.entrarButton)),
                     ),
+                    const SizedBox(height: 16.0),
+                    TextButton.icon(
+                      icon: const Icon(Icons.person_add, color: Colors.green),
+                      label: const Text('Criar Conta', style: TextStyle(fontSize: 16, color: Colors.green)),
+                      onPressed: () {
+                        Navigator.of(context).pushReplacementNamed('/onboarding');
+                      },
+                    ),
                   ],
                 ),
               ),

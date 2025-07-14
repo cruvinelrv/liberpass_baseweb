@@ -43,23 +43,3 @@ class _MultiStepFormState extends State<MultiStepForm> {
     }
   }
 }
-
-// // step1_page.dart, step2_page.dart, step3_page.dart (estrutura semelhante)
-// class Step1Page extends StatelessWidget {
-//   final VoidCallback onNext;
-
-//   Step1Page({required this.onNext});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: Text('Passo 1')),
-//       body: Center(
-//         child: ElevatedButton(
-//           onPressed: onNext,
-//           child: Text('Próximo'),
-//         ),
-//       ),
-//     );
-//   }
-// }
