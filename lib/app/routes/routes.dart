@@ -5,6 +5,7 @@ import 'package:liberpass_baseweb/app/modules/geremetrika/presentation/ui/pages/
 import 'package:liberpass_baseweb/app/modules/onboarding/presentation/ui/pages/onboarding_page.dart';
 
 import '../modules/auth_manager/login/presentation/ui/pages/login_page/login_page.dart';
+import '../modules/central_base/sub_modules/dashboard/presentation/pages/dashboard_page.dart';
 import '../modules/central_base/sub_modules/fms/financial_calc/presentation/ui/pages/financial_simulation_page.dart';
 import '../modules/escape_manager/presentation/ui/pages/error_page/error_page.dart';
 import '../modules/geremetrika/data/models/order_model.dart';

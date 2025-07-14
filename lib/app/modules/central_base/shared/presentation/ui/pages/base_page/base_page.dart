@@ -14,6 +14,8 @@ class BasePage extends StatefulWidget {
 
 class _BasePageState extends State<BasePage> {
   late String pageName;
+  String? userName;
+  String? userEmail;
   late final AuthCubit _authCubit;
   late final SessionManager _sessionManager;
 
@@ -23,6 +25,10 @@ class _BasePageState extends State<BasePage> {
     pageName = 'Liberpass 0.1.1';
     _authCubit = Modular.get<AuthCubit>();
     _sessionManager = Modular.get<SessionManager>();
+    // Simulação: obtenha nome/email do usuário logado
+    // Substitua por dados reais do seu AuthCubit/SessionManager
+    userName = 'Usuário';
+    userEmail = 'usuario@email.com';
   }
 
   @override
@@ -35,64 +41,73 @@ class _BasePageState extends State<BasePage> {
     final isDesktop = MediaQuery.of(context).size.width > 600;
     final isSmallScreen = MediaQuery.of(context).size.width <= 600;
 
-    final leading = isDesktop
+    final Widget? sideMenu = isDesktop
         ? SizedBox(
-            width: MediaQuery.of(context).size.width * 0.15,
+            width: MediaQuery.of(context).size.width * 0.18,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
+                  // Cabeçalho/avatar
+                  CircleAvatar(
+                    radius: 32,
+                    child: Icon(Icons.person, size: 32),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(userName ?? '', style: const TextStyle(fontWeight: FontWeight.bold)),
+                  Text(userEmail ?? '', style: const TextStyle(fontSize: 12)),
+                  const Divider(thickness: 2),
                   ListTile(
-                    enabled: true,
-                    title: const Text('Estoque'),
+                    title: const Text('Dashboard'),
+                    leading: const Tooltip(message: 'Ir para Dashboard', child: Icon(Icons.dashboard)),
                     onTap: () {
-                      Modular.to.navigate('/central-base/scm/');
+                      Modular.to.navigate('/central-base/dashboard/');
+                      _updatePageName('Dashboard');
                     },
                   ),
-                  ListTile(
-                    enabled: true,
-                    title: const Text('Pessoas'),
-                    onTap: () {
-                      Modular.to.navigate('/central-base/crm/');
-                      _updatePageName('Pessoas');
-                    },
-                  ),
-                  Visibility(
-                    visible: true,
-                    child: ListTile(
-                      enabled: true,
+                  // Menus antigos ocultos temporariamente
+                  /*
+                  if (!ocultarMenusAntigos) ...[
+                    ListTile(
+                      title: const Text('Estoque'),
+                      leading: const Tooltip(message: 'Ir para Estoque', child: Icon(Icons.inventory)),
+                      onTap: () {
+                        Modular.to.navigate('/central-base/scm/');
+                        _updatePageName('Estoque');
+                      },
+                    ),
+                    ListTile(
+                      title: const Text('Pessoas'),
+                      leading: const Tooltip(message: 'Ir para Pessoas', child: Icon(Icons.people)),
+                      onTap: () {
+                        Modular.to.navigate('/central-base/crm/');
+                        _updatePageName('Pessoas');
+                      },
+                    ),
+                    ListTile(
                       title: const Text('Pedido'),
+                      leading: const Tooltip(message: 'Ir para Pedido', child: Icon(Icons.shopping_cart)),
                       onTap: () {
                         Modular.to.navigate('/central-base/order/');
                         _updatePageName('Pedido');
                       },
                     ),
-                  ),
-                  ListTile(
-                    title: const Text('Pedido'),
-                    onTap: () {
-                      Modular.to.navigate('/central-base/geremetrika/');
-                      _updatePageName('Pedido');
-                    },
-                  ),
-                  const Expanded(
-                    child: SizedBox(),
-                  ),
-                  const Divider(
-                    thickness: 2,
-                  ),
-                  ListTile(
-                    title: const Text('Upload Itens'),
-                    onTap: () {
-                      Modular.to.navigate('/upload-itens/');
-                      _updatePageName('Upload Itens');
-                      Navigator.pop(context);
-                    },
-                  ),
+                    ListTile(
+                      title: const Text('Geremetrika'),
+                      leading: const Tooltip(message: 'Ir para Geremetrika', child: Icon(Icons.analytics)),
+                      onTap: () {
+                        Modular.to.navigate('/central-base/geremetrika/');
+                        _updatePageName('Geremetrika');
+                      },
+                    ),
+                  ],
+                  */
+                  const Expanded(child: SizedBox()),
+                  const Divider(thickness: 2),
                   ListTile(
                     title: const Text('Sair'),
+                    leading: const Tooltip(message: 'Sair do sistema', child: Icon(Icons.logout)),
                     onTap: () {
-                      Modular.to.popUntil((p0) => true);
                       Modular.to.navigate('/auth-manager/');
                     },
                   ),
@@ -106,53 +121,81 @@ class _BasePageState extends State<BasePage> {
         ? Drawer(
             child: ListView(
               children: [
+                // Cabeçalho/avatar
+                const SizedBox(height: 16),
+                CircleAvatar(
+                  radius: 32,
+                  child: Icon(Icons.person, size: 32),
+                ),
+                const SizedBox(height: 8),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(userName ?? '', style: const TextStyle(fontWeight: FontWeight.bold)),
+                      Text(userEmail ?? '', style: const TextStyle(fontSize: 12)),
+                    ],
+                  ),
+                ),
+                const Divider(thickness: 2),
                 ListTile(
-                  title: const Text('Produtos'),
+                  title: const Text('Dashboard'),
+                  leading: const Tooltip(message: 'Ir para Dashboard', child: Icon(Icons.dashboard)),
                   onTap: () {
-                    Modular.to.navigate('/central-base/scm/');
-                    _updatePageName('Produtos');
+                    Modular.to.navigate('/dashboard/');
+                    _updatePageName('Dashboard');
                     Navigator.pop(context);
                   },
                 ),
-                ListTile(
-                  title: const Text('Geremetrika'),
-                  onTap: () {
-                    Modular.to.navigate('/central-base/geremetrika');
-                    _updatePageName('Geremetrika');
-                    Navigator.pop(context);
-                  },
-                ),
-                ListTile(
-                  title: const Text('Pessoas'),
-                  onTap: () {
-                    Modular.to.navigate('/central-base/crm/');
-                    _updatePageName('Pessoas');
-                    Navigator.pop(context);
-                  },
-                ),
-                ListTile(
-                  title: const Text('Pedido'),
-                  onTap: () {
-                    Modular.to.navigate('/central-base/order/');
-                    _updatePageName('Pedido');
-                    Navigator.pop(context);
-                  },
-                ),
-                const Divider(
-                  thickness: 2,
-                ),
-                ListTile(
-                  title: const Text('Upload Itens'),
-                  onTap: () {
-                    Modular.to.navigate('/upload-itens/');
-                    _updatePageName('Upload Itens');
-                    Navigator.pop(context);
-                  },
-                ),
+                // Menus antigos ocultos temporariamente
+                /*
+                if (!ocultarMenusAntigos) ...[
+                  ListTile(
+                    title: const Text('Estoque'),
+                    leading: const Tooltip(message: 'Ir para Estoque', child: Icon(Icons.inventory)),
+                    onTap: () {
+                      Modular.to.navigate('/central-base/scm/');
+                      _updatePageName('Estoque');
+                      Navigator.pop(context);
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('Pessoas'),
+                    leading: const Tooltip(message: 'Ir para Pessoas', child: Icon(Icons.people)),
+                    onTap: () {
+                      Modular.to.navigate('/central-base/crm/');
+                      _updatePageName('Pessoas');
+                      Navigator.pop(context);
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('Pedido'),
+                    leading: const Tooltip(message: 'Ir para Pedido', child: Icon(Icons.shopping_cart)),
+                    onTap: () {
+                      Modular.to.navigate('/central-base/order/');
+                      _updatePageName('Pedido');
+                      Navigator.pop(context);
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('Geremetrika'),
+                    leading: const Tooltip(message: 'Ir para Geremetrika', child: Icon(Icons.analytics)),
+                    onTap: () {
+                      Modular.to.navigate('/central-base/geremetrika/');
+                      _updatePageName('Geremetrika');
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+                */
+                const Expanded(child: SizedBox()),
+                const Divider(thickness: 2),
                 ListTile(
                   title: const Text('Sair'),
+                  leading: const Tooltip(message: 'Sair do sistema', child: Icon(Icons.logout)),
                   onTap: () {
-                    Modular.to.navigate('/');
+                    Modular.to.navigate('/auth-manager/');
                     Navigator.pop(context);
                   },
                 ),
@@ -166,9 +209,7 @@ class _BasePageState extends State<BasePage> {
         title: Row(
           children: [
             Text(pageName),
-            const SizedBox(
-              width: 10,
-            ),
+            const SizedBox(width: 10),
             BlocBuilder<AuthCubit, bool>(
               bloc: _authCubit,
               builder: (context, state) {
@@ -195,7 +236,7 @@ class _BasePageState extends State<BasePage> {
       drawer: drawer,
       body: Row(
         children: [
-          if (isDesktop) leading ?? Container(),
+          if (isDesktop) sideMenu ?? Container(),
           Container(
             width: 2,
             color: Colors.black45,

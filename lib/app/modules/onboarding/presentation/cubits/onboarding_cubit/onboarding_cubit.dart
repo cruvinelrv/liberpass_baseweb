@@ -35,6 +35,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
         'email': state.email,
         'cidadeOrigem': state.cidadeOrigem,
         'cidadeDestino': state.cidadeDestino,
+        'objetivo': state.objetivo,
         'uid': user.uid,
         'criadoEm': FieldValue.serverTimestamp(),
       });

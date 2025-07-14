@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:liberpass_baseweb/app/modules/central_base/sub_modules/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:lpass_web_dependencies/web_dependencies.dart';
 import 'package:liberpass_baseweb/app/modules/auth_manager/login/presentation/cubits/auth_cubit/auth_cubit.dart';
 import 'package:liberpass_baseweb/app/modules/central_base/central_base_module.dart';
@@ -44,7 +45,6 @@ class AppModule extends Module {
     r.module('/onboarding', module: OnboardingModule());
     r.module('/financial', module: FinancialManagementModule());
     r.module('/escape-manager', module: EscapeModule());
-
     r.child('/base-page', child: (context) => const BasePage(), children: [
       ChildRoute('/internal-page',
           child: (context) => const InternalPage(
@@ -55,6 +55,7 @@ class AppModule extends Module {
       ChildRoute('/order', child: (context) => const OrderPage()),
       ChildRoute('/scm', child: (context) => const ItemPage()),
       ChildRoute('/crm', child: (context) => const PersonPage()),
+      ChildRoute('/dashboard ', child: (context) => const DashboardPage()),
       ChildRoute('/under-construction', child: (context) => const UnderConstructionPage()),
     ]);
     ChildRoute('/liberpass-info', child: (context) => const LiberpassInfoPage());
@@ -73,13 +74,13 @@ class AppModule extends Module {
     ChildRoute('/error', child: (context) => const ErrorPage());
     ChildRoute('/under-construction', child: (context) => const UnderConstructionPage());
     ChildRoute('/crm', child: (context) => const PersonPage());
+    ChildRoute('/dashboard ', child: (context) => const DashboardPage());
     ChildRoute('/add-person', child: (context) => const AddPersonPage());
     r.child('/permission-denied', child: (context) => const PermissionDeniedPage());
   }
 
   @override
   void exportedBinds(Injector i) {
-    // TODO: implement exportedBinds
     super.exportedBinds(i);
   }
 }
